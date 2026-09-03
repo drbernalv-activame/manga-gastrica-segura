@@ -68,8 +68,24 @@
   if (anio) anio.textContent = String(new Date().getFullYear());
 
   /* ---- 4. Formulario ----
-     El destino es coordinacion@activame.mx a través de un mailto. Aquí solo
-     se valida y se registra el evento; el envío lo hace el navegador. */
+     No hay servidor: al enviar se arma el mensaje con los datos capturados y
+     se abre la conversación de WhatsApp con Georgina, ya redactado. El
+     paciente lo revisa y lo manda desde su propio WhatsApp.
+     Sin JavaScript, el action del formulario abre la misma conversación,
+     aunque sin los datos prellenados. */
+  var WHATSAPP = '526144078343';
+
+  function valor(formulario, id) {
+    var campo = formulario.querySelector('#' + id);
+    return campo && campo.value ? campo.value.trim() : '';
+  }
+
+  function textoElegido(select) {
+    if (!select || !select.value) return '';
+    var opcion = select.options[select.selectedIndex];
+    return opcion ? opcion.textContent.trim() : '';
+  }
+
   var formulario = document.querySelector('.formulario');
   if (formulario) {
     formulario.addEventListener('submit', function (e) {
@@ -78,9 +94,27 @@
         formulario.reportValidity();
         return;
       }
+      e.preventDefault();
+
+      var partes = [
+        'Hola Georgina, quiero solicitar una simulación personalizada para manga gástrica.',
+        'Nombre: ' + valor(formulario, 'nombre') + '.',
+        'Teléfono: ' + valor(formulario, 'whatsapp') + '.',
+        'Ciudad: ' + valor(formulario, 'ciudad') + '.'
+      ];
+      var duda = textoElegido(formulario.querySelector('#duda'));
+      if (duda) partes.push('Dudas: ' + duda + '.');
+      var mensaje = valor(formulario, 'mensaje');
+      if (mensaje) partes.push(mensaje);
+
       evento('form_submit', {
         principal_duda: (formulario.querySelector('#duda') || {}).value || ''
       });
+
+      var url = 'https://wa.me/' + WHATSAPP + '?text=' +
+                encodeURIComponent(partes.join(' '));
+      var ventana = window.open(url, '_blank', 'noopener');
+      if (!ventana) window.location.href = url;
     });
   }
 

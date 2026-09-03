@@ -508,3 +508,60 @@ en el grep sin ser un pendiente.
 | — | Render revisado a 1280 px | ✅ Hero con bloque neutro en lugar de imagen rota, perfil con credenciales, sección de reseñas. |
 
 **No se publicó ni se desplegó nada.**
+
+---
+
+# El formulario entrega por WhatsApp — 3 de septiembre de 2026
+
+Sustituye el `mailto:` del cierre anterior, que no era un backend y perdía solicitudes en
+dispositivos sin correo configurado.
+
+## 20. Cómo funciona ahora
+
+Al enviar, `assets/js/analitica.js` valida el formulario, arma el mensaje con los datos
+capturados y abre `https://wa.me/526144078343` con el texto ya redactado, codificado con
+`encodeURIComponent`. El paciente lo revisa y lo manda desde su propio WhatsApp.
+
+Mensaje que se construye:
+
+> Hola Georgina, quiero solicitar una simulación personalizada para manga gástrica.
+> Nombre: X. Teléfono: X. Ciudad: X. Dudas: X.
+
+De la lista desplegable de dudas se toma **el texto visible de la opción**, no su valor interno,
+y solo si el paciente eligió alguna. **Si además escribió algo en "¿Quieres contarnos algo
+más?", ese texto se agrega al final**: dejarlo fuera habría descartado en silencio lo único que
+el paciente redactó con sus palabras.
+
+Detalles de implementación:
+
+- Se abre en una pestaña nueva (`window.open` con `noopener`), así que la landing no se pierde;
+  si el navegador bloquea la ventana, cae en `window.location.href`.
+- La validación del navegador sigue activa: con un campo obligatorio vacío no se abre nada.
+- El `action` del formulario pasó de `mailto:` a `https://wa.me/526144078343` con `method="get"`.
+  Es la degradación sin JavaScript: abre la misma conversación, aunque sin los datos
+  prellenados.
+- Se retiró la línea "Al enviar se abre tu aplicación de correo…" y en su lugar dice
+  "Al enviar se abre WhatsApp con tus datos listos para mandarle a Georgina".
+- El botón "Resuelve tus dudas por WhatsApp" sigue debajo del formulario como alternativa
+  directa, sin datos.
+- Se conservan los eventos `click_cta_simulacion` (en los CTA del hero y de planes de pago) y
+  `form_submit`, que sigue registrando la duda principal.
+- `coordinacion@activame.mx` queda **solo en el pie**, como dato de contacto enlazado.
+
+## 21. Prueba ejecutada
+
+Envío real en Chromium, interceptando `window.open`:
+
+```
+Hola Georgina, quiero solicitar una simulación personalizada para manga gástrica.
+Nombre: María Elena Ríos. Teléfono: 6141234567. Ciudad: Chihuahua.
+Dudas: Si soy candidato o no. Tengo diabetes tipo 2 y quiero saber si puedo operarme.
+```
+
+Verificado: acentos y signos correctamente codificados, la página no navega fuera, y con el
+campo de nombre vacío el envío se bloquea sin abrir ninguna URL.
+
+Lo que este esquema **no** resuelve: no queda registro de la solicitud fuera del WhatsApp de
+Georgina, y no se puede medir cuántas personas llenan el formulario y no llegan a mandar el
+mensaje. Si se quiere trazabilidad, hay que conectar un CRM o webhook; el comentario en el HTML
+señala dónde.

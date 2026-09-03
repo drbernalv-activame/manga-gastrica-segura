@@ -753,11 +753,11 @@
         </p>
       </div>
 
-      <!-- El formulario entrega en coordinacion@activame.mx a través del cliente de correo del
-           visitante. Un mailto no es un backend: no confirma entrega ni funciona en dispositivos
-           sin correo configurado. Cuando exista un CRM o webhook, cámbiese el action por su
-           endpoint y quítese la nota de ayuda de abajo. -->
-      <form class="formulario" action="mailto:coordinacion@activame.mx" method="post" enctype="text/plain" data-evento-envio="form_submit" novalidate>
+      <!-- Al enviar, assets/js/analitica.js arma el mensaje con los datos del formulario y abre
+           WhatsApp con Georgina. El action de abajo es la degradación sin JavaScript: abre la
+           misma conversación, aunque sin los datos prellenados. Cuando exista un CRM o webhook,
+           cámbiese por su endpoint y quítese el manejador del submit en el JS. -->
+      <form class="formulario" action="https://wa.me/526144078343" method="get" data-evento-envio="form_submit" novalidate>
         <div class="campo">
           <label for="nombre">Nombre completo <span aria-hidden="true">*</span></label>
           <input type="text" id="nombre" name="nombre" autocomplete="name" required>
@@ -825,7 +825,7 @@
         <button type="submit" class="boton boton--primario">Solicita tu simulación personalizada</button>
         <p class="formulario__pie">
           Sin compromiso. Te contactamos para orientarte, no para presionarte.
-          Al enviar se abre tu aplicación de correo; si no se abre, escríbenos por WhatsApp.
+          Al enviar se abre WhatsApp con tus datos listos para mandarle a Georgina.
         </p>
       </form>
 
@@ -869,6 +869,9 @@
           WhatsApp — Georgina, coordinadora de pacientes:
           <a href="https://wa.me/526144078343?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20una%20valoraci%C3%B3n%20para%20manga%20g%C3%A1strica."
              data-evento="click_whatsapp" data-ubicacion="pie" rel="noopener">614 407 83 43</a>
+        </p>
+        <p>
+          Correo: <a href="mailto:coordinacion@activame.mx">coordinacion@activame.mx</a>
         </p>
         <p><a href="[PENDIENTE LEGAL: URL del aviso de privacidad]">Aviso de privacidad</a></p>
       </div>

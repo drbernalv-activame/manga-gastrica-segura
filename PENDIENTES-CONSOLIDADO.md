@@ -28,21 +28,21 @@ neutro: no se ve el ícono de imagen rota ni queda hueco en la maquetación.
 
 ## 🔴 Dos cosas que hay que resolver aunque no lleven marcador
 
-### El formulario usa `mailto:`, que no es un backend
+### El formulario entrega por WhatsApp, no por correo
 
-El `action` quedó en `mailto:coordinacion@activame.mx` y el envío ya no está bloqueado. Pero un
-`mailto` **no entrega el correo**: abre la aplicación de correo del visitante y deja que él lo
-mande. Eso implica que:
+Al enviar, `analitica.js` arma el mensaje con los datos capturados y abre la conversación de
+WhatsApp con Georgina, ya redactado. El paciente lo revisa y lo manda desde su propio WhatsApp.
 
-- **No hay confirmación de entrega.** Nadie sabe si la solicitud salió.
-- **En un teléfono sin correo configurado no pasa nada** al pulsar el botón, y se pierde el dato
-  del paciente.
-- **No se puede probar de punta a punta** como pedía la verificación: no hay servidor que reciba.
+Ventajas frente al `mailto` que había antes: funciona en el canal que el paciente ya usa, el
+mensaje llega con nombre, teléfono, ciudad y dudas, y **el dato no pasa por ningún tercero**.
+Sin JavaScript, el `action` del formulario abre la misma conversación, aunque sin los datos
+prellenados.
 
-Se agregó una línea bajo el botón —"Al enviar se abre tu aplicación de correo; si no se abre,
-escríbenos por WhatsApp"— y el botón de WhatsApp sigue debajo como salida real. **Aun así, la
-recomendación es contratar un backend de formularios** (o un webhook al CRM) y cambiar el
-`action` por su endpoint. Es un cambio de una línea, y hay un comentario en el HTML que lo dice.
+Lo que sigue sin haber es **registro**: no queda constancia de la solicitud en ningún sistema
+más que en el WhatsApp de Georgina, y no hay forma de saber cuántas personas empezaron el
+formulario y no llegaron a mandar el mensaje. Si en algún momento se quiere trazabilidad o un
+CRM, basta cambiar el `action` por el endpoint y quitar el manejador del submit en el JS; hay
+un comentario en el HTML que lo indica.
 
 ### La imagen para redes sociales se retiró
 
@@ -61,8 +61,7 @@ con la instrucción en `index.html:20`.
 - [ ] Publicar el aviso de privacidad y enlazarlo en los dos lugares.
 - [ ] Cerrar la revisión de COFEPRIS.
 - [ ] Confirmar el dominio y quitar el comentario `VERIFICAR`.
-- [ ] Decidir si el formulario se queda en `mailto` o se conecta a un backend real.
-- [ ] Probar el formulario de punta a punta: que llegue el dato y que alguien lo conteste.
+- [ ] Probar el formulario desde un teléfono real: que abra WhatsApp con el mensaje armado y que Georgina lo conteste.
 - [ ] Probar el enlace de WhatsApp desde un teléfono real.
 - [ ] Probar que el enlace de reseñas abre la ficha de Google correcta.
 - [ ] `grep -rn "PENDIENTE\|VERIFICAR" index.html` debe salir vacío.
