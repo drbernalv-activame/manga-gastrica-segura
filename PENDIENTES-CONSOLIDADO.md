@@ -54,6 +54,23 @@ con la instrucción en `index.html:20`.
 
 ---
 
+## Despliegue
+
+El sitio **todavía no está desplegado**. La configuración para Vercel y Netlify ya está en el
+repositorio y los pasos están en [`DESPLIEGUE.md`](DESPLIEGUE.md); falta que alguien con cuenta
+conecte el repositorio desde el panel. Al hacerlo, hay que poner la rama de producción en
+`claude/manga-gastrica-landing-page-s78nhc`: por defecto se toma `main`, que no tiene la landing
+terminada.
+
+En cuanto exista la URL provisional:
+
+```bash
+python3 scripts/cambiar-url.py https://LA-URL-QUE-SALGA
+```
+
+El despliegue provisional va con `noindex` hasta que se cierren los pendientes 3 y 4 (aviso de
+privacidad y COFEPRIS) y se pase al dominio definitivo.
+
 ## Checklist antes de publicar
 
 - [ ] Subir las dos fotos y sustituir sus `[RUTA PENDIENTE]`.

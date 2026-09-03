@@ -6,8 +6,11 @@ paquetes.** Cualquier hosting estático sirve.
 > ⚠️ **Este repositorio no se ha desplegado todavía.** La sesión que preparó estos archivos no
 > pudo conectar con Vercel ni con Netlify: la política de red del entorno rechaza
 > `api.vercel.com` y `api.netlify.com` (403 en el gateway), y no había credenciales de ninguna
-> de las dos plataformas. La configuración de abajo ya está lista para que el despliegue sea
-> un click-through de dos minutos.
+> de las dos plataformas. **Un token no habría bastado**: el bloqueo es de red, no de
+> autenticación.
+>
+> **Decisión tomada:** el equipo conecta el repositorio desde el panel de Vercel siguiendo los
+> pasos de abajo, y después se actualiza la URL en `index.html` con el script del final.
 
 ---
 
@@ -39,10 +42,19 @@ URL provisional resultante: `https://<nombre-del-sitio>.netlify.app`.
 
 ## Qué hacer en cuanto exista la URL
 
-1. **Sustituir `canonical` y `og:url`** en `index.html` por la URL provisional, y los tres
-   `@id` y las dos `url` del JSON-LD. Hoy apuntan a `https://mangagastricasegura.com`, que
-   todavía es el dominio **sin verificar** (pendiente 5). Está marcado con un comentario
-   `VERIFICAR` en `index.html:7`.
+1. **Sustituir la URL en `index.html`** con el script:
+
+   ```bash
+   python3 scripts/cambiar-url.py https://mangagastricasegura.vercel.app
+   ```
+
+   La URL aparece en **ocho lugares** que tienen que estar sincronizados: `canonical`,
+   `og:url`, los tres `@id` del JSON-LD, sus dos `url` y la ruta de la foto del médico.
+   El script los cambia todos y valida el JSON-LD al terminar. Sin argumentos, muestra la URL
+   actual y dónde aparece.
+
+   Hoy apuntan a `https://mangagastricasegura.com`, que todavía es el dominio **sin verificar**
+   (pendiente 5, comentario `VERIFICAR` en `index.html:7`).
 2. **Verificar en el navegador**, que es lo que la sesión no pudo hacer:
    - La página carga y los estilos se aplican.
    - El formulario abre WhatsApp con el mensaje armado.
@@ -52,7 +64,7 @@ URL provisional resultante: `https://<nombre-del-sitio>.netlify.app`.
 
 ## Decisiones que ya están tomadas en la configuración
 
-### El despliegue provisional lleva `noindex`
+### El despliegue provisional lleva `noindex` (confirmado)
 
 Tanto `vercel.json` como `netlify.toml` mandan `X-Robots-Tag: noindex, nofollow` en todas las
 rutas. Dos razones:
