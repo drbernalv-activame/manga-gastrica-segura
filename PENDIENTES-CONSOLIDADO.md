@@ -22,8 +22,19 @@ Ninguno se ve en la página: los legales son comentarios HTML y los de ruta vive
 
 | # | Pendiente | Quién lo cierra | Ubicación |
 |---|---|---|---|
-| 1 | **Foto del Dr. Bernal con su equipo quirúrgico.** Existe; falta subirla a `assets/img/` y poner la ruta. JPG o WebP, 1200×900 px. | Dr. Bernal entrega · Marketing sube | `index.html:78` — `[RUTA PENDIENTE: foto-equipo.jpg]` |
-| 2 | **Retrato profesional del Dr. Bernal.** Se entrega después. | Dr. Bernal entrega · Marketing sube | `index.html:131` (figura) y `:962` (schema `image`) — `[RUTA PENDIENTE: foto-dr-bernal.jpg]` |
+| 1 | **Foto del Dr. Bernal con su equipo quirúrgico**, 1800×1200 px, en `.jpg` y `.webp`. | Dr. Bernal entrega · Marketing sube | `assets/img/foto-equipo.jpg` y `.webp` |
+| 2 | **Retrato profesional del Dr. Bernal**, 1000×1250 px, en `.jpg` y `.webp`. | Dr. Bernal entrega · Marketing sube | `assets/img/foto-dr-bernal.jpg` y `.webp` |
+
+> **Los cuatro archivos ya existen** —el equipo los tiene— pero no llegaron al repositorio.
+> En cuanto estén en `assets/img/`, una sola orden conecta todo (markup `<picture>`, `og:image`
+> y el `image` del schema):
+>
+> ```bash
+> python3 scripts/aplicar-fotos.py
+> ```
+>
+> Si falta alguno de los cuatro, el script no toca nada: es preferible el bloque neutro actual
+> a publicar imágenes rotas y un `og:image` que devuelva 404.
 | 3 | **Aviso de privacidad**: el documento publicado y su URL. Sin él, la casilla de consentimiento del formulario no es válida. Los dos enlaces apuntan por ahora a `#aviso-privacidad`, el bloque legal del pie, para no dejar un enlace roto. | Legal | `index.html:823` (formulario) y `:879` (pie), con comentario HTML en cada uno |
 | 4 | **Publicidad sanitaria (COFEPRIS)**: revisar requisitos y, si aplica, número de registro o autorización. La línea **no se renderiza**: está comentada, lista para descomentar con el dato, o para borrarse si la revisión concluye que no aplica. | Legal | `index.html:893` |
 | 5 | **Disponibilidad del dominio `mangagastricasegura.com`.** Ya está puesto en `canonical`, `og:url` y los tres `@id` del schema; falta confirmar que es el dominio real. | Marketing | Comentario `VERIFICAR` en `index.html:7` |
