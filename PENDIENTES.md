@@ -1,5 +1,11 @@
 # PENDIENTES — Manga Gástrica Segura
 
+> 📌 **Para trabajar día a día usa [`PENDIENTES-CONSOLIDADO.md`](PENDIENTES-CONSOLIDADO.md).**
+> Ahí están los 80 marcadores de la página (`[COMPLETAR]` y `[VALIDAR]`) agrupados por quién
+> debe responder —Dr. Bernal, financiera/administración, legal y marketing—, ordenados de
+> bloqueante a deseable, y con las 13 respuestas que resuelven 46 marcadores de un golpe.
+> Este archivo se conserva como registro original de los `[COMPLETAR]` y su contexto.
+
 Registro de **todo lo que está marcado como `[COMPLETAR]`** en la landing page.
 Los marcadores `[VALIDAR]` del bloque de financiamiento (planes de pago, qué incluye el
 procedimiento y preguntas frecuentes sobre financiamiento) están listados aparte en

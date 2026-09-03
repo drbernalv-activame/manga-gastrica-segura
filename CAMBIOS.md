@@ -10,6 +10,10 @@ La accesibilidad del programa proviene de un **esquema de financiamiento en mens
 no de una reducción en cirujano, equipo, hospital, insumos, protocolos o seguimiento. Todo el
 copy separa el **valor clínico** (que no cambia) de la **facilidad financiera** (que es lo nuevo).
 
+> 📌 Para repartir el trabajo, usa [`PENDIENTES-CONSOLIDADO.md`](PENDIENTES-CONSOLIDADO.md):
+> los 80 marcadores agrupados por responsable y ordenados de bloqueante a deseable.
+> Este archivo es la bitácora del cambio de copy y estructura.
+
 > ⚠️ **La página no está lista para publicarse.** Quedan **38 marcadores `[VALIDAR]`** y
 > **42 marcadores `[COMPLETAR]`** heredados. Ninguno se inventó ni se rellenó.
 > Verificación antes de publicar: `grep -rn "COMPLETAR\|VALIDAR" index.html` debe salir vacío.

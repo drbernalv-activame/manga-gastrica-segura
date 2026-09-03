@@ -17,7 +17,8 @@ assets/css/styles.css    Estilos, CSS puro y mobile-first
 assets/js/analitica.js   Mejora progresiva: eventos, acordeón en escritorio, aviso del formulario
 assets/img/              Fotos reales (pendientes de entrega)
 docs/BRIEF.md            Brief de contenido, psicología y diseño que rige la página
-PENDIENTES.md            Todo lo marcado como [COMPLETAR] y su responsable
+PENDIENTES-CONSOLIDADO.md Los 80 pendientes agrupados por responsable (empieza aquí)
+PENDIENTES.md            Registro original de los [COMPLETAR] y su contexto
 CAMBIOS.md               Ajuste de copy y estructura (financiamiento) y sus [VALIDAR]
 ```
 
@@ -33,10 +34,10 @@ No hay build, dependencias ni gestor de paquetes: es HTML y CSS estáticos.
 ## Estado actual
 
 La página está completa en estructura, copy y diseño, y **no contiene ningún dato inventado**.
-Todo lo que falta aparece como marcador visible `[COMPLETAR]` o `[VALIDAR]`. Los `[COMPLETAR]`
-están registrados en [`PENDIENTES.md`](PENDIENTES.md): WhatsApp, destino del formulario, ciudad
-y hospital, cédula y certificaciones, fotos reales, testimonios y aviso de privacidad. Los
-`[VALIDAR]` del bloque de financiamiento están registrados en [`CAMBIOS.md`](CAMBIOS.md).
+Todo lo que falta aparece como marcador visible `[COMPLETAR]` o `[VALIDAR]`. Los 80 marcadores
+están consolidados en [`PENDIENTES-CONSOLIDADO.md`](PENDIENTES-CONSOLIDADO.md), agrupados por
+quién debe responder y ordenados de bloqueante a deseable. `PENDIENTES.md` conserva el registro
+original de los `[COMPLETAR]` y `CAMBIOS.md` la bitácora del ajuste de financiamiento.
 
 Auditoría Lighthouse en móvil (Chromium headless, servida en local):
 
@@ -52,7 +53,7 @@ a la espera de la URL definitiva. Contraste AA verificado en toda la paleta.
 
 ## Antes de publicar
 
-1. Resolver los puntos de `PENDIENTES.md`.
+1. Resolver los puntos de `PENDIENTES-CONSOLIDADO.md`.
 2. Verificar que `grep -rn "COMPLETAR\|VALIDAR" index.html` no devuelva nada.
 3. Si no hay testimonios con consentimiento firmado, eliminar esa sección completa
    (está señalada con un comentario en `index.html`).
