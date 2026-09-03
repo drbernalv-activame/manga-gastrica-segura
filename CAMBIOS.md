@@ -413,3 +413,98 @@ Se agregaron `.plan-unico` y los estilos de las dos imágenes (`.hero__media img
 | — | Render revisado en escritorio (1280 px) | ✅ Hero, experiencia, acompañamiento, accesibilidad, planes, qué incluye y FAQ. |
 
 **No se publicó ni se desplegó nada.**
+
+---
+
+# Cierre final — 3 de septiembre de 2026
+
+**No queda ningún `[COMPLETAR]` ni `[VALIDAR]`** en `index.html` ni en `assets/`.
+Quedan 5 pendientes con otra notación, listados en
+[`PENDIENTES-CONSOLIDADO.md`](PENDIENTES-CONSOLIDADO.md).
+
+## 13. Credenciales del Dr. Bernal
+
+Publicadas en los tres lugares que pedía la normativa de publicidad de servicios médicos:
+
+| Dónde | Qué se publicó |
+|---|---|
+| Perfil (`index.html:150-158`) | "Cirujano general con especialidad en cirugía bariátrica y metabólica. Cédula profesional 4134597 · Cédula de especialidad 5679320." Y las dos certificaciones: Consejo Mexicano de Cirugía General y Colegio Mexicano de Cirugía para la Obesidad y Enfermedades Metabólicas. **Sin años de vigencia**, porque no se proporcionaron. |
+| Pie (`index.html:853-855`) | La misma línea de especialidad y las dos cédulas. |
+| Schema (`index.html:948-960`) | `Physician.identifier` con dos `PropertyValue`: "Cédula profesional" 4134597 y "Cédula de especialidad" 5679320. La `description` del `Physician` se actualizó a la especialidad correcta. |
+
+## 14. Testimonios → Reseñas de Google
+
+La sección vacía de testimonios se eliminó por completo: HTML, comentario `PENDIENTE LEGAL` y
+el `aria-labelledby="t-testimonios"`. No había CSS ni ancla de menú que limpiar.
+
+En su lugar, y en la misma posición, hay una sección breve que enlaza a la ficha de Google:
+
+- Título "Lo que dicen nuestros pacientes" e id `t-resenas`.
+- Botón "Lee las opiniones en Google →" a `https://maps.app.goo.gl/6a7LyAsivaTiBoJq8`, con
+  `target="_blank"` y `rel="noopener"`.
+- Evento `click_reviews_google`, añadido a la lista documentada en `analitica.js`. El listener
+  ya era genérico sobre `[data-evento]`, así que no hizo falta código nuevo.
+- **Sin cifras de calificación ni de número de opiniones**, y sin copiar texto de ninguna
+  reseña: quedarían desactualizadas y serían una afirmación que la página no puede sostener.
+  Hay un comentario en el HTML que lo explica, para que nadie las agregue después.
+
+La alternancia de fondos se mantiene: la sección nueva ocupa el mismo lugar y el mismo fondo
+que la que sustituyó.
+
+## 15. Formulario conectado
+
+`action="mailto:coordinacion@activame.mx"` con `method="post"` y `enctype="text/plain"`.
+Se retiró de `analitica.js` el bloqueo de envío; quedan la validación y el evento `form_submit`,
+y el CTA sigue siendo `click_cta_simulacion`.
+
+**Un `mailto` no es un backend** y conviene no confundirlo con uno: abre el cliente de correo del
+visitante en lugar de entregar el mensaje, no confirma entrega y no hace nada en un teléfono sin
+correo configurado. Por eso se añadió bajo el botón la línea "Al enviar se abre tu aplicación de
+correo; si no se abre, escríbenos por WhatsApp", y un comentario en el HTML indicando que basta
+cambiar el `action` cuando exista un CRM o webhook. El detalle y la recomendación están en
+`PENDIENTES-CONSOLIDADO.md`.
+
+## 16. Imágenes pendientes sin ícono roto
+
+Las dos fotos conservan su `[RUTA PENDIENTE: …]`. Para que eso no se vea como una imagen rota,
+`analitica.js` retira la imagen que no carga y marca su `<figure>` con `.media--pendiente`, un
+bloque neutro con la proporción correcta (4/3 en el hero, 4/5 en el perfil), de modo que no hay
+hueco ni salto de maquetación. Como el script carga con `defer` y una imagen puede fallar antes
+de que se registre el listener, también se revisa `img.complete && img.naturalWidth === 0` al
+arrancar. Verificado en el DOM renderizado: las dos figuras quedan con el bloque neutro.
+
+El `alt` del retrato pasó a "Dr. Héctor Bernal, cirujano bariátrico".
+
+## 17. og:image retirada
+
+Apuntaba a un archivo inexistente, lo que produce una tarjeta rota al compartir el enlace.
+Se eliminó la etiqueta y `twitter:card` bajó a `summary`, con un comentario que indica cómo
+restaurarlas cuando exista la foto. Así el único marcador de ruta pendiente son las dos fotos.
+
+## 18. Notación de los pendientes
+
+Los `[COMPLETAR]` y `[VALIDAR]` desaparecieron. Los dos pendientes legales que siguen sin dato
+—aviso de privacidad y COFEPRIS— **no se inventaron**: se renombraron a
+`[PENDIENTE LEGAL: …]`, que sigue siendo igual de visible en la página pero deja limpio el grep
+de verificación. El comando que los encuentra todos es:
+
+```
+grep -rn "PENDIENTE\|VERIFICAR" index.html
+```
+
+También se renombró un comentario de `styles.css` que decía "Marcador [COMPLETAR]" y hacía ruido
+en el grep sin ser un pendiente.
+
+## 19. Verificación ejecutada
+
+| # | Comprobación | Resultado |
+|---|---|---|
+| 1 | `grep -rn "COMPLETAR\|VALIDAR" index.html assets/` | ✅ Vacío. Solo quedan 2 `[RUTA PENDIENTE]` (las fotos), 2 `[PENDIENTE LEGAL]` y 1 comentario `VERIFICAR`. |
+| 2 | Las dos cédulas idénticas en perfil, pie y schema | ✅ 4134597 y 5679320 en los tres. |
+| 3 | Envío de prueba a coordinacion@activame.mx | ⚠️ **No ejecutable.** Un `mailto` no tiene servidor que reciba: la prueba depende del cliente de correo de cada visitante. Ver punto 15. |
+| 4 | Sin sección vacía en el render; sin ancla huérfana | ✅ La sección de reseñas tiene contenido y botón; `t-testimonios` ya no existe y ningún `href` ni `aria-labelledby` apunta a algo inexistente. |
+| 5 | JSON-LD válido | ✅ Parseado con `json.loads`; `identifier` correcto. |
+| — | Estructura HTML balanceada | ✅ |
+| — | Render revisado a 1280 px | ✅ Hero con bloque neutro en lugar de imagen rota, perfil con credenciales, sección de reseñas. |
+
+**No se publicó ni se desplegó nada.**

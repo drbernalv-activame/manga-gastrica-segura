@@ -8,8 +8,8 @@
   'use strict';
 
   /* ---- 1. Envío de eventos a GA4 / Meta Pixel ----
-     Los IDs de GA4 y Meta Pixel están [COMPLETAR]: hasta que se
-     instalen sus scripts, esta función simplemente no hace nada. */
+     Mientras no se instalen los scripts de GA4 y Meta Pixel, esta
+     función simplemente no hace nada. */
   function evento(nombre, datos) {
     datos = datos || {};
     if (typeof window.gtag === 'function') {
@@ -23,7 +23,8 @@
     }
   }
 
-  /* click_cta_plan, click_cta_simulacion, click_cta_dudas y click_whatsapp */
+  /* click_cta_plan, click_cta_simulacion, click_cta_dudas,
+     click_reviews_google y click_whatsapp */
   document.querySelectorAll('[data-evento]').forEach(function (el) {
     el.addEventListener('click', function () {
       evento(el.getAttribute('data-evento'), {
@@ -67,40 +68,37 @@
   if (anio) anio.textContent = String(new Date().getFullYear());
 
   /* ---- 4. Formulario ----
-     Mientras el atributo action siga siendo un placeholder, el envío
-     se bloquea para no perder datos de pacientes reales. */
+     El destino es coordinacion@activame.mx a través de un mailto. Aquí solo
+     se valida y se registra el evento; el envío lo hace el navegador. */
   var formulario = document.querySelector('.formulario');
   if (formulario) {
     formulario.addEventListener('submit', function (e) {
-      var destino = formulario.getAttribute('action') || '';
-      var sinDestino = destino.indexOf('[COMPLETAR') !== -1 || destino === '';
-
       if (!formulario.checkValidity()) {
         e.preventDefault();
         formulario.reportValidity();
         return;
       }
-
-      if (sinDestino) {
-        e.preventDefault();
-        var aviso = document.getElementById('aviso-formulario');
-        if (!aviso) {
-          aviso = document.createElement('p');
-          aviso.id = 'aviso-formulario';
-          aviso.className = 'pendiente pendiente--bloque';
-          aviso.setAttribute('role', 'status');
-          formulario.appendChild(aviso);
-        }
-        aviso.textContent =
-          '[COMPLETAR] El formulario aún no tiene destino configurado, por eso no se envió ' +
-          'nada. Configura el atributo action antes de publicar la página.';
-        aviso.scrollIntoView({ block: 'center' });
-        return;
-      }
-
       evento('form_submit', {
         principal_duda: (formulario.querySelector('#duda') || {}).value || ''
       });
     });
   }
+
+  /* ---- 5. Imágenes pendientes de ruta ----
+     Mientras una foto no exista, el navegador mostraría el ícono de imagen
+     rota. En su lugar se retira la imagen y su contenedor queda como un
+     bloque neutro, sin hueco ni ícono roto.
+     Este archivo carga con defer, así que una imagen puede haber fallado
+     antes de que se registre el listener: por eso también se revisa el
+     estado de las que ya terminaron de cargar. */
+  function marcaPendiente(img) {
+    var figura = img.parentNode;
+    if (figura && figura.classList) figura.classList.add('media--pendiente');
+    if (img.parentNode) img.parentNode.removeChild(img);
+  }
+  document.querySelectorAll('figure img').forEach(function (img) {
+    img.addEventListener('error', function () { marcaPendiente(img); });
+    if (img.complete && img.naturalWidth === 0) marcaPendiente(img);
+  });
+
 })();

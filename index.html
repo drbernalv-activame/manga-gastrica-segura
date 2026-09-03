@@ -17,8 +17,9 @@
 <meta property="og:title" content="Manga Gástrica Segura | La calidad no cambia. La forma de pagar, sí.">
 <meta property="og:description" content="No bajamos el estándar: cambiamos la forma de pagarlo. Manga gástrica en Chihuahua con 20 años de experiencia y planes de pago de 6 a 36 meses a través de Mend.">
 <meta property="og:url" content="https://mangagastricasegura.com/">
-<meta property="og:image" content="https://mangagastricasegura.com/[RUTA PENDIENTE: og-manga-gastrica-segura-1200x630.jpg]">
-<meta name="twitter:card" content="summary_large_image">
+<!-- Cuando exista la foto real, añádase aquí og:image (1200×630 px) y cámbiese
+     twitter:card a summary_large_image. -->
+<meta name="twitter:card" content="summary">
 
 <!-- ANALÍTICA — pega aquí el script de Google Analytics 4 y el de Meta Pixel
      cuando existan sus identificadores. El archivo assets/js/analitica.js ya envía
@@ -128,7 +129,7 @@
     <div class="envoltura perfil">
       <figure>
         <img src="[RUTA PENDIENTE: foto-dr-bernal.jpg]"
-             alt="Retrato profesional del Dr. Héctor Bernal"
+             alt="Dr. Héctor Bernal, cirujano bariátrico"
              loading="lazy">
       </figure>
 
@@ -147,11 +148,14 @@
         <ul class="perfil__datos">
           <li>
             <strong>Cédula profesional y especialidad</strong>
-            <span class="pendiente">[COMPLETAR — dato verificable en el Registro Nacional de Profesionistas]</span>
+            Cirujano general con especialidad en cirugía bariátrica y metabólica.
+            Cédula profesional 4134597 · Cédula de especialidad 5679320.
           </li>
           <li>
             <strong>Certificaciones</strong>
-            <span class="pendiente">[COMPLETAR — consejo o consejos que lo certifican y vigencia, verificables]</span>
+            Certificado y recertificado por el Consejo Mexicano de Cirugía General.
+            Certificado y recertificado por el Colegio Mexicano de Cirugía para la Obesidad
+            y Enfermedades Metabólicas.
           </li>
           <li>
             <strong>Equipo que te acompaña</strong>
@@ -409,18 +413,25 @@
     </div>
   </section>
 
-  <!-- PENDIENTE LEGAL: revisión de normativa de publicidad sanitaria y consentimiento firmado de cada paciente antes de publicar -->
-  <!-- ============ TESTIMONIOS ============ -->
-  <section class="seccion" aria-labelledby="t-testimonios">
+  <!-- ============ RESEÑAS ============
+       No se copian textos de reseñas a la página ni se publican cifras de calificación o
+       número de opiniones: cambian y quedarían desactualizadas. Se enlaza a Google. -->
+  <section class="seccion" aria-labelledby="t-resenas">
     <div class="envoltura">
       <div class="seccion__intro">
         <span class="etiqueta-seccion">Pacientes</span>
-        <h2 id="t-testimonios">Lo que dicen quienes ya pasaron por aquí</h2>
+        <h2 id="t-resenas">Lo que dicen nuestros pacientes</h2>
+        <p>
+          Las opiniones de quienes ya pasaron por el proceso están publicadas en Google,
+          donde cada paciente la escribió.
+        </p>
       </div>
-      <!-- Cada testimonio necesita consentimiento escrito firmado, nombre o iniciales y fecha
-           aproximada. Al menos uno debe hablar del trato y del seguimiento, no solo de kilos.
-           No se usan testimonios inventados ni fotos de banco de imágenes.
-           La sección se publica vacía en ningún caso: o se llena o se elimina. -->
+      <div class="grupo-botones">
+        <a class="boton boton--secundario"
+           href="https://maps.app.goo.gl/6a7LyAsivaTiBoJq8"
+           target="_blank" rel="noopener"
+           data-evento="click_reviews_google" data-ubicacion="resenas">Lee las opiniones en Google →</a>
+      </div>
     </div>
   </section>
 
@@ -742,13 +753,11 @@
         </p>
       </div>
 
-      <!-- Destino del formulario pendiente: ver PENDIENTES.md -->
-      <form class="formulario" action="[COMPLETAR endpoint del formulario]" method="post" data-evento-envio="form_submit" novalidate>
-        <p class="pendiente pendiente--bloque">
-          [COMPLETAR] Este formulario todavía no envía datos a ningún lado. Falta definir el
-          destino: correo, CRM, Google Sheets o webhook, y conectar el atributo <code>action</code>.
-        </p>
-
+      <!-- El formulario entrega en coordinacion@activame.mx a través del cliente de correo del
+           visitante. Un mailto no es un backend: no confirma entrega ni funciona en dispositivos
+           sin correo configurado. Cuando exista un CRM o webhook, cámbiese el action por su
+           endpoint y quítese la nota de ayuda de abajo. -->
+      <form class="formulario" action="mailto:coordinacion@activame.mx" method="post" enctype="text/plain" data-evento-envio="form_submit" novalidate>
         <div class="campo">
           <label for="nombre">Nombre completo <span aria-hidden="true">*</span></label>
           <input type="text" id="nombre" name="nombre" autocomplete="name" required>
@@ -809,12 +818,15 @@
           <input type="checkbox" id="privacidad" name="acepta_privacidad" required>
           <label for="privacidad">
             Acepto que me contacten por WhatsApp o teléfono y he leído el
-            <a href="[COMPLETAR enlace al aviso de privacidad]">aviso de privacidad</a>.
+            <a href="[PENDIENTE LEGAL: URL del aviso de privacidad]">aviso de privacidad</a>.
           </label>
         </div>
 
         <button type="submit" class="boton boton--primario">Solicita tu simulación personalizada</button>
-        <p class="formulario__pie">Sin compromiso. Te contactamos para orientarte, no para presionarte.</p>
+        <p class="formulario__pie">
+          Sin compromiso. Te contactamos para orientarte, no para presionarte.
+          Al enviar se abre tu aplicación de correo; si no se abre, escríbenos por WhatsApp.
+        </p>
       </form>
 
       <div class="grupo-botones">
@@ -838,8 +850,9 @@
       <div>
         <h2>Dr. Héctor Bernal</h2>
         <p>
-          Cirugía bariátrica y tratamiento de la obesidad. 20 años de experiencia.<br>
-          <span class="pendiente">[COMPLETAR especialidad completa y cédula profesional]</span>
+          Cirujano general con especialidad en cirugía bariátrica y metabólica.
+          20 años de experiencia.<br>
+          Cédula profesional 4134597 · Cédula de especialidad 5679320
         </p>
       </div>
       <div>
@@ -857,7 +870,7 @@
           <a href="https://wa.me/526144078343?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20una%20valoraci%C3%B3n%20para%20manga%20g%C3%A1strica."
              data-evento="click_whatsapp" data-ubicacion="pie" rel="noopener">614 407 83 43</a>
         </p>
-        <p><a href="[COMPLETAR enlace al aviso de privacidad]">Aviso de privacidad</a></p>
+        <p><a href="[PENDIENTE LEGAL: URL del aviso de privacidad]">Aviso de privacidad</a></p>
       </div>
     </div>
 
@@ -871,8 +884,8 @@
         cirugía varían según cada paciente.
       </p>
       <p>
-        <span class="pendiente">[COMPLETAR — revisar requisitos COFEPRIS] Número de registro o
-        autorización de publicidad sanitaria, si aplica.</span>
+        <span class="pendiente">[PENDIENTE LEGAL: número de registro o autorización de
+        publicidad sanitaria ante COFEPRIS, si aplica]</span>
       </p>
       <p>&copy; <span id="anio">2026</span> Manga Gástrica Segura. Todos los derechos reservados.</p>
     </div>
@@ -931,8 +944,20 @@
       "@type": "Physician",
       "@id": "https://mangagastricasegura.com/#medico",
       "name": "Dr. Héctor Bernal",
-      "description": "Cirujano con 20 años de experiencia en cirugía y tratamiento de la obesidad, y más de 4,000 procedimientos realizados en Chihuahua.",
+      "description": "Cirujano general con especialidad en cirugía bariátrica y metabólica. 20 años de experiencia y más de 4,000 procedimientos realizados en Chihuahua.",
       "medicalSpecialty": "Bariatric",
+      "identifier": [
+        {
+          "@type": "PropertyValue",
+          "name": "Cédula profesional",
+          "value": "4134597"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Cédula de especialidad",
+          "value": "5679320"
+        }
+      ],
       "url": "https://mangagastricasegura.com/",
       "image": "https://mangagastricasegura.com/[RUTA PENDIENTE: foto-dr-bernal.jpg]",
       "worksFor": { "@id": "https://mangagastricasegura.com/#programa" },

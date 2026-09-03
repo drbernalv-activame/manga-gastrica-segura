@@ -1,74 +1,72 @@
-# PENDIENTES CONSOLIDADO — MANGA GÁSTRICA SEGURA
+# PENDIENTES — MANGA GÁSTRICA SEGURA
 
-**Actualizado: 3 de septiembre de 2026.** De los 80 marcadores originales, **72 quedaron
-resueltos** en el commit de cierre. Quedan **8 marcadores abiertos**, que corresponden a
-**5 datos que nunca se entregaron**, más 3 rutas de imagen pendientes y 2 verificaciones.
+**Actualizado: 3 de septiembre de 2026.** De los 80 marcadores originales **no queda ninguno**:
+`grep -rn "COMPLETAR\|VALIDAR" index.html assets/` sale vacío.
 
-> ⚠️ **La página sigue sin poder publicarse.** `grep -rn "COMPLETAR\|VALIDAR" index.html`
-> **no sale vacío**: devuelve 8 líneas. No se inventó ninguno de esos datos.
+Quedan **5 pendientes**, con una notación distinta y a propósito visible:
 
----
-
-## 1. Marcadores abiertos: 5 datos que faltan (8 líneas en `index.html`)
-
-Ninguno de estos cinco venía en las respuestas de cierre. **No se inventaron** porque son
-credenciales profesionales, destinos de datos de pacientes y obligaciones legales: inventarlos
-sería peor que dejar la página sin publicar.
-
-| # | Qué falta | Quién responde | Ubicación |
-|---|---|---|---|
-| 1 | **Cédula profesional y especialidad completa** del Dr. Bernal, verificable en el Registro Nacional de Profesionistas. | Dr. Bernal | `index.html:150` (perfil), `:842` (pie) |
-| 2 | **Certificaciones**: qué consejo o consejos lo certifican y su vigencia, verificables. | Dr. Bernal | `index.html:154` |
-| 3 | **Destino del formulario**: correo, CRM o webhook a donde deben llegar los datos de los pacientes. Mientras siga abierto, `analitica.js` **bloquea el envío** para no perder solicitudes reales. | Administración | `index.html:746` (`action`), `:748` (aviso visible) |
-| 4 | **URL del aviso de privacidad** (y el documento publicado). Sin él, la casilla de consentimiento del formulario no es válida. | Legal | `index.html:812` (formulario), `:860` (pie) |
-| 5 | **Publicidad sanitaria (COFEPRIS)**: revisar requisitos y, si aplica, número de registro. | Legal | `index.html:874` |
-
-## 2. Rutas de imagen pendientes (no son `[COMPLETAR]`, no salen en el grep)
-
-Marcadas como `[RUTA PENDIENTE: …]` según lo acordado. La página ya tiene los `<img>` con su
-texto alternativo; solo falta subir el archivo y poner la ruta real.
-
-| Archivo | Ubicación | Estado |
-|---|---|---|
-| `foto-equipo.jpg` | `index.html:77` (hero) | **La foto existe**, falta subirla y enrutarla. |
-| `foto-dr-bernal.jpg` | `index.html:130` (Experiencia) y `:937` (schema `image`) | **No se confirmó que exista.** Si no hay retrato, hay que decidir si se retira la figura o se usa un encuadre de la foto de equipo. |
-| `og-manga-gastrica-segura-1200x630.jpg` | `index.html:20` (`og:image`) | Imagen para redes, 1200×630 px. Se compone a partir de las anteriores. |
-
-## 3. Verificaciones pendientes (comentarios en el HTML, no marcadores)
-
-| Qué | Dónde |
-|---|---|
-| **Disponibilidad del dominio `mangagastricasegura.com`** antes de publicar. Ya está puesto en `canonical`, `og:url` y en los tres `@id` del schema. | Comentario `VERIFICAR` en `index.html:7` |
-| **Revisión legal de testimonios**: normativa de publicidad sanitaria y consentimiento firmado de cada paciente. | Comentario `PENDIENTE LEGAL` en `index.html:412` |
-
-## 4. 🔴 La sección de testimonios está vacía
-
-La decisión fue conservarla, pero **no se entregó ningún testimonio**, así que hoy renderiza con
-el título y nada debajo. Antes de publicar hay que **llenarla o eliminarla**; no puede salir así.
-Las instrucciones de qué necesita cada testimonio están en un comentario HTML dentro de la
-sección.
-
-## 5. Sin marcador, pero conviene revisar
-
-| Qué | Nota |
-|---|---|
-| **IDs de Google Analytics 4 y Meta Pixel** | El comentario del `<head>` ya no lleva marcador: se pegan los scripts cuando existan. Los eventos ya están implementados. |
-| **Eventos de analítica** | La página emite `click_cta_simulacion`, `click_cta_plan`, `click_cta_dudas`, `click_whatsapp`, `form_submit` y `faq_open`. `click_cta_valoracion` ya no existe. |
+```
+grep -rn "PENDIENTE\|VERIFICAR" index.html
+```
 
 ---
 
-## 6. Resueltos el 3 de septiembre de 2026 (72 marcadores)
+## Los 5 pendientes
 
-| Grupo | Antes | Cerrados | Abiertos |
+| # | Pendiente | Quién lo cierra | Ubicación |
 |---|---|---|---|
-| Dr. Bernal (clínico) | 29 | 26 | 3 (cédula ×2, certificaciones) |
-| Financiera / administración | 34 | 32 | 2 (destino del formulario) |
-| Legal | 4 | 1 | 3 (aviso de privacidad ×2, COFEPRIS) |
-| Marketing | 13 | 13 | 0 |
-| **Total** | **80** | **72** | **8** |
+| 1 | **Foto del Dr. Bernal con su equipo quirúrgico.** Existe; falta subirla a `assets/img/` y poner la ruta. JPG o WebP, 1200×900 px. | Dr. Bernal entrega · Marketing sube | `index.html:78` — `[RUTA PENDIENTE: foto-equipo.jpg]` |
+| 2 | **Retrato profesional del Dr. Bernal.** Se entrega después. | Dr. Bernal entrega · Marketing sube | `index.html:131` (figura) y `:962` (schema `image`) — `[RUTA PENDIENTE: foto-dr-bernal.jpg]` |
+| 3 | **Aviso de privacidad**: el documento publicado y su URL. Sin él, la casilla de consentimiento del formulario no es válida. | Legal | `index.html:821` (formulario) y `:873` (pie) — `[PENDIENTE LEGAL: URL del aviso de privacidad]` |
+| 4 | **Publicidad sanitaria (COFEPRIS)**: revisar requisitos y, si aplica, número de registro o autorización. | Legal | `index.html:887` — `[PENDIENTE LEGAL: …]` |
+| 5 | **Disponibilidad del dominio `mangagastricasegura.com`.** Ya está puesto en `canonical`, `og:url` y los tres `@id` del schema; falta confirmar que es el dominio real. | Marketing | Comentario `VERIFICAR` en `index.html:7` |
 
-Los 32 marcadores de financiera se cerraron en su mayoría **retirando las cifras de la página**,
-no llenándolas: la decisión de fondo fue que ningún precio, mensualidad, anticipo, tasa ni CAT
-aparece publicado, y todo se explica al paciente por teléfono o en persona.
+Mientras 1 y 2 no lleguen, `analitica.js` retira la imagen y deja el contenedor como un bloque
+neutro: no se ve el ícono de imagen rota ni queda hueco en la maquetación.
 
-El detalle de qué se cerró y cómo está en [`CAMBIOS.md`](CAMBIOS.md).
+---
+
+## 🔴 Dos cosas que hay que resolver aunque no lleven marcador
+
+### El formulario usa `mailto:`, que no es un backend
+
+El `action` quedó en `mailto:coordinacion@activame.mx` y el envío ya no está bloqueado. Pero un
+`mailto` **no entrega el correo**: abre la aplicación de correo del visitante y deja que él lo
+mande. Eso implica que:
+
+- **No hay confirmación de entrega.** Nadie sabe si la solicitud salió.
+- **En un teléfono sin correo configurado no pasa nada** al pulsar el botón, y se pierde el dato
+  del paciente.
+- **No se puede probar de punta a punta** como pedía la verificación: no hay servidor que reciba.
+
+Se agregó una línea bajo el botón —"Al enviar se abre tu aplicación de correo; si no se abre,
+escríbenos por WhatsApp"— y el botón de WhatsApp sigue debajo como salida real. **Aun así, la
+recomendación es contratar un backend de formularios** (o un webhook al CRM) y cambiar el
+`action` por su endpoint. Es un cambio de una línea, y hay un comentario en el HTML que lo dice.
+
+### La imagen para redes sociales se retiró
+
+`og:image` apuntaba a un archivo inexistente, lo que produce una tarjeta rota al compartir el
+enlace. Se eliminó la etiqueta y `twitter:card` bajó a `summary` hasta que exista la foto.
+Cuando lleguen las fotos (pendientes 1 y 2), hay que componer la imagen de 1200×630 px,
+volver a añadir `og:image` y subir `twitter:card` a `summary_large_image`. Hay un comentario
+con la instrucción en `index.html:20`.
+
+---
+
+## Checklist antes de publicar
+
+- [ ] Subir las dos fotos y sustituir sus `[RUTA PENDIENTE]`.
+- [ ] Componer la imagen de redes y restaurar `og:image` y `summary_large_image`.
+- [ ] Publicar el aviso de privacidad y enlazarlo en los dos lugares.
+- [ ] Cerrar la revisión de COFEPRIS.
+- [ ] Confirmar el dominio y quitar el comentario `VERIFICAR`.
+- [ ] Decidir si el formulario se queda en `mailto` o se conecta a un backend real.
+- [ ] Probar el formulario de punta a punta: que llegue el dato y que alguien lo conteste.
+- [ ] Probar el enlace de WhatsApp desde un teléfono real.
+- [ ] Probar que el enlace de reseñas abre la ficha de Google correcta.
+- [ ] `grep -rn "PENDIENTE\|VERIFICAR" index.html` debe salir vacío.
+- [ ] Volver a medir Lighthouse con las fotos reales y en el servidor final.
+- [ ] Servidor final con compresión (gzip o Brotli) y caché de assets estáticos.
+
+La bitácora completa de qué se cerró y cómo está en [`CAMBIOS.md`](CAMBIOS.md).

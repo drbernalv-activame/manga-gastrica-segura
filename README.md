@@ -35,11 +35,10 @@ No hay build, dependencias ni gestor de paquetes: es HTML y CSS estáticos.
 ## Estado actual
 
 La página está completa en estructura, copy y diseño, y **no contiene ningún dato inventado**.
-De los 80 marcadores originales quedan **8 abiertos**, listados en
-[`PENDIENTES-CONSOLIDADO.md`](PENDIENTES-CONSOLIDADO.md): cédula y certificaciones del Dr.
-Bernal, destino del formulario, aviso de privacidad y COFEPRIS. Ninguno se inventó. Faltan
-además tres rutas de imagen y la verificación del dominio. `CAMBIOS.md` es la bitácora completa
-y `PENDIENTES.md` el registro original.
+Ya no queda ningún `[COMPLETAR]` ni `[VALIDAR]`. Quedan **5 pendientes**, listados en
+[`PENDIENTES-CONSOLIDADO.md`](PENDIENTES-CONSOLIDADO.md): las dos fotos reales, el aviso de
+privacidad, la revisión de COFEPRIS y la verificación del dominio. `CAMBIOS.md` es la bitácora
+completa y `PENDIENTES.md` el registro original.
 
 **La página no muestra precios, mensualidades, anticipos, tasas ni CAT.** Toda la información
 financiera se explica al paciente por teléfono o en persona; el financiamiento es de Mend, con
@@ -60,7 +59,7 @@ a la espera de la URL definitiva. Contraste AA verificado en toda la paleta.
 ## Antes de publicar
 
 1. Resolver los puntos de `PENDIENTES-CONSOLIDADO.md`.
-2. Verificar que `grep -rn "COMPLETAR\|VALIDAR" index.html` no devuelva nada.
+2. Verificar que `grep -rn "PENDIENTE\|VERIFICAR" index.html` no devuelva nada.
 3. Si no hay testimonios con consentimiento firmado, eliminar esa sección completa
    (está señalada con un comentario en `index.html`).
 4. Servir con compresión (gzip/Brotli) y caché de assets estáticos.
