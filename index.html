@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="es-MX">
+<script>document.documentElement.className+=" js";</script>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -99,11 +100,11 @@
     <div class="envoltura">
       <ul class="confianza__lista">
         <li>
-          <span class="confianza__dato">20 años</span>
+          <span class="confianza__dato" data-contador="20" data-sufijo=" años">20 años</span>
           <span class="confianza__texto">de experiencia</span>
         </li>
         <li>
-          <span class="confianza__dato">4,000+</span>
+          <span class="confianza__dato" data-contador="4000" data-miles="1" data-sufijo="+">4,000+</span>
           <span class="confianza__texto">cirugías realizadas</span>
         </li>
         <li>
@@ -111,7 +112,7 @@
           <span class="confianza__texto">certificado</span>
         </li>
         <li>
-          <span class="confianza__dato">1 año</span>
+          <span class="confianza__dato" data-contador="1" data-sufijo=" año">1 año</span>
           <span class="confianza__texto">de seguimiento multidisciplinario</span>
         </li>
       </ul>
@@ -126,11 +127,11 @@
         <h2 id="t-empatia">Si estás aquí, probablemente te preguntas…</h2>
       </div>
       <ul class="empatia__lista">
-        <li>¿Es segura?</li>
-        <li>¿Y si algo sale mal?</li>
-        <li>¿Cómo puede ser accesible sin recortar calidad?</li>
-        <li>¿Voy a recuperar el peso?</li>
-        <li>¿Cómo voy a comer después?</li>
+        <li><a href="#seguridad" data-pregunta>¿Es segura?</a></li>
+        <li><a href="#riesgos" data-pregunta>¿Y si algo sale mal?</a></li>
+        <li><a href="#accesibilidad" data-pregunta>¿Cómo puede ser accesible sin recortar calidad?</a></li>
+        <li><a href="#faq-recuperar-peso" data-pregunta>¿Voy a recuperar el peso?</a></li>
+        <li><a href="#faq-comer-despues" data-pregunta>¿Cómo voy a comer después?</a></li>
       </ul>
       <p class="destacado">Esta página responde cada una de esas preguntas con honestidad.</p>
     </div>
@@ -188,7 +189,7 @@
   </section>
 
   <!-- ============ 3. SEGURIDAD ============ -->
-  <section class="seccion seccion--azul" aria-labelledby="t-formula">
+  <section class="seccion seccion--azul" id="seguridad" aria-labelledby="t-formula">
     <div class="envoltura">
       <div class="seccion__intro">
         <span class="etiqueta-seccion">Qué hace segura una cirugía</span>
@@ -202,13 +203,13 @@
       <p class="formula" aria-hidden="true">
         <span class="formula__titulo">SEGURIDAD</span>
         <span class="formula__igual">=</span>
-        <span class="formula__pieza">Paciente</span><span class="formula__mas">+</span>
-        <span class="formula__pieza">Equipo</span><span class="formula__mas">+</span>
-        <span class="formula__pieza">Hospital</span><span class="formula__mas">+</span>
-        <span class="formula__pieza">Técnica</span><span class="formula__mas">+</span>
-        <span class="formula__pieza">Insumos</span><span class="formula__mas">+</span>
-        <span class="formula__pieza">Protocolos</span><span class="formula__mas">+</span>
-        <span class="formula__pieza">Seguimiento</span>
+        <span class="formula__pieza" data-termino="paciente">Paciente</span><span class="formula__mas">+</span>
+        <span class="formula__pieza" data-termino="equipo">Equipo</span><span class="formula__mas">+</span>
+        <span class="formula__pieza" data-termino="hospital">Hospital</span><span class="formula__mas">+</span>
+        <span class="formula__pieza" data-termino="tecnica">Técnica</span><span class="formula__mas">+</span>
+        <span class="formula__pieza" data-termino="insumos">Insumos</span><span class="formula__mas">+</span>
+        <span class="formula__pieza" data-termino="protocolos">Protocolos</span><span class="formula__mas">+</span>
+        <span class="formula__pieza" data-termino="seguimiento">Seguimiento</span>
       </p>
       <p class="solo-lectores">
         Seguridad es igual a paciente, más equipo, más hospital, más técnica, más insumos,
@@ -216,49 +217,49 @@
       </p>
 
       <div class="acordeon">
-        <details class="pieza" open>
+        <details class="pieza" data-termino="paciente" id="pieza-paciente" open>
           <summary>1. Paciente</summary>
           <p class="pieza__cuerpo">
             Tu historia clínica, tu peso, tu edad y tus enfermedades asociadas cambian el riesgo.
             Por eso se estudia a cada persona antes de decidir si la cirugía es la mejor opción.
           </p>
         </details>
-        <details class="pieza">
+        <details class="pieza" data-termino="equipo" id="pieza-equipo">
           <summary>2. Equipo</summary>
           <p class="pieza__cuerpo">
             Cirujano, anestesiólogo y enfermería con experiencia en cirugía de obesidad.
             Un equipo que ya ha visto muchos casos reconoce antes lo que se sale de lo normal.
           </p>
         </details>
-        <details class="pieza">
+        <details class="pieza" data-termino="hospital" id="pieza-hospital">
           <summary>3. Hospital</summary>
           <p class="pieza__cuerpo">
             Quirófano con el equipo necesario y capacidad de resolver una complicación si aparece.
             La seguridad también es tener a dónde escalar la atención.
           </p>
         </details>
-        <details class="pieza">
+        <details class="pieza" data-termino="tecnica" id="pieza-tecnica">
           <summary>4. Técnica</summary>
           <p class="pieza__cuerpo">
             Cirugía laparoscópica, es decir, por pequeñas incisiones con cámara, hecha de forma
             estandarizada: mismos pasos, mismas mediciones, mismas verificaciones en cada caso.
           </p>
         </details>
-        <details class="pieza">
+        <details class="pieza" data-termino="insumos" id="pieza-insumos">
           <summary>5. Insumos</summary>
           <p class="pieza__cuerpo">
             Las grapadoras y sus cargas son las que sellan el estómago. Aquí no hay margen para
             ahorrar: es el punto donde se juega buena parte del riesgo.
           </p>
         </details>
-        <details class="pieza">
+        <details class="pieza" data-termino="protocolos" id="pieza-protocolos">
           <summary>6. Protocolos</summary>
           <p class="pieza__cuerpo">
             Listas de verificación antes, durante y después: prevención de trombosis (coágulos),
             manejo del dolor, vigilancia de signos de alarma y criterios claros para actuar a tiempo.
           </p>
         </details>
-        <details class="pieza">
+        <details class="pieza" data-termino="seguimiento" id="pieza-seguimiento">
           <summary>7. Seguimiento</summary>
           <p class="pieza__cuerpo">
             Consultas médicas y nutricionales después de la cirugía. Es donde se cuidan tus
@@ -299,7 +300,7 @@
         </p>
 
         <figure class="esquema">
-          <svg viewBox="0 0 460 240" role="img" aria-labelledby="titulo-esquema desc-esquema">
+          <svg viewBox="0 0 460 240" role="img" aria-labelledby="titulo-esquema desc-esquema" class="esquema__svg">
             <title id="titulo-esquema">Esquema comparativo del estómago antes y después de la manga gástrica</title>
             <desc id="desc-esquema">
               A la izquierda, un estómago completo con forma de bolsa amplia. A la derecha, el mismo
@@ -308,12 +309,12 @@
             </desc>
 
             <!-- ANTES -->
-            <g>
+            <g class="esq-grupo" data-estado="antes">
               <text x="105" y="24" text-anchor="middle" font-family="sans-serif" font-size="21" font-weight="700" fill="#0b4250">Antes</text>
               <!-- esófago -->
               <path d="M92 42 L92 74" stroke="#0e5265" stroke-width="9" stroke-linecap="round" fill="none"/>
               <!-- cuerpo del estómago -->
-              <path d="M90 72 C 56 88, 44 142, 70 178 C 92 208, 142 212, 160 184 C 170 168, 160 152, 142 146 C 124 140, 116 118, 114 96 C 112 80, 104 68, 90 72 Z"
+              <path class="esq-trazo" d="M90 72 C 56 88, 44 142, 70 178 C 92 208, 142 212, 160 184 C 170 168, 160 152, 142 146 C 124 140, 116 118, 114 96 C 112 80, 104 68, 90 72 Z"
                     fill="#cfe3e8" stroke="#0e5265" stroke-width="4" stroke-linejoin="round"/>
               <!-- salida (duodeno) -->
               <path d="M158 186 C 172 196, 182 194, 190 184" stroke="#0e5265" stroke-width="9" stroke-linecap="round" fill="none"/>
@@ -326,24 +327,31 @@
             </g>
 
             <!-- DESPUÉS -->
-            <g>
+            <g class="esq-grupo" data-estado="despues">
               <text x="340" y="24" text-anchor="middle" font-family="sans-serif" font-size="21" font-weight="700" fill="#0b4250">Después</text>
               <!-- esófago -->
               <path d="M318 42 L318 74" stroke="#0e5265" stroke-width="9" stroke-linecap="round" fill="none"/>
               <!-- porción retirada, punteada -->
-              <path d="M330 80 C 372 96, 392 150, 360 186 C 344 204, 330 196, 330 180 Z"
+              <path class="esq-retirada" d="M330 80 C 372 96, 392 150, 360 186 C 344 204, 330 196, 330 180 Z"
                     fill="#ffffff" stroke="#93a7ac" stroke-width="3" stroke-dasharray="7 6" stroke-linejoin="round"/>
               <!-- manga -->
-              <path d="M318 74 C 300 96, 300 152, 312 186 C 320 208, 340 208, 342 186 C 344 150, 340 96, 330 80 C 326 74, 322 72, 318 74 Z"
+              <path class="esq-trazo" d="M318 74 C 300 96, 300 152, 312 186 C 320 208, 340 208, 342 186 C 344 150, 340 96, 330 80 C 326 74, 322 72, 318 74 Z"
                     fill="#cfe3e8" stroke="#0e5265" stroke-width="4" stroke-linejoin="round"/>
               <!-- línea de grapado -->
-              <path d="M330 82 C 340 118, 344 156, 342 184" stroke="#a8481f" stroke-width="3" stroke-dasharray="3 5" fill="none"/>
+              <path class="esq-grapado" d="M330 82 C 340 118, 344 156, 342 184" stroke="#a8481f" stroke-width="3" stroke-dasharray="3 5" fill="none"/>
               <!-- salida -->
               <path d="M322 190 C 334 210, 358 214, 372 202" stroke="#0e5265" stroke-width="9" stroke-linecap="round" fill="none"/>
               <text x="406" y="118" text-anchor="middle" font-family="sans-serif" font-size="14" fill="#4a5b60">porción</text>
               <text x="406" y="136" text-anchor="middle" font-family="sans-serif" font-size="14" fill="#4a5b60">que se retira</text>
             </g>
           </svg>
+          <!-- Los botones sólo enfatizan una mitad del esquema: no ocultan la otra, para que
+               la comparación entre antes y después siga leyéndose completa. Los añade el
+               JavaScript, así que sin él el esquema se ve entero, como hasta ahora. -->
+          <div class="esquema__controles" hidden>
+            <button type="button" class="esquema__boton" data-esquema="antes" aria-pressed="false">Antes</button>
+            <button type="button" class="esquema__boton" data-esquema="despues" aria-pressed="false">Después</button>
+          </div>
           <figcaption>
             Esquema ilustrativo, no a escala. La línea punteada naranja representa la línea de
             grapado, es decir, la zona donde se cierra el estómago.
@@ -400,7 +408,7 @@
   </section>
 
   <!-- ============ RIESGOS ============ -->
-  <section class="seccion seccion--hueso" aria-labelledby="t-riesgos">
+  <section class="seccion seccion--hueso" id="riesgos" aria-labelledby="t-riesgos">
     <div class="envoltura">
       <div class="seccion__intro">
         <span class="etiqueta-seccion">Transparencia</span>
@@ -445,7 +453,7 @@
         <a class="boton boton--secundario"
            href="https://maps.app.goo.gl/6a7LyAsivaTiBoJq8"
            target="_blank" rel="noopener"
-           data-evento="click_reviews_google" data-ubicacion="resenas">Lee las opiniones en Google →</a>
+           data-evento="click_reviews_google" data-ubicacion="resenas">Lee las opiniones en Google <span class="flecha" aria-hidden="true">→</span></a>
       </div>
     </div>
   </section>
@@ -610,72 +618,86 @@
       <div class="faq">
         <details class="faq__item">
           <summary>¿Soy candidato?</summary>
-          <div class="faq__respuesta">
-            <p>Depende de una valoración individual. Se revisan tu índice de masa corporal (IMC),
-            tus enfermedades asociadas como diabetes, presión alta o apnea del sueño, y tus intentos
-            previos con dieta o medicamentos. No todas las personas son candidatas, y decírtelo
-            también es parte del trabajo.</p>
+          <div class="faq__envoltura">
+            <div class="faq__respuesta">
+              <p>Depende de una valoración individual. Se revisan tu índice de masa corporal (IMC),
+              tus enfermedades asociadas como diabetes, presión alta o apnea del sueño, y tus intentos
+              previos con dieta o medicamentos. No todas las personas son candidatas, y decírtelo
+              también es parte del trabajo.</p>
+            </div>
           </div>
         </details>
 
         <details class="faq__item">
           <summary>¿Duele? ¿Cuánto tiempo de recuperación?</summary>
-          <div class="faq__respuesta">
-            <p>Hay molestia después de la cirugía, y se maneja con medicamentos desde el quirófano.
-            Al ser laparoscópica, las incisiones son pequeñas y la recuperación suele ser más
-            rápida que en una cirugía abierta.</p>
-            <p>El tiempo de reincorporación a tus actividades depende de tu caso y del tipo de
-            trabajo que realizas; se te indica en consulta.</p>
+          <div class="faq__envoltura">
+            <div class="faq__respuesta">
+              <p>Hay molestia después de la cirugía, y se maneja con medicamentos desde el quirófano.
+              Al ser laparoscópica, las incisiones son pequeñas y la recuperación suele ser más
+              rápida que en una cirugía abierta.</p>
+              <p>El tiempo de reincorporación a tus actividades depende de tu caso y del tipo de
+              trabajo que realizas; se te indica en consulta.</p>
+            </div>
           </div>
         </details>
 
         <details class="faq__item">
           <summary>¿Qué pasa con la anestesia?</summary>
-          <div class="faq__respuesta">
-            <p>La cirugía se realiza con anestesia general y con un anestesiólogo presente durante
-            todo el procedimiento, monitoreando tus signos vitales.</p>
-            <p>Antes de la cirugía tienes una valoración anestésica: se revisa tu historia, tus
-            estudios y tus riesgos particulares. Ese es el momento de preguntar todo lo que te
-            preocupa sobre dormir y despertar.</p>
+          <div class="faq__envoltura">
+            <div class="faq__respuesta">
+              <p>La cirugía se realiza con anestesia general y con un anestesiólogo presente durante
+              todo el procedimiento, monitoreando tus signos vitales.</p>
+              <p>Antes de la cirugía tienes una valoración anestésica: se revisa tu historia, tus
+              estudios y tus riesgos particulares. Ese es el momento de preguntar todo lo que te
+              preocupa sobre dormir y despertar.</p>
+            </div>
           </div>
         </details>
 
-        <details class="faq__item">
+        <details class="faq__item" id="faq-comer-despues">
           <summary>¿Cómo voy a comer después?</summary>
-          <div class="faq__respuesta">
-            <p>Se avanza por etapas: primero líquidos, después texturas suaves y finalmente
-            alimentos sólidos, siempre con acompañamiento de nutrición.</p>
-            <p>Las porciones son más pequeñas y la prioridad es la proteína y la hidratación.
-            No es una dieta temporal: es una nueva forma de comer que se aprende con apoyo.</p>
+          <div class="faq__envoltura">
+            <div class="faq__respuesta">
+              <p>Se avanza por etapas: primero líquidos, después texturas suaves y finalmente
+              alimentos sólidos, siempre con acompañamiento de nutrición.</p>
+              <p>Las porciones son más pequeñas y la prioridad es la proteína y la hidratación.
+              No es una dieta temporal: es una nueva forma de comer que se aprende con apoyo.</p>
+            </div>
           </div>
         </details>
 
-        <details class="faq__item">
+        <details class="faq__item" id="faq-recuperar-peso">
           <summary>¿Puedo recuperar peso?</summary>
-          <div class="faq__respuesta">
-            <p>Sí, puede ocurrir. El cuerpo tiene mecanismos que favorecen recuperar peso después
-            de perderlo, y algunos hábitos pueden reforzarlos.</p>
-            <p>No es falta de voluntad: es fisiología. Por eso el seguimiento médico y nutricional
-            a largo plazo forma parte del tratamiento, no es un extra.</p>
+          <div class="faq__envoltura">
+            <div class="faq__respuesta">
+              <p>Sí, puede ocurrir. El cuerpo tiene mecanismos que favorecen recuperar peso después
+              de perderlo, y algunos hábitos pueden reforzarlos.</p>
+              <p>No es falta de voluntad: es fisiología. Por eso el seguimiento médico y nutricional
+              a largo plazo forma parte del tratamiento, no es un extra.</p>
+            </div>
           </div>
         </details>
 
         <details class="faq__item">
           <summary>¿Cirugía o medicamentos tipo GLP-1?</summary>
-          <div class="faq__respuesta">
-            <p>No son rivales. Los medicamentos tipo GLP-1, que imitan hormonas del intestino que
-            regulan el apetito, y la cirugía actúan sobre mecanismos parecidos, con alcances
-            distintos.</p>
-            <p>Para algunas personas el medicamento es suficiente; para otras la cirugía es la
-            herramienta adecuada; en ciertos casos se combinan. Eso se define en tu valoración,
-            no en internet.</p>
+          <div class="faq__envoltura">
+            <div class="faq__respuesta">
+              <p>No son rivales. Los medicamentos tipo GLP-1, que imitan hormonas del intestino que
+              regulan el apetito, y la cirugía actúan sobre mecanismos parecidos, con alcances
+              distintos.</p>
+              <p>Para algunas personas el medicamento es suficiente; para otras la cirugía es la
+              herramienta adecuada; en ciertos casos se combinan. Eso se define en tu valoración,
+              no en internet.</p>
+            </div>
           </div>
         </details>
 
         <details class="faq__item">
           <summary>¿Dónde se realiza la cirugía?</summary>
-          <div class="faq__respuesta">
-            <p>En el Hospital Star Médica Chihuahua y en Enalta Medical Center, ambos en la ciudad de Chihuahua. En tu valoración se define cuál corresponde a tu caso.</p>
+          <div class="faq__envoltura">
+            <div class="faq__respuesta">
+              <p>En el Hospital Star Médica Chihuahua y en Enalta Medical Center, ambos en la ciudad de Chihuahua. En tu valoración se define cuál corresponde a tu caso.</p>
+            </div>
           </div>
         </details>
       </div>
@@ -697,57 +719,73 @@
       <div class="faq">
         <details class="faq__item">
           <summary>¿Qué sucede si no soy candidato?</summary>
-          <div class="faq__respuesta">
-            <p>La valoración médica es el primer paso y se realiza antes de contratar cualquier plan. Si la manga gástrica no es la mejor opción para ti, te lo diremos y revisaremos juntos alternativas.</p>
+          <div class="faq__envoltura">
+            <div class="faq__respuesta">
+              <p>La valoración médica es el primer paso y se realiza antes de contratar cualquier plan. Si la manga gástrica no es la mejor opción para ti, te lo diremos y revisaremos juntos alternativas.</p>
+            </div>
           </div>
         </details>
 
         <details class="faq__item">
           <summary>¿El anticipo es reembolsable?</summary>
-          <div class="faq__respuesta">
-            <p>Las condiciones del anticipo se explican con detalle en tu simulación personalizada, antes de que firmes nada.</p>
+          <div class="faq__envoltura">
+            <div class="faq__respuesta">
+              <p>Las condiciones del anticipo se explican con detalle en tu simulación personalizada, antes de que firmes nada.</p>
+            </div>
           </div>
         </details>
 
         <details class="faq__item">
           <summary>¿Puedo adelantar pagos?</summary>
-          <div class="faq__respuesta">
-            <p>Sí, las condiciones para adelantar pagos las establece Mend y te las explicamos en tu simulación.</p>
+          <div class="faq__envoltura">
+            <div class="faq__respuesta">
+              <p>Sí, las condiciones para adelantar pagos las establece Mend y te las explicamos en tu simulación.</p>
+            </div>
           </div>
         </details>
 
         <details class="faq__item">
           <summary>¿Qué ocurre si se pospone la cirugía?</summary>
-          <div class="faq__respuesta">
-            <p>Se reprograma con el equipo. Las implicaciones sobre el plan de pago se revisan caso por caso con Mend.</p>
+          <div class="faq__envoltura">
+            <div class="faq__respuesta">
+              <p>Se reprograma con el equipo. Las implicaciones sobre el plan de pago se revisan caso por caso con Mend.</p>
+            </div>
           </div>
         </details>
 
         <details class="faq__item">
           <summary>¿Quién proporciona el financiamiento?</summary>
-          <div class="faq__respuesta">
-            <p>Mend, una institución financiera mexicana enfocada exclusivamente en salud. La clínica no es la que cobra.</p>
+          <div class="faq__envoltura">
+            <div class="faq__respuesta">
+              <p>Mend, una institución financiera mexicana enfocada exclusivamente en salud. La clínica no es la que cobra.</p>
+            </div>
           </div>
         </details>
 
         <details class="faq__item">
           <summary>¿La mensualidad puede cambiar?</summary>
-          <div class="faq__respuesta">
-            <p>El plan que apruebe Mend tiene mensualidad, plazo y costo total definidos desde el inicio. Todo se explica antes de firmar.</p>
+          <div class="faq__envoltura">
+            <div class="faq__respuesta">
+              <p>El plan que apruebe Mend tiene mensualidad, plazo y costo total definidos desde el inicio. Todo se explica antes de firmar.</p>
+            </div>
           </div>
         </details>
 
         <details class="faq__item">
           <summary>¿Hay penalización o intereses moratorios?</summary>
-          <div class="faq__respuesta">
-            <p>Las condiciones de mora las establece Mend y se te informan por escrito antes de contratar.</p>
+          <div class="faq__envoltura">
+            <div class="faq__respuesta">
+              <p>Las condiciones de mora las establece Mend y se te informan por escrito antes de contratar.</p>
+            </div>
           </div>
         </details>
 
         <details class="faq__item">
           <summary>¿Primero se decide si soy candidato o primero el financiamiento?</summary>
-          <div class="faq__respuesta">
-            <p>Primero. La valoración médica determina si la manga gástrica es la mejor opción para ti. Solo después se elige cómo financiarla.</p>
+          <div class="faq__envoltura">
+            <div class="faq__respuesta">
+              <p>Primero. La valoración médica determina si la manga gástrica es la mejor opción para ti. Solo después se elige cómo financiarla.</p>
+            </div>
           </div>
         </details>
       </div>
@@ -1064,5 +1102,6 @@
 </script>
 
 <script src="assets/js/analitica.js" defer></script>
+<script src="assets/js/interaccion.js" defer></script>
 </body>
 </html>

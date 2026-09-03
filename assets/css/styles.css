@@ -724,3 +724,183 @@ h3 { font-size: clamp(1.15rem, 3.6vw, 1.35rem); }
   color: #b6ccd2;
   font-size: .9rem;
 }
+
+/* =========================================================
+   22. Movimiento
+   Página médica: el movimiento acompaña la lectura, no decora.
+   Tres reglas que gobiernan todo lo de abajo:
+   1. El estado oculto sólo existe con la clase .js en <html>, que pone
+      un script en línea del <head>. Sin JavaScript no se oculta nada.
+   2. Todo va dentro de (prefers-reduced-motion: no-preference). Con la
+      preferencia de movimiento reducido, nada se anima ni se oculta.
+   3. Sólo se animan opacity y transform. Ningún desplazamiento de
+      maquetación.
+   ========================================================= */
+:root {
+  --curva: cubic-bezier(0.22, 1, 0.36, 1);
+  --dur: 480ms;
+}
+
+/* Resaltado del destino al llegar desde una pregunta del inicio.
+   Va en box-shadow, no en border, para no mover nada de sitio. */
+.destino-resaltado {
+  box-shadow: inset 4px 0 0 0 var(--terra-600);
+  transition: box-shadow 400ms var(--curva);
+}
+.seccion--azul.destino-resaltado { box-shadow: inset 4px 0 0 0 #f0a97f; }
+
+@media (prefers-reduced-motion: no-preference) {
+
+  /* ---- 1. Aparición por secciones y cascada de tarjetas ---- */
+  .js [data-animar] {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity var(--dur) var(--curva), transform var(--dur) var(--curva);
+    transition-delay: var(--retraso, 0ms);
+  }
+  .js [data-animar].visible { opacity: 1; transform: none; }
+
+  /* ---- 3. Términos de la fórmula ---- */
+  .js .formula__pieza[data-termino] {
+    opacity: 0;
+    transform: translateY(8px);
+    transition: opacity 380ms var(--curva), transform 380ms var(--curva),
+                background-color 200ms ease-out, color 200ms ease-out;
+    transition-delay: var(--retraso, 0ms);
+  }
+  .js .formula.visible .formula__pieza[data-termino] { opacity: 1; transform: none; }
+
+  /* ---- 6. Línea del proceso, dibujada al entrar ---- */
+  .js .proceso::before {
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: transform 900ms var(--curva);
+  }
+  .js .proceso.visible::before { transform: scaleY(1); }
+
+  /* ---- 4. Esquema del estómago ---- */
+  .js .esquema__svg .esq-trazo {
+    stroke-dasharray: var(--largo, 1000);
+    stroke-dashoffset: var(--largo, 1000);
+    fill-opacity: 0;
+    transition: stroke-dashoffset 800ms var(--curva), fill-opacity 300ms ease-out 620ms;
+  }
+  .js .esquema__svg.visible .esq-trazo { stroke-dashoffset: 0; fill-opacity: 1; }
+  .js .esquema__svg .esq-grapado,
+  .js .esquema__svg .esq-retirada {
+    opacity: 0;
+    transition: opacity 400ms ease-out 800ms;
+  }
+  .js .esquema__svg.visible .esq-grapado { opacity: 1; }
+  .js .esquema__svg.visible .esq-retirada { opacity: .25; }
+
+  /* ---- 8. Botón flotante de WhatsApp ---- */
+  .js .wa-flotante {
+    transition: opacity 350ms var(--curva), transform 350ms var(--curva);
+  }
+  .js .wa-flotante[data-oculto] {
+    opacity: 0;
+    transform: translateY(12px);
+    pointer-events: none;
+  }
+
+  /* ---- 9. Microinteracciones ---- */
+  .boton { transition: background-color 200ms ease-out, color 200ms ease-out,
+                       border-color 200ms ease-out, transform 200ms var(--curva),
+                       box-shadow 200ms var(--curva); }
+  .boton:hover { transform: translateY(-1px); box-shadow: var(--sombra); }
+  .boton:active { transform: none; box-shadow: var(--sombra-sm); }
+
+  .tarjeta, .pieza { transition: transform 250ms var(--curva), box-shadow 250ms var(--curva); }
+  .tarjeta:hover { transform: translateY(-2px); box-shadow: var(--sombra); }
+  .pieza:hover { transform: translateY(-2px); }
+
+  .flecha { display: inline-block; transition: transform 200ms var(--curva); }
+  a:hover .flecha { transform: translateX(4px); }
+
+  .campo input, .campo select, .campo textarea {
+    transition: border-color 150ms ease-out, box-shadow 150ms ease-out;
+  }
+}
+
+/* Foco visible del formulario: también sin movimiento reducido */
+.campo input:focus-visible,
+.campo select:focus-visible,
+.campo textarea:focus-visible {
+  border-color: var(--terra-600);
+  box-shadow: 0 0 0 1px var(--terra-600);
+}
+
+/* ---- 3. Resaltado recíproco fórmula ↔ tarjeta ---- */
+.formula__pieza.destacada {
+  background: var(--terra-600);
+  color: var(--blanco);
+}
+.pieza.destacada { box-shadow: 0 0 0 2px #9fd3df; }
+.js .formula__pieza[data-termino] { cursor: pointer; }
+
+/* ---- 4. Controles del esquema ---- */
+.esquema__controles {
+  display: flex;
+  gap: .5rem;
+  justify-content: center;
+  margin-top: 1rem;
+}
+.esquema__boton {
+  font: inherit;
+  font-size: .88rem;
+  font-weight: 600;
+  color: var(--azul-800);
+  background: var(--blanco);
+  border: 1px solid var(--linea);
+  border-radius: 999px;
+  padding: .4rem 1rem;
+  min-height: 40px;
+  cursor: pointer;
+}
+.esquema__boton[aria-pressed="true"] {
+  background: var(--azul-800);
+  border-color: var(--azul-800);
+  color: var(--blanco);
+}
+.esq-grupo { transition: opacity 400ms var(--curva); }
+.esquema__svg[data-enfasis="antes"] .esq-grupo[data-estado="despues"],
+.esquema__svg[data-enfasis="despues"] .esq-grupo[data-estado="antes"] { opacity: .2; }
+
+/* ---- 2. Contadores: ancho estable mientras suben ---- */
+.confianza__dato { font-variant-numeric: tabular-nums; }
+
+/* ---- 5. Preguntas del inicio como enlaces ---- */
+.empatia__lista a {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+}
+.empatia__lista a::after { content: " →"; color: var(--azul-600); }
+.empatia__lista li:hover { border-left-color: var(--terra-600); }
+
+/* ---- 7. Acordeón de FAQ: altura animada con grid, no con max-height ---- */
+.faq__envoltura {
+  display: grid;
+  grid-template-rows: 1fr;
+}
+.js .faq__envoltura { grid-template-rows: 0fr; }
+.js .faq__item[open] .faq__envoltura { grid-template-rows: 1fr; }
+.faq__envoltura > * { overflow: hidden; min-height: 0; }
+@media (prefers-reduced-motion: no-preference) {
+  .js .faq__envoltura { transition: grid-template-rows 320ms var(--curva); }
+}
+
+/* Chevron que gira, en lugar del signo +/− */
+.faq__item > summary::after {
+  content: "";
+  width: .55rem; height: .55rem;
+  border-right: 2px solid var(--terra-600);
+  border-bottom: 2px solid var(--terra-600);
+  transform: rotate(45deg) translate(-2px, -2px);
+  transform-origin: center;
+}
+.faq__item[open] > summary::after { content: ""; transform: rotate(225deg) translate(-2px, -2px); }
+@media (prefers-reduced-motion: no-preference) {
+  .faq__item > summary::after { transition: transform 320ms var(--curva); }
+}

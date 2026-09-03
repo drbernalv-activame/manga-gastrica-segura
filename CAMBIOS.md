@@ -613,3 +613,69 @@ HTML invisibles.
 corrigió su nota final, que seguía hablando de "las dos figuras sin foto", y se añadió el aviso
 de que contra un servidor local fallan a propósito las comprobaciones que aporta la plataforma
 (los `.md`, el `X-Robots-Tag` y el canonical).
+
+---
+
+# Movimiento e interacción — 3 de septiembre de 2026
+
+Archivo nuevo `assets/js/interaccion.js` (con `defer`), un bloque de CSS al final de
+`styles.css` y un script en línea de una sola línea en el `<head>` que pone la clase `js` en
+`<html>` antes de pintar.
+
+## 25. Las tres reglas que gobiernan todo
+
+1. **El estado oculto sólo existe con la clase `js`.** Sin JavaScript no se oculta nada: la
+   página se ve completa, como hasta ahora. Por eso el script en línea del `<head>`: si el
+   ocultamiento viviera en el CSS base, un fallo del JS dejaría la página en blanco.
+2. **Todo va dentro de `@media (prefers-reduced-motion: no-preference)`.** Con movimiento
+   reducido no se anima ni se oculta nada, y `interaccion.js` revela todo de inmediato.
+3. **Sólo `opacity` y `transform`.** El resaltado del destino usa `box-shadow` en lugar de
+   `border` justamente para no desplazar nada.
+
+## 26. Los nueve puntos
+
+| # | Qué se hizo |
+|---|---|
+| 1 | Cada sección de `main` (salvo el hero, que es el LCP) entra con `opacity` y `translateY(16px)` al 15 % del viewport. Las tarjetas y elementos de lista cascadean a 70 ms, con tope en el octavo. Una sola vez: el observador deja de observar al disparar. |
+| 2 | Los tres números suben con `easeOutQuart` en 900 ms; el `+` de 4,000 aparece sólo al terminar. `font-variant-numeric: tabular-nums`. "Equipo" entra con el fade normal. |
+| 3 | Los siete términos entran a 120 ms uno de otro. Con puntero fino, pasar el cursor por un término resalta su tarjeta y viceversa. Al tocar un término se abre su tarjeta y la página se desplaza a ella. |
+| 4 | El esquema se dibuja con `stroke-dashoffset` (800 ms, longitud real de cada trazo medida con `getTotalLength`), después entra la línea de grapado y la porción retirada baja a 0.25. Total 1.2 s. |
+| 5 | Las cinco preguntas del inicio son enlaces a la sección que las responde; las dos de FAQ abren su acordeón. El destino recibe 1.5 s de resaltado. Evento `click_pregunta_inicial`. |
+| 6 | Los siete pasos cascadean y la línea que los une se dibuja con `scaleY` desde arriba, 900 ms. |
+| 7 | Los acordeones abren con `grid-template-rows: 0fr → 1fr`. Sólo uno abierto por grupo. |
+| 8 | El botón flotante aparece pasado el 40 % del recorrido y se esconde cuando el formulario está a la vista. Sin JS queda siempre visible. |
+| 9 | Botones con `translateY(-1px)` y sombra al pasar el cursor; tarjetas con elevación; la flecha del enlace de reseñas se desplaza 4 px; los campos del formulario cambian el borde al color de acento en `:focus-visible`. |
+
+## 27. Dos adaptaciones al diseño existente
+
+**Los botones "Antes" y "Después" enfatizan, no ocultan.** El esquema muestra los dos estados
+lado a lado con una flecha entre ellos, y tanto el `<desc>` del SVG como el pie describen esa
+comparación. Alternarlos ocultando una mitad rompería el diagrama. En su lugar, cada botón baja
+la otra mitad a 0.2 de opacidad, y pulsarlo de nuevo vuelve a mostrar ambas. Es `aria-pressed`,
+así que el estado se anuncia. Evento `toggle_esquema_estomago`.
+
+**El signo `+`/`−` de los acordeones pasa a ser un chevron que gira 180°**, porque el punto 9
+pedía una flecha que rotara y un `+` girado 180° no se distingue. Se aplicó sólo a `.faq__item`:
+las tarjetas de la fórmula (`.pieza`) dejan de ser acordeón en escritorio, donde se muestran
+todas abiertas en rejilla, y ahí un chevron sobraría.
+
+**Nota sobre la fórmula:** sus términos siguen con `aria-hidden="true"`, como estaban, porque
+hay un equivalente en texto para lectores de pantalla (`.solo-lectores`). Por eso el resaltado
+recíproco es sólo de puntero y táctil, sin foco de teclado: convertir los términos en elementos
+enfocables dentro de un contenedor `aria-hidden` sería un error de accesibilidad. El contenido
+real —las siete tarjetas— es accesible por teclado como siempre.
+
+## 28. Verificación ejecutada
+
+| Comprobación | Resultado |
+|---|---|
+| `prefers-reduced-motion: reduce` | ✅ 0 elementos con opacidad < 1; contadores en su valor final; sin errores |
+| JavaScript deshabilitado | ✅ 0 elementos ocultos; contadores con su texto literal; los `<details>` abren de forma nativa |
+| CLS móvil (390 px), recorriendo toda la página | ✅ **0.0000** |
+| Recorrido completo a 380 px y 1280 px | ✅ Nada queda invisible al terminar; sin desbordes ni scroll horizontal |
+| Eventos | ✅ `click_pregunta_inicial` y `toggle_esquema_estomago` nuevos; `faq_open`, `click_whatsapp`, `form_submit` y los CTA siguen disparándose |
+| Errores de consola | ✅ Ninguno, en los cuatro escenarios |
+
+Se comprobó además que el conteo pasa por valores intermedios reales (3 → 8 → 15 → 19 → 20) y
+que el `+` sólo aparece en la muestra final. El contador de "1 año" no se anima: contar de 0 a 1
+no aporta nada y pasaba por "0 año", mal escrito.
