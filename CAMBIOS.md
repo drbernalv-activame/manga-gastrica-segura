@@ -734,3 +734,70 @@ marcadores ahora recorre **las dos páginas** y añade `[FECHA` a la lista.
 | El formulario no envía sin las dos casillas | ✅ Las cuatro combinaciones probadas: sólo envía con ambas |
 | Errores de consola | ✅ Ninguno, en la portada y en el aviso |
 | Sin botón flotante ni CTA en el encabezado | ✅ |
+
+---
+
+# Ajustes previos a campaña pagada — 3 de septiembre de 2026
+
+## 33. Los seis puntos
+
+| # | Qué se hizo |
+|---|---|
+| 1 | La FAQ pasa a «¿Cirugía o medicamentos para el apetito?» y el cuerpo a «los medicamentos que imitan hormonas del intestino». También en el `FAQPage` del JSON-LD. **Cero apariciones de "GLP"** en `index.html`, `aviso-de-privacidad.html` y `assets/`. |
+| 2 | `/privacidad` → `/aviso-de-privacidad` con **301** en `vercel.json` (`statusCode: 301`, no `permanent`, que en Vercel devuelve 308) y en `netlify.toml`. |
+| 3 | Fuera «Peso aproximado» y «Estatura aproximada». El formulario queda en nombre, WhatsApp, ciudad, duda principal, comentario opcional y las dos casillas. Apartado 2 del aviso y texto de la segunda casilla ajustados en las dos páginas. |
+| 4 | «Antes / Después» pasa a «Estómago completo / Manga» en los rótulos del SVG, en los botones, en el `<desc>` y en los `data-estado`, con sus selectores de CSS. El rótulo largo baja de 21 a 16 px para que quepa en el `viewBox`. |
+| 5 | Meta Pixel preparado con `PIXEL_ID = ''` al inicio de `analitica.js`. |
+| 6 | Redacción de reemplazo del apartado 9 lista dentro de un comentario, y comprobación automática de coherencia. |
+
+## 34. El píxel, preparado pero inerte
+
+Con `PIXEL_ID` vacío **no se carga nada**: ni una petición a Meta, ni una cookie, ni `fbq`
+definido. Verificado en navegador. Al poner el ID se activa todo de golpe, porque las dos
+páginas cargan `analitica.js`:
+
+| Evento | Cuándo | Qué manda |
+|---|---|---|
+| `PageView` + `ViewContent` | Al cargar | Nada personal |
+| `Lead` | Al enviar el formulario, **antes** de abrir WhatsApp | Sólo `eventID` |
+| `Contact` | En cada botón de WhatsApp | Sólo `eventID` |
+
+`Lead` va antes de `window.open` a propósito: si fuera después, el cambio de pestaña podría
+cortar la petición. El `eventID` es un identificador aleatorio para deduplicar, sin ningún dato
+del paciente. Los eventos propios (`click_cta_plan`, `form_submit`, `faq_open` y los demás)
+siguen igual.
+
+## 35. El apartado 9 no se puede quedar atrás
+
+En cuanto el píxel cargue, el apartado 9 deja de ser cierto. Por eso hay dos amarres:
+
+1. **La redacción de reemplazo ya está escrita**, dentro de un comentario en
+   `aviso-de-privacidad.html`: qué recaba el píxel, que no se le manda nombre, teléfono ni datos
+   de salud, con quién se comparte y cómo deshabilitarlo. Se activa en el mismo commit que ponga
+   el ID.
+2. **`verificar-despliegue.sh` comprueba que las dos cosas van juntas** y falla en los dos
+   sentidos: píxel activo con un apartado 9 que no menciona a Meta, y apartado 9 describiendo un
+   píxel que no existe.
+
+La comprobación **aísla el apartado 9 publicado**, quitando antes los comentarios HTML. La
+primera versión buscaba «Meta» en toda la página y daba verde en falso, porque la palabra
+aparece en el apartado 4 (WhatsApp) y dentro del propio comentario de reemplazo. Un guard legal
+que da falso verde es peor que no tenerlo. Probado en los tres estados: ID vacío ✅, ID puesto
+sin actualizar el aviso ❌, ID puesto con la redacción activada ✅.
+
+También se detecta el píxel si alguien pega el código base directamente en el HTML, no sólo por
+la variable. El `fbq(` que `analitica.js` lleva siempre dentro del bloque guardado no cuenta:
+sin ID no se ejecuta.
+
+## 36. Verificación
+
+| Comprobación | Resultado |
+|---|---|
+| «GLP» en el sitio servido | ✅ 0 en la portada y 0 en el aviso |
+| Formulario con los campos nuevos | ✅ `nombre, whatsapp, ciudad, duda, mensaje, privacidad, datos-salud`; sólo envía con las dos casillas |
+| Mensaje de WhatsApp | ✅ Sin peso ni estatura (nunca los llevó: el constructor sólo tomaba nombre, teléfono, ciudad, duda y comentario) |
+| Redirección `/privacidad` | ✅ 301 → `/aviso-de-privacidad` → 200 |
+| Rótulos del esquema | ✅ SVG, botones y `desc`; el énfasis sigue funcionando |
+| Píxel inerte | ✅ `fbq` sin definir, cero peticiones a terceros, cero cookies |
+| CLS | ✅ **0.0000** |
+| Errores de consola | ✅ Ninguno, en las dos páginas |

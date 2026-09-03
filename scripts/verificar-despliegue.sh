@@ -71,6 +71,55 @@ if [ "$sin_marcadores" = "0" ]; then
 fi
 
 echo
+echo "Coherencia entre el Meta Pixel y el apartado 9 del aviso de privacidad"
+# El píxel está activo si analitica.js trae un PIXEL_ID con contenido, o si alguien pegó el
+# código base directamente en el HTML. El fbq( que analitica.js siempre lleva dentro del
+# bloque guardado no cuenta: sin ID no se ejecuta ni se pide nada a Meta.
+js="$(curl -s --max-time 20 "$URL/assets/js/analitica.js")"
+pixel=0
+printf '%s' "$js" | grep -qE "PIXEL_ID *= *['\"][^'\"]+['\"]" && pixel=1
+printf '%s%s' "$html" "$aviso" | grep -qF 'fbq(' && pixel=1
+
+# Se mira SÓLO el apartado 9 publicado, sin comentarios HTML: "Meta" aparece también en el
+# apartado 4 (WhatsApp) y dentro de la redacción de reemplazo, que está comentada. Buscarlo
+# en toda la página daría un verde falso.
+apartado9="$(printf '%s' "$aviso" | awk '''{
+  out=""; line=$0
+  while (length(line) > 0) {
+    if (dentro == 0) {
+      i = index(line, "<!--")
+      if (i == 0) { out = out line; line = "" }
+      else { out = out substr(line, 1, i-1); line = substr(line, i+4); dentro = 1 }
+    } else {
+      j = index(line, "-->")
+      if (j == 0) { line = "" } else { line = substr(line, j+3); dentro = 0 }
+    }
+  }
+  print out
+}''' | awk '''/9\. Uso de cookies/,/10\. Cambios/''')"
+
+if [ -z "$apartado9" ]; then
+  printf '  ❌ %-46s no se pudo aislar en el aviso\n' "apartado 9"
+  fallos=$((fallos+1))
+elif [ "$pixel" = "1" ]; then
+  if printf '%s' "$apartado9" | grep -qF 'Meta'; then
+    printf '  ✅ %-46s el apartado 9 lo describe\n' "píxel activo"
+  else
+    printf '  ❌ %-46s el apartado 9 NO menciona a Meta\n' "píxel activo"
+    echo "     El aviso de privacidad dice que no hay herramientas de terceros y sí las hay."
+    echo "     Descomenta la redacción de reemplazo que está en aviso-de-privacidad.html."
+    fallos=$((fallos+1))
+  fi
+else
+  if printf '%s' "$apartado9" | grep -qF 'Meta'; then
+    printf '  ❌ %-46s el apartado 9 describe un píxel que no existe\n' "píxel inactivo"
+    fallos=$((fallos+1))
+  else
+    printf '  ✅ %-46s el apartado 9 puede seguir como está\n' "píxel inactivo"
+  fi
+fi
+
+echo
 if [ "$fallos" -eq 0 ]; then echo "Todo correcto."; else echo "$fallos comprobación(es) fallaron."; fi
 echo
 echo "Falta comprobar a mano en el navegador:"

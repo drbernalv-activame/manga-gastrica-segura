@@ -13,6 +13,13 @@
     X-Content-Type-Options = "nosniff"
     Referrer-Policy = "strict-origin-when-cross-origin"
 
+# Atajo: /privacidad lleva al aviso de privacidad.
+[[redirects]]
+  from = "/privacidad"
+  to = "/aviso-de-privacidad"
+  status = 301
+  force = true
+
 # La documentación interna no se sirve (equivalente a .vercelignore).
 [[redirects]]
   from = "/*.md"

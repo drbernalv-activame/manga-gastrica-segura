@@ -303,14 +303,14 @@
           <svg viewBox="0 0 460 240" role="img" aria-labelledby="titulo-esquema desc-esquema" class="esquema__svg">
             <title id="titulo-esquema">Esquema comparativo del estómago antes y después de la manga gástrica</title>
             <desc id="desc-esquema">
-              A la izquierda, un estómago completo con forma de bolsa amplia. A la derecha, el mismo
-              estómago convertido en un tubo estrecho y vertical; la parte punteada representa la
-              porción que se retira.
+              A la izquierda, el estómago completo, con forma de bolsa amplia. A la derecha, la
+              manga: el mismo estómago convertido en un tubo estrecho y vertical; la parte
+              punteada representa la porción que se retira.
             </desc>
 
-            <!-- ANTES -->
-            <g class="esq-grupo" data-estado="antes">
-              <text x="105" y="24" text-anchor="middle" font-family="sans-serif" font-size="21" font-weight="700" fill="#0b4250">Antes</text>
+            <!-- ESTÓMAGO COMPLETO -->
+            <g class="esq-grupo" data-estado="completo">
+              <text x="105" y="24" text-anchor="middle" font-family="sans-serif" font-size="16" font-weight="700" fill="#0b4250">Estómago completo</text>
               <!-- esófago -->
               <path d="M92 42 L92 74" stroke="#0e5265" stroke-width="9" stroke-linecap="round" fill="none"/>
               <!-- cuerpo del estómago -->
@@ -326,9 +326,9 @@
               <path d="M242 114 L254 124 L242 134" fill="none" stroke="#a8481f" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
             </g>
 
-            <!-- DESPUÉS -->
-            <g class="esq-grupo" data-estado="despues">
-              <text x="340" y="24" text-anchor="middle" font-family="sans-serif" font-size="21" font-weight="700" fill="#0b4250">Después</text>
+            <!-- MANGA -->
+            <g class="esq-grupo" data-estado="manga">
+              <text x="340" y="24" text-anchor="middle" font-family="sans-serif" font-size="16" font-weight="700" fill="#0b4250">Manga</text>
               <!-- esófago -->
               <path d="M318 42 L318 74" stroke="#0e5265" stroke-width="9" stroke-linecap="round" fill="none"/>
               <!-- porción retirada, punteada -->
@@ -346,11 +346,11 @@
             </g>
           </svg>
           <!-- Los botones sólo enfatizan una mitad del esquema: no ocultan la otra, para que
-               la comparación entre antes y después siga leyéndose completa. Los añade el
-               JavaScript, así que sin él el esquema se ve entero, como hasta ahora. -->
+               la comparación entre el estómago completo y la manga siga leyéndose entera. Los
+               añade el JavaScript, así que sin él el esquema se ve completo, como hasta ahora. -->
           <div class="esquema__controles" hidden>
-            <button type="button" class="esquema__boton" data-esquema="antes" aria-pressed="false">Antes</button>
-            <button type="button" class="esquema__boton" data-esquema="despues" aria-pressed="false">Después</button>
+            <button type="button" class="esquema__boton" data-esquema="completo" aria-pressed="false">Estómago completo</button>
+            <button type="button" class="esquema__boton" data-esquema="manga" aria-pressed="false">Manga</button>
           </div>
           <figcaption>
             Esquema ilustrativo, no a escala. La línea punteada naranja representa la línea de
@@ -679,11 +679,11 @@
         </details>
 
         <details class="faq__item">
-          <summary>¿Cirugía o medicamentos tipo GLP-1?</summary>
+          <summary>¿Cirugía o medicamentos para el apetito?</summary>
           <div class="faq__envoltura">
             <div class="faq__respuesta">
-              <p>No son rivales. Los medicamentos tipo GLP-1, que imitan hormonas del intestino que
-              regulan el apetito, y la cirugía actúan sobre mecanismos parecidos, con alcances
+              <p>No son rivales. Los medicamentos que imitan hormonas del intestino que
+              regulan el apetito, y la cirugía, actúan sobre mecanismos parecidos, con alcances
               distintos.</p>
               <p>Para algunas personas el medicamento es suficiente; para otras la cirugía es la
               herramienta adecuada; en ciertos casos se combinan. Eso se define en tu valoración,
@@ -829,21 +829,6 @@
           </div>
         </div>
 
-        <div class="campos-fila">
-          <div class="campo">
-            <label for="peso">Peso aproximado
-              <span class="campo__ayuda">En kilogramos. Opcional</span>
-            </label>
-            <input type="number" id="peso" name="peso_kg" min="30" max="400" step="1" inputmode="numeric">
-          </div>
-          <div class="campo">
-            <label for="estatura">Estatura aproximada
-              <span class="campo__ayuda">En centímetros. Opcional</span>
-            </label>
-            <input type="number" id="estatura" name="estatura_cm" min="100" max="230" step="1" inputmode="numeric">
-          </div>
-        </div>
-
         <div class="campo">
           <label for="duda">¿Cuál es tu principal duda?</label>
           <select id="duda" name="principal_duda">
@@ -882,7 +867,7 @@
         <div class="campo consentimiento">
           <input type="checkbox" id="datos-salud" name="acepta_datos_salud" required>
           <label for="datos-salud">
-            Acepto que los datos de salud que comparta (peso, estatura, motivo de consulta)
+            Acepto que los datos de salud que comparta (motivo de consulta o dudas)
             se utilicen para orientarme y valorar si soy candidato.
           </label>
         </div>
@@ -1096,10 +1081,10 @@
         },
         {
           "@type": "Question",
-          "name": "¿Cirugía o medicamentos tipo GLP-1?",
+          "name": "¿Cirugía o medicamentos para el apetito?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "No son rivales. Los medicamentos tipo GLP-1 y la cirugía actúan sobre mecanismos parecidos con alcances distintos. Para algunas personas el medicamento es suficiente, para otras la cirugía es la herramienta adecuada y en ciertos casos se combinan. Se define en la valoración."
+            "text": "No son rivales. Los medicamentos que imitan hormonas del intestino y la cirugía actúan sobre mecanismos parecidos con alcances distintos. Para algunas personas el medicamento es suficiente, para otras la cirugía es la herramienta adecuada y en ciertos casos se combinan. Se define en la valoración."
           }
         }
       ]

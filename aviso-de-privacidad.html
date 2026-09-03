@@ -68,8 +68,8 @@
             proporciona.
           </li>
           <li>
-            <strong>Datos de salud (datos personales sensibles):</strong> peso y estatura
-            aproximados, motivo de consulta, dudas o antecedentes que usted decida compartir en
+            <strong>Datos de salud (datos personales sensibles):</strong> motivo de consulta,
+            dudas o antecedentes que usted decida compartir en
             el campo libre del formulario o en la conversación posterior, y, si continúa con la
             valoración médica, la información clínica necesaria para determinar si es candidato a
             cirugía bariátrica.
@@ -163,8 +163,8 @@
             identificación y contacto conforme a este aviso.
           </li>
           <li>
-            Al marcar <em>«Acepto que los datos de salud que comparta (peso, estatura, motivo de
-            consulta) se utilicen para orientarme y valorar si soy candidato»</em>, usted otorga
+            Al marcar <em>«Acepto que los datos de salud que comparta (motivo de consulta o
+            dudas) se utilicen para orientarme y valorar si soy candidato»</em>, usted otorga
             su <strong>consentimiento expreso</strong> para el tratamiento de esos datos
             personales sensibles con las finalidades primarias descritas en el apartado 3.
           </li>
@@ -195,12 +195,37 @@
         <!-- Redacción elegida tras auditar la página el 3 de septiembre de 2026: cero peticiones
              a dominios de terceros, cero cookies, localStorage y sessionStorage vacíos, sin
              Google Analytics ni Meta Pixel, tipografía del sistema y favicon en data URI.
-             Dos cosas que legal debería valorar antes de firmar:
-             1. El sitio lo sirve Vercel, cuyos registros de acceso guardan direcciones IP.
-                Eso no es una cookie ni analítica, pero sí es tratamiento por un encargado.
-             2. El día que se instalen Google Analytics o Meta Pixel, este apartado deja de ser
-                cierto y hay que reescribirlo ANTES de activarlos. -->
+             Legal debería valorar que el sitio lo sirve Vercel, cuyos registros de acceso guardan
+             direcciones IP: no es una cookie ni analítica, pero sí es tratamiento por un
+             encargado. -->
         <p>El sitio no utiliza cookies de rastreo ni herramientas de analítica de terceros.</p>
+
+        <!-- REDACCIÓN DE REEMPLAZO PARA CUANDO SE ACTIVE EL META PIXEL.
+             En cuanto assets/js/analitica.js tenga un PIXEL_ID, el párrafo de arriba deja de ser
+             cierto. En ese mismo commit hay que borrar ese párrafo y descomentar los tres de
+             abajo. verificar-despliegue.sh comprueba que las dos cosas van juntas: si detecta el
+             píxel activo y este apartado no menciona a Meta, falla.
+
+        <p>
+          El sitio utiliza el píxel de Meta, una herramienta de Meta Platforms, Inc., para medir
+          el resultado de nuestras campañas publicitarias y saber cuántas personas llegan al sitio
+          y solicitan una simulación. El píxel puede recabar su dirección IP, el tipo de
+          dispositivo y navegador que utiliza, las páginas que visita dentro del sitio y las
+          acciones que realiza en él, como abrir el formulario o pulsar un botón de contacto.
+        </p>
+        <p>
+          <strong>No le enviamos a Meta su nombre, su teléfono ni ningún dato sobre su salud.</strong>
+          Los eventos que registramos no llevan datos personales: sólo un identificador aleatorio
+          que sirve para no contar dos veces la misma acción. La información que el píxel recaba
+          se comparte con Meta Platforms, Inc. y se rige por sus propias políticas de privacidad.
+        </p>
+        <p>
+          Puede deshabilitarlo bloqueando las cookies de terceros desde la configuración de su
+          navegador, utilizando el modo de navegación privada o una extensión que bloquee
+          rastreadores, y desde la configuración de anuncios de su cuenta de Meta si tiene una.
+          El sitio seguirá funcionando con normalidad.
+        </p>
+        -->
 
         <h2>10. Cambios al aviso de privacidad</h2>
         <p>

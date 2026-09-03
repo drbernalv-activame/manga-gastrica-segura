@@ -7,6 +7,50 @@
 (function () {
   'use strict';
 
+  /* =========================================================
+     META PIXEL — identificador único de toda la instalación.
+     Vacío: no se carga nada, no se pide nada a Meta, no se pone
+     ninguna cookie. La página funciona igual.
+     Al poner el ID aquí se activa todo lo de abajo: código base en
+     esta página y en el aviso de privacidad (ambas cargan este
+     archivo), ViewContent al cargar, Lead al enviar el formulario y
+     Contact en cada botón de WhatsApp.
+
+     ANTES DE PONER EL ID: el apartado 9 del aviso de privacidad dice
+     hoy que el sitio no usa herramientas de terceros. Deja de ser
+     cierto en cuanto el píxel cargue. La redacción de reemplazo ya
+     está escrita, dentro de un comentario, en aviso-de-privacidad.html:
+     hay que activarla en el mismo commit que ponga este ID.
+     ========================================================= */
+  var PIXEL_ID = '';
+
+  /* Identificador de evento para deduplicar en Meta. No lleva ningún
+     dato del visitante: es un número aleatorio. */
+  function idEvento() {
+    if (window.crypto && typeof window.crypto.randomUUID === 'function') {
+      return window.crypto.randomUUID();
+    }
+    return 'e-' + Date.now() + '-' + Math.random().toString(36).slice(2, 10);
+  }
+
+  function pixelActivo() {
+    return !!PIXEL_ID && typeof window.fbq === 'function';
+  }
+
+  /* Código base de Meta. Sólo se inyecta si hay ID. */
+  if (PIXEL_ID) {
+    /* eslint-disable */
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+    n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}
+    (window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    /* eslint-enable */
+    window.fbq('init', PIXEL_ID);
+    window.fbq('track', 'PageView');
+    window.fbq('track', 'ViewContent', {}, { eventID: idEvento() });
+  }
+
   /* ---- 1. Envío de eventos a GA4 / Meta Pixel ----
      Mientras no se instalen los scripts de GA4 y Meta Pixel, esta
      función simplemente no hace nada. */
@@ -27,9 +71,13 @@
      click_reviews_google y click_whatsapp */
   document.querySelectorAll('[data-evento]').forEach(function (el) {
     el.addEventListener('click', function () {
-      evento(el.getAttribute('data-evento'), {
+      var nombre = el.getAttribute('data-evento');
+      evento(nombre, {
         ubicacion: el.getAttribute('data-ubicacion') || 'sin-definir'
       });
+      if (nombre === 'click_whatsapp' && pixelActivo()) {
+        window.fbq('track', 'Contact', {}, { eventID: idEvento() });
+      }
     });
   });
 
@@ -110,6 +158,13 @@
       evento('form_submit', {
         principal_duda: (formulario.querySelector('#duda') || {}).value || ''
       });
+
+      // Lead antes de abrir WhatsApp: si se disparara después, el cambio de
+      // pestaña podría cortar la petición. Sin ningún dato del paciente:
+      // sólo el identificador de deduplicación.
+      if (pixelActivo()) {
+        window.fbq('track', 'Lead', {}, { eventID: idEvento() });
+      }
 
       var url = 'https://wa.me/' + WHATSAPP + '?text=' +
                 encodeURIComponent(partes.join(' '));
