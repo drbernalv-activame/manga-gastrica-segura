@@ -3,7 +3,20 @@
 Sitio estático: HTML, CSS y un archivo JS. **Sin build, sin dependencias, sin gestor de
 paquetes.** Cualquier hosting estático sirve.
 
-> ⚠️ **Este repositorio no se ha desplegado todavía.** La sesión que preparó estos archivos no
+> **Estado: conectado a Vercel.** Proyecto `manga-gastrica-segura`, rama de producción
+> `claude/manga-gastrica-landing-page-s78nhc`, URL provisional
+> `https://manga-gastrica-segura.vercel.app`. Ya está aplicada en `index.html`.
+>
+> **La verificación contra el sitio real está pendiente**: la política de red de la sesión que
+> hizo el despliegue deniega `manga-gastrica-segura.vercel.app:443` (403 en el gateway), igual
+> que las APIs de las plataformas. Todo se verificó contra un servidor local con el mismo
+> contenido. Para comprobarlo contra el host:
+>
+> ```bash
+> ./scripts/verificar-despliegue.sh https://manga-gastrica-segura.vercel.app
+> ```
+
+> ⚠️ **Nota histórica: por qué esto no se desplegó desde la sesión.** La sesión que preparó estos archivos no
 > pudo conectar con Vercel ni con Netlify: la política de red del entorno rechaza
 > `api.vercel.com` y `api.netlify.com` (403 en el gateway), y no había credenciales de ninguna
 > de las dos plataformas. **Un token no habría bastado**: el bloqueo es de red, no de
