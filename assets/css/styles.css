@@ -154,25 +154,6 @@ h3 { font-size: clamp(1.15rem, 3.6vw, 1.35rem); }
 
 .nota { font-size: .95rem; color: var(--tinta-suave); }
 
-/* ---------- 5. Marcador de dato pendiente ---------- */
-.pendiente {
-  display: inline-block;
-  background: var(--alerta-fondo);
-  border: 1px dashed var(--alerta-borde);
-  color: #6b4f00;
-  border-radius: var(--radio-sm);
-  padding: .15em .5em;
-  font-size: .9em;
-  font-weight: 600;
-  line-height: 1.4;
-}
-.pendiente--bloque {
-  display: block;
-  padding: 1rem 1.15rem;
-  font-weight: 500;
-  margin-bottom: 1rem;
-}
-
 /* ---------- 6. Botones ---------- */
 .boton {
   display: inline-flex;

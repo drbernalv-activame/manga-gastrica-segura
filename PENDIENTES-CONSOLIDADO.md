@@ -9,6 +9,13 @@ Quedan **5 pendientes**, con una notación distinta y a propósito visible:
 grep -rn "PENDIENTE\|VERIFICAR" index.html
 ```
 
+Ninguno se ve en la página: los legales son comentarios HTML y los de ruta viven dentro del
+`src` de dos imágenes que el JavaScript retira. Para comprobarlo contra el sitio desplegado:
+
+```bash
+./scripts/verificar-despliegue.sh https://manga-gastrica-segura.vercel.app
+```
+
 ---
 
 ## Los 5 pendientes
@@ -17,8 +24,8 @@ grep -rn "PENDIENTE\|VERIFICAR" index.html
 |---|---|---|---|
 | 1 | **Foto del Dr. Bernal con su equipo quirúrgico.** Existe; falta subirla a `assets/img/` y poner la ruta. JPG o WebP, 1200×900 px. | Dr. Bernal entrega · Marketing sube | `index.html:78` — `[RUTA PENDIENTE: foto-equipo.jpg]` |
 | 2 | **Retrato profesional del Dr. Bernal.** Se entrega después. | Dr. Bernal entrega · Marketing sube | `index.html:131` (figura) y `:962` (schema `image`) — `[RUTA PENDIENTE: foto-dr-bernal.jpg]` |
-| 3 | **Aviso de privacidad**: el documento publicado y su URL. Sin él, la casilla de consentimiento del formulario no es válida. | Legal | `index.html:821` (formulario) y `:873` (pie) — `[PENDIENTE LEGAL: URL del aviso de privacidad]` |
-| 4 | **Publicidad sanitaria (COFEPRIS)**: revisar requisitos y, si aplica, número de registro o autorización. | Legal | `index.html:887` — `[PENDIENTE LEGAL: …]` |
+| 3 | **Aviso de privacidad**: el documento publicado y su URL. Sin él, la casilla de consentimiento del formulario no es válida. Los dos enlaces apuntan por ahora a `#aviso-privacidad`, el bloque legal del pie, para no dejar un enlace roto. | Legal | `index.html:823` (formulario) y `:879` (pie), con comentario HTML en cada uno |
+| 4 | **Publicidad sanitaria (COFEPRIS)**: revisar requisitos y, si aplica, número de registro o autorización. La línea **no se renderiza**: está comentada, lista para descomentar con el dato, o para borrarse si la revisión concluye que no aplica. | Legal | `index.html:893` |
 | 5 | **Disponibilidad del dominio `mangagastricasegura.com`.** Ya está puesto en `canonical`, `og:url` y los tres `@id` del schema; falta confirmar que es el dominio real. | Marketing | Comentario `VERIFICAR` en `index.html:7` |
 
 Mientras 1 y 2 no lleguen, `analitica.js` retira la imagen y deja el contenedor como un bloque

@@ -37,8 +37,11 @@ done
 echo
 echo "Despliegue provisional: no indexable"
 robots="$(curl -sI --max-time 20 "$URL/" | tr -d '\r' | grep -i '^x-robots-tag:' | head -1)"
-if echo "$robots" | grep -qi noindex; then printf '  ✅ %-46s %s\n' "X-Robots-Tag" "$(echo "$robots" | cut -d' ' -f2-)"
-else printf '  ❌ %-46s ausente o sin noindex\n' "X-Robots-Tag"; fallos=$((fallos+1)); fi
+if echo "$robots" | grep -qi noindex; then printf '  ✅ %-46s %s\n' "X-Robots-Tag (cabecera)" "$(echo "$robots" | cut -d' ' -f2-)"
+else printf '  ❌ %-46s ausente o sin noindex\n' "X-Robots-Tag (cabecera)"; fallos=$((fallos+1)); fi
+if curl -s --max-time 20 "$URL/" | grep -qi '<meta name="robots" content="noindex'; then
+  printf '  ✅ %-46s noindex, nofollow\n' "meta robots (HTML)"
+else printf '  ❌ %-46s ausente o sin noindex\n' "meta robots (HTML)"; fallos=$((fallos+1)); fi
 
 echo
 echo "Contenido en la página servida"
@@ -47,9 +50,21 @@ for patron in "canonical\" href=\"$URL/\"" "wa.me/526144078343" "4134597" "56793
   if printf '%s' "$html" | grep -qF "$patron"; then printf '  ✅ %s\n' "$patron"
   else printf '  ❌ falta: %s\n' "$patron"; fallos=$((fallos+1)); fi
 done
-if printf '%s' "$html" | grep -qE 'COMPLETAR|VALIDAR'; then
-  printf '  ❌ hay marcadores COMPLETAR/VALIDAR en la página servida\n'; fallos=$((fallos+1))
-else printf '  ✅ sin marcadores COMPLETAR/VALIDAR\n'; fi
+
+echo
+echo "Marcadores pendientes en el HTML servido"
+sin_marcadores=1
+for marca in '[COMPLETAR' '[VALIDAR' '[PENDIENTE' '[RUTA PENDIENTE'; do
+  n="$(printf '%s' "$html" | grep -oF "$marca" | wc -l | tr -d ' ')"
+  if [ "$n" = "0" ]; then printf '  ✅ %-20s no aparece\n' "$marca"
+  else printf '  ❌ %-20s %s aparición(es)\n' "$marca" "$n"; sin_marcadores=0; fallos=$((fallos+1)); fi
+done
+if [ "$sin_marcadores" = "0" ]; then
+  echo
+  echo "  Nota: '[RUTA PENDIENTE' seguirá apareciendo mientras no se suban las dos fotos"
+  echo "  reales (pendientes 1 y 2). Es el aviso de que la página aún no está terminada,"
+  echo "  no un fallo del despliegue."
+fi
 
 echo
 if [ "$fallos" -eq 0 ]; then echo "Todo correcto."; else echo "$fallos comprobación(es) fallaron."; fi

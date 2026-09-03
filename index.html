@@ -10,7 +10,11 @@
      VERIFICAR antes: disponibilidad del dominio mangagastricasegura.com. -->
 <title>Manga Gástrica Segura en Chihuahua | Dr. Héctor Bernal</title>
 <meta name="description" content="La calidad no cambia. La forma de pagar, sí. Manga gástrica en Chihuahua con 20 años de experiencia y más de 4,000 cirugías. Planes de pago de 6 a 36 meses a través de Mend. Sujeto a valoración médica y aprobación.">
-<meta name="robots" content="index, follow">
+<!-- DESPLIEGUE PROVISIONAL: no indexable. Al pasar al dominio definitivo hay que
+     cambiar este robots a "index, follow" Y quitar el X-Robots-Tag de vercel.json
+     y netlify.toml. Los dos van juntos: si se cambia solo uno, el sitio real sigue
+     fuera de los buscadores. -->
+<meta name="robots" content="noindex, nofollow">
 <link rel="canonical" href="https://manga-gastrica-segura.vercel.app/">
 
 <!-- Open Graph -->
@@ -821,7 +825,11 @@
           <input type="checkbox" id="privacidad" name="acepta_privacidad" required>
           <label for="privacidad">
             Acepto que me contacten por WhatsApp o teléfono y he leído el
-            <a href="[PENDIENTE LEGAL: URL del aviso de privacidad]">aviso de privacidad</a>.
+            <!-- Pendiente legal: publicar el aviso de privacidad y sustituir el ancla por su
+                 URL definitiva, aquí y en el pie. Mientras tanto apunta al bloque legal del pie
+                 para no dejar un enlace roto. El consentimiento no es válido hasta que el
+                 documento exista. -->
+            <a href="#aviso-privacidad">aviso de privacidad</a>.
           </label>
         </div>
 
@@ -876,11 +884,12 @@
         <p>
           Correo: <a href="mailto:coordinacion@activame.mx">coordinacion@activame.mx</a>
         </p>
-        <p><a href="[PENDIENTE LEGAL: URL del aviso de privacidad]">Aviso de privacidad</a></p>
+        <!-- Pendiente legal: sustituir por la URL del aviso de privacidad cuando exista. -->
+        <p><a href="#aviso-privacidad">Aviso de privacidad</a></p>
       </div>
     </div>
 
-    <div class="pie__legal">
+    <div class="pie__legal" id="aviso-privacidad">
       <p>
         Este contenido es informativo y no sustituye la valoración médica. Toda cirugía conlleva
         riesgos que se explican en consulta.
@@ -889,10 +898,11 @@
         Sujeto a valoración médica y aprobación de financiamiento por Mend. Los resultados de la
         cirugía varían según cada paciente.
       </p>
-      <p>
-        <span class="pendiente">[PENDIENTE LEGAL: número de registro o autorización de
-        publicidad sanitaria ante COFEPRIS, si aplica]</span>
-      </p>
+      <!-- Pendiente legal: cuando exista el número de registro o autorización de publicidad
+           sanitaria ante COFEPRIS, descomentar la línea de abajo y poner el dato. Si la
+           revisión concluye que no aplica, bórrese este bloque completo.
+      <p>Registro de publicidad sanitaria COFEPRIS: NÚMERO.</p>
+      -->
       <p>&copy; <span id="anio">2026</span> Manga Gástrica Segura. Todos los derechos reservados.</p>
     </div>
   </div>

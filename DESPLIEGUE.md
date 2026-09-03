@@ -88,9 +88,14 @@ rutas. Dos razones:
   revisión de COFEPRIS está abierta. Un formulario que capta nombre, teléfono, ciudad y motivo
   de consulta de un paciente no debería ser indexable mientras eso siga así.
 
-**Al pasar al dominio definitivo hay que quitar ese encabezado**, o el sitio real tampoco se
-indexará. Está comentado en `netlify.toml`; en `vercel.json` no se pueden poner comentarios,
-así que queda anotado aquí.
+El bloqueo va **por duplicado**: la cabecera `X-Robots-Tag` de la plataforma y el
+`<meta name="robots" content="noindex, nofollow">` del propio HTML.
+
+**Al pasar al dominio definitivo hay que cambiar los dos**: poner el meta en `index.html` como
+`index, follow` y quitar el `X-Robots-Tag` de `vercel.json` y `netlify.toml`. Si se cambia solo
+uno, el sitio real sigue fuera de los buscadores. Está comentado junto al meta en `index.html`
+y en `netlify.toml`; en `vercel.json` no se pueden poner comentarios, así que queda anotado
+aquí.
 
 ### La documentación interna no se publica
 
