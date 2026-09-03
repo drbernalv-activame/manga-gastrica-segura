@@ -23,7 +23,7 @@
     }
   }
 
-  /* click_cta_valoracion y click_whatsapp */
+  /* click_cta_plan, click_cta_simulacion, click_cta_dudas y click_whatsapp */
   document.querySelectorAll('[data-evento]').forEach(function (el) {
     el.addEventListener('click', function () {
       evento(el.getAttribute('data-evento'), {

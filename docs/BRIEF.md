@@ -1,5 +1,12 @@
 # BRIEF PARA CLAUDE CODE — LANDING PAGE "MANGA GÁSTRICA SEGURA"
 
+> **Nota de vigencia (posterior al brief original).** El posicionamiento cambió: la
+> accesibilidad del programa proviene de un **esquema de financiamiento en mensualidades**,
+> no de una reducción de precio. Donde este documento hable de "ahorro", "optimizar costos"
+> o "precio más bajo", rige el copy publicado en `index.html` y el registro de
+> [`CAMBIOS.md`](../CAMBIOS.md). Los "más de 20 años" de este brief están en disputa con
+> otros materiales que dicen 18: en la página quedaron como `[VALIDAR]`.
+
 > Instrucción inicial para Claude Code: construye una landing page de una sola página, responsive (mobile-first), en español de México, siguiendo este brief al pie de la letra. Donde veas `[COMPLETAR]`, deja un placeholder visible y claramente marcado; NO inventes datos, precios, testimonios, cifras ni logotipos.
 
 ---

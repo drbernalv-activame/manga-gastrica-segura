@@ -1,6 +1,9 @@
 # PENDIENTES — Manga Gástrica Segura
 
 Registro de **todo lo que está marcado como `[COMPLETAR]`** en la landing page.
+Los marcadores `[VALIDAR]` del bloque de financiamiento (planes de pago, qué incluye el
+procedimiento y preguntas frecuentes sobre financiamiento) están listados aparte en
+[`CAMBIOS.md`](CAMBIOS.md).
 Nada de esto se inventó: la página muestra un marcador visible (fondo ámbar con borde
 punteado) en cada punto donde falta información oficial.
 
@@ -20,7 +23,7 @@ sin que el Dr. Héctor Bernal lo entregue y lo valide por escrito.
 | 5 | **Certificaciones y vigencia** (consejo que lo certifica) | Sección del médico | Dr. Bernal |
 | 6 | **Aviso de privacidad** (documento y URL) | Casilla de consentimiento del formulario y pie de página | Dr. Bernal / asesoría legal |
 | 7 | **Revisión de publicidad sanitaria (COFEPRIS)** y número de registro si aplica | Pie de página | Asesoría legal |
-| 8 | **Explicación real de cómo se logra la accesibilidad** | Sección "Más accesible no significa menos segura", tarjeta derecha | Dr. Bernal (debe validarla) |
+| 8 | **Explicación real de cómo se logra la accesibilidad** — ya redactada (esquema de financiamiento en mensualidades). Falta el nombre de la institución financiera: ver `[VALIDAR]` en `CAMBIOS.md` | Sección "Cómo logramos la accesibilidad", tarjeta derecha | Dr. Bernal (debe validarla) |
 | 9 | **Fotos reales**: Dr. Bernal con su equipo (hero) y retrato profesional | Hero y sección del médico | Dr. Bernal |
 
 > Mientras el formulario no tenga destino, `assets/js/analitica.js` **bloquea el envío** y muestra
@@ -43,12 +46,13 @@ sin que el Dr. Héctor Bernal lo entregue y lo valide por escrito.
 
 | # | Pendiente | Dónde está |
 |---|---|---|
-| 14 | Decisión: ¿se publica precio o no? | Sección "Inversión" |
-| 15 | Si se publica: monto oficial, qué incluye y qué **no** incluye | Sección "Inversión" y FAQ "¿Qué incluye el precio?" |
-| 16 | Opciones de pago o financiamiento **oficiales** (no publicar meses sin intereses, convenios ni coberturas de seguros sin documento que lo respalde) | FAQ "¿Hay financiamiento?" |
+| 14 | Monto de contado, mensualidades, anticipos, costo total, intereses/comisiones y CAT | Sección "Planes de pago" (tres tarjetas) |
+| 15 | Qué incluye y qué **no** incluye el procedimiento | Sección "Qué incluye tu procedimiento" |
+| 16 | Institución financiera, vigencia real de las condiciones y respuestas de las ocho preguntas de financiamiento | Sección "Preguntas frecuentes sobre el financiamiento" |
 
-Mientras no exista precio oficial, la sección ya funciona con el mensaje alterno del brief:
-*"Conoce la inversión y opciones de pago en tu valoración"* + botón de valoración.
+Todo esto está marcado en la página como `[VALIDAR: …]` y listado con archivo y línea en
+[`CAMBIOS.md`](CAMBIOS.md). **Regla de la página:** no se publica ningún monto, plazo, tasa,
+anticipo, mes sin intereses ni nombre de financiera sin documento que lo respalde.
 
 ---
 
@@ -83,13 +87,15 @@ Meta Pixel.
 
 ## 6. Decisiones tomadas al construir (para revisión del Dr.)
 
-- **No se publicó ningún número inventado.** Las únicas cifras en la página son las que el brief
-  entrega como reales: más de 20 años de experiencia y más de 4,000 cirugías.
+- **No se publicó ningún número inventado.** La única cifra publicada es "más de 4,000 cirugías".
+  Los años de experiencia quedaron como `[VALIDAR: 18 o más de 20 años]` porque los materiales
+  del proyecto se contradicen (ver `CAMBIOS.md`).
 - **No hay promesas de resultado.** No aparecen las frases "sin riesgos", "sin dolor",
   "100 % efectivo" ni cifras de kilos.
 - **La sección de riesgos tiene el mismo peso visual** que las demás y va antes del precio.
 - **El precio aparece hasta el final**, después de seguridad, médico, procedimiento, proceso y
-  riesgos, tal como pide el brief (principio de anclaje).
+  riesgos, tal como pide el brief (principio de anclaje). La única mención anterior es la línea
+  de mensualidad del hero, acompañada de su aviso legal.
 - **Tipografía del sistema en lugar de Google Fonts.** Evita peticiones externas y mejora
   Lighthouse. Si se prefiere Inter o Manrope como fuente de marca, hay que decidirlo y alojarla
   localmente (variable `--fuente` en `assets/css/styles.css`).
@@ -100,7 +106,7 @@ Meta Pixel.
 ## 7. Checklist previo a publicar
 
 - [ ] Los 22 puntos anteriores resueltos o retirados de la página de forma consciente.
-- [ ] Ningún `[COMPLETAR]` visible en producción: `grep -rn "COMPLETAR" index.html` debe salir vacío.
+- [ ] Ningún marcador visible en producción: `grep -rn "COMPLETAR\|VALIDAR" index.html` debe salir vacío.
 - [ ] Fotos reales cargadas, comprimidas (WebP) y con texto alternativo descriptivo.
 - [ ] Formulario probado de punta a punta: llega el dato y alguien lo contesta.
 - [ ] Enlace de WhatsApp probado desde un teléfono real, con el mensaje prellenado correcto.

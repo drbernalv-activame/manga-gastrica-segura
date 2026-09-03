@@ -6,7 +6,7 @@
 
 <!-- SEO — la ciudad debe confirmarse antes de publicar (ver PENDIENTES.md) -->
 <title>Manga Gástrica Segura en [COMPLETAR Ciudad] | Dr. Héctor Bernal</title>
-<meta name="description" content="No sacrificamos seguridad. Hicimos la cirugía más accesible. Manga gástrica con más de 20 años de experiencia y más de 4,000 cirugías. Agenda tu valoración.">
+<meta name="description" content="La calidad no cambia. La forma de pagar, sí. Manga gástrica con [VALIDAR: 18 o más de 20 años] de experiencia y más de 4,000 cirugías, ahora con planes de pago en mensualidades. Sujeto a valoración médica y aprobación.">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="[COMPLETAR URL definitiva]">
 
@@ -14,8 +14,8 @@
 <meta property="og:type" content="website">
 <meta property="og:locale" content="es_MX">
 <meta property="og:site_name" content="Manga Gástrica Segura">
-<meta property="og:title" content="Manga gástrica segura y accesible | Dr. Héctor Bernal">
-<meta property="og:description" content="No sacrificamos seguridad. Hicimos la cirugía más accesible. Conoce qué hace segura una manga gástrica y agenda tu valoración.">
+<meta property="og:title" content="Manga Gástrica Segura | La calidad no cambia. La forma de pagar, sí.">
+<meta property="og:description" content="No bajamos el estándar: cambiamos la forma de pagarlo. Conoce qué hace segura una manga gástrica y cómo se distribuye el costo en mensualidades.">
 <meta property="og:url" content="[COMPLETAR URL definitiva]">
 <meta property="og:image" content="[COMPLETAR URL de imagen 1200x630 con foto real]">
 <meta name="twitter:card" content="summary_large_image">
@@ -24,7 +24,8 @@
      Pega aquí el script de Google Analytics 4 con el ID [COMPLETAR G-XXXXXXXXXX]
      y el de Meta Pixel con el ID [COMPLETAR ID de Meta Pixel].
      El archivo assets/js/analitica.js ya envía estos eventos en cuanto existan:
-     click_cta_valoracion, click_whatsapp, form_submit y faq_open. -->
+     click_cta_plan, click_cta_simulacion, click_cta_dudas, click_whatsapp,
+     form_submit y faq_open. -->
 
 <link rel="stylesheet" href="assets/css/styles.css">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%230b4250'/><text x='50' y='68' font-size='56' font-family='sans-serif' font-weight='700' fill='white' text-anchor='middle'>M</text></svg>">
@@ -40,28 +41,37 @@
       Manga Gástrica Segura
       <span>Dr. Héctor Bernal y equipo</span>
     </a>
-    <a class="boton boton--primario" href="#valoracion" data-evento="click_cta_valoracion" data-ubicacion="encabezado">Agendar valoración</a>
+    <a class="boton boton--primario" href="#planes" data-evento="click_cta_plan" data-ubicacion="encabezado">Conoce tu plan</a>
   </div>
 </header>
 
 <main id="contenido">
 
-  <!-- ============ 4.1 HERO ============ -->
+  <!-- ============ 1. HERO ============ -->
   <section class="hero" id="inicio">
     <div class="envoltura hero__fila">
       <div>
-        <h1>Manga gástrica segura y accesible. Sin sacrificar lo que protege tu vida.</h1>
+        <h1>
+          <span class="hero__marca">Manga Gástrica Segura</span>
+          La calidad no cambia. La forma de pagar, sí.
+        </h1>
         <p class="hero__sub">
-          Más de 20 años de experiencia y más de 4,000 cirugías. Hicimos la cirugía más accesible
-          cuidando cada elemento que hace segura una manga gástrica: valoración, equipo, hospital,
-          insumos y seguimiento.
+          <span class="pendiente">[VALIDAR: 18 / más de 20]</span> años de experiencia
+          y más de 4,000 cirugías.
+        </p>
+        <p class="hero__sub">
+          Ahora con planes desde <span class="pendiente">[VALIDAR: $ mensualidad]</span> al mes.<span aria-hidden="true">*</span>
         </p>
         <div class="grupo-botones">
-          <a class="boton boton--primario" href="#valoracion" data-evento="click_cta_valoracion" data-ubicacion="hero">Agendar mi valoración</a>
+          <a class="boton boton--primario" href="#planes" data-evento="click_cta_plan" data-ubicacion="hero">Conoce tu plan personalizado</a>
           <a class="boton boton--secundario"
              href="https://wa.me/[COMPLETAR]?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20una%20valoraci%C3%B3n%20para%20manga%20g%C3%A1strica."
-             data-evento="click_whatsapp" data-ubicacion="hero" rel="noopener">Hablar por WhatsApp</a>
+             data-evento="click_whatsapp" data-ubicacion="hero" rel="noopener">Resuelve tus dudas por WhatsApp</a>
         </div>
+        <p class="hero__legal">
+          *Sujeto a valoración médica y aprobación. Aplican plazo, anticipo, intereses,
+          comisiones y condiciones. Consulta costo total y qué incluye el procedimiento.
+        </p>
         <p class="hero__pie">
           Número de WhatsApp: <span class="pendiente">[COMPLETAR número]</span>
         </p>
@@ -82,8 +92,8 @@
     <div class="envoltura">
       <ul class="confianza__lista">
         <li>
-          <span class="confianza__dato">20+</span>
-          <span class="confianza__texto">años de experiencia</span>
+          <span class="confianza__dato pendiente">[VALIDAR: 18 o más de 20 años]</span>
+          <span class="confianza__texto">de experiencia</span>
         </li>
         <li>
           <span class="confianza__dato">4,000+</span>
@@ -101,7 +111,7 @@
     </div>
   </section>
 
-  <!-- ============ 4.2 EMPATÍA ============ -->
+  <!-- ============ EMPATÍA ============ -->
   <section class="seccion" aria-labelledby="t-empatia">
     <div class="envoltura">
       <div class="seccion__intro">
@@ -119,50 +129,54 @@
     </div>
   </section>
 
-  <!-- ============ 4.3 ACCESIBLE ≠ MENOS SEGURA ============ -->
-  <section class="seccion seccion--hueso" aria-labelledby="t-accesible">
-    <div class="envoltura">
-      <div class="seccion__intro">
-        <span class="etiqueta-seccion">La duda más común</span>
-        <h2 id="t-accesible">Más accesible no significa menos segura</h2>
+  <!-- ============ 2. EXPERIENCIA ============ -->
+  <section class="seccion seccion--hueso" aria-labelledby="t-doctor">
+    <div class="envoltura perfil">
+      <figure>
+        <div class="pendiente pendiente--media">
+          [COMPLETAR] Foto profesional del Dr. Héctor Bernal (retrato real, en consultorio o quirófano).
+        </div>
+      </figure>
+
+      <div>
+        <span class="etiqueta-seccion">Experiencia</span>
+        <h2 id="t-doctor">El Dr. Héctor Bernal y su equipo</h2>
         <p>
-          Si un precio más bajo te hace desconfiar, tu duda es razonable. Por eso aquí no te pedimos
-          que confíes: te mostramos qué cosas nunca se recortan y de dónde sí viene el ahorro.
+          <span class="pendiente">[VALIDAR: 18 o más de 20 años]</span> dedicados a la cirugía y al
+          tratamiento de la obesidad. Más de 4,000 procedimientos realizados, con experiencia
+          específica en manga gástrica.
         </p>
+        <p>
+          La experiencia reduce riesgos y mejora decisiones; no garantiza ausencia de complicaciones.
+          Preferimos decírtelo así, con claridad, desde el primer momento.
+        </p>
+
+        <ul class="perfil__datos">
+          <li>
+            <strong>Cédula profesional y especialidad</strong>
+            <span class="pendiente">[COMPLETAR — dato verificable en el Registro Nacional de Profesionistas]</span>
+          </li>
+          <li>
+            <strong>Certificaciones</strong>
+            <span class="pendiente">[COMPLETAR — consejo o consejos que lo certifican y vigencia, verificables]</span>
+          </li>
+          <li>
+            <strong>Equipo que te acompaña</strong>
+            Anestesiología, enfermería, nutrición, psicología y seguimiento clínico.
+            <span class="pendiente">[COMPLETAR nombres y roles si se desea publicarlos]</span>
+          </li>
+          <li>
+            <strong>Dónde se realiza la cirugía</strong>
+            <span class="pendiente">[COMPLETAR hospital y ciudad]</span>
+          </li>
+        </ul>
+
+        <p class="destacado">Experiencia, equipo, insumos, protocolos y seguimiento.</p>
       </div>
-
-      <div class="rejilla-2">
-        <div class="tarjeta tarjeta--no-recortamos">
-          <h3>Lo que NUNCA recortamos</h3>
-          <ul class="lista-marcada">
-            <li><strong>Insumos de calidad.</strong> Grapadoras y cargas, es decir, el instrumento que corta y sella el estómago.</li>
-            <li><strong>Estudios preoperatorios necesarios.</strong> Análisis y valoraciones antes de la cirugía.</li>
-            <li><strong>Valoración completa del paciente.</strong> Historia clínica, riesgo individual y enfermedades asociadas.</li>
-            <li><strong>Hospital con infraestructura adecuada.</strong> Quirófano equipado y capacidad de atención si algo se complica.</li>
-            <li><strong>Equipo quirúrgico completo.</strong> Cirujano, anestesiólogo y enfermería. Nadie sobra en el quirófano.</li>
-            <li><strong>Seguimiento posterior.</strong> Consultas médicas y nutricionales después de la cirugía.</li>
-          </ul>
-        </div>
-
-        <div class="tarjeta tarjeta--accesibilidad">
-          <h3>Cómo logramos la accesibilidad</h3>
-          <p class="pendiente pendiente--bloque">
-            [COMPLETAR con la explicación real: volumen de cirugías, convenios hospitalarios,
-            procesos optimizados, etc. — el Dr. Bernal debe validar y autorizar esta redacción
-            antes de publicar. No se redacta nada aquí sin su confirmación.]
-          </p>
-          <p class="nota">
-            Esta sección es el corazón de la promesa. Debe explicar el origen real del ahorro,
-            con datos que se puedan sostener frente a un paciente que pregunte.
-          </p>
-        </div>
-      </div>
-
-      <p class="destacado">Optimizamos costos. No optimizamos tu seguridad.</p>
     </div>
   </section>
 
-  <!-- ============ 4.4 FÓRMULA DE LA SEGURIDAD ============ -->
+  <!-- ============ 3. SEGURIDAD ============ -->
   <section class="seccion seccion--azul" aria-labelledby="t-formula">
     <div class="envoltura">
       <div class="seccion__intro">
@@ -245,56 +259,12 @@
       <p class="destacado">La seguridad comienza antes de entrar al quirófano.</p>
 
       <div class="grupo-botones">
-        <a class="boton boton--primario" href="#valoracion" data-evento="click_cta_valoracion" data-ubicacion="formula">Agendar mi valoración</a>
+        <a class="boton boton--secundario" href="#faq" data-evento="click_cta_dudas" data-ubicacion="seguridad">Resuelve tus dudas</a>
       </div>
     </div>
   </section>
 
-  <!-- ============ 4.5 EL DR. BERNAL Y SU EQUIPO ============ -->
-  <section class="seccion" aria-labelledby="t-doctor">
-    <div class="envoltura perfil">
-      <figure>
-        <div class="pendiente pendiente--media">
-          [COMPLETAR] Foto profesional del Dr. Héctor Bernal (retrato real, en consultorio o quirófano).
-        </div>
-      </figure>
-
-      <div>
-        <span class="etiqueta-seccion">Quién te va a operar</span>
-        <h2 id="t-doctor">El Dr. Héctor Bernal y su equipo</h2>
-        <p>
-          Más de 20 años dedicados a la cirugía y al tratamiento de la obesidad. Más de 4,000
-          procedimientos realizados, con experiencia específica en manga gástrica.
-        </p>
-        <p>
-          La experiencia reduce riesgos y mejora decisiones; no garantiza ausencia de complicaciones.
-          Preferimos decírtelo así, con claridad, desde el primer momento.
-        </p>
-
-        <ul class="perfil__datos">
-          <li>
-            <strong>Cédula profesional y especialidad</strong>
-            <span class="pendiente">[COMPLETAR — dato verificable en el Registro Nacional de Profesionistas]</span>
-          </li>
-          <li>
-            <strong>Certificaciones</strong>
-            <span class="pendiente">[COMPLETAR — consejo o consejos que lo certifican y vigencia, verificables]</span>
-          </li>
-          <li>
-            <strong>Equipo que te acompaña</strong>
-            Anestesiología, enfermería, nutrición, psicología y seguimiento clínico.
-            <span class="pendiente">[COMPLETAR nombres y roles si se desea publicarlos]</span>
-          </li>
-          <li>
-            <strong>Dónde se realiza la cirugía</strong>
-            <span class="pendiente">[COMPLETAR hospital y ciudad]</span>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ 4.6 ¿QUÉ ES LA MANGA GÁSTRICA? ============ -->
+  <!-- ============ ¿QUÉ ES LA MANGA GÁSTRICA? ============ -->
   <section class="seccion seccion--hueso" aria-labelledby="t-que-es">
     <div class="envoltura">
       <div class="seccion__intro">
@@ -374,7 +344,7 @@
     </div>
   </section>
 
-  <!-- ============ 4.7 PROCESO ============ -->
+  <!-- ============ PROCESO ============ -->
   <section class="seccion" aria-labelledby="t-proceso">
     <div class="envoltura">
       <div class="seccion__intro">
@@ -415,12 +385,10 @@
           <p>Revisiones periódicas para cuidar tus resultados con el tiempo y actuar temprano si algo cambia.</p>
         </li>
       </ol>
-
-      <p class="destacado">La cirugía dura unas horas. El acompañamiento continúa después.</p>
     </div>
   </section>
 
-  <!-- ============ 4.8 RIESGOS ============ -->
+  <!-- ============ RIESGOS ============ -->
   <section class="seccion seccion--hueso" aria-labelledby="t-riesgos">
     <div class="envoltura">
       <div class="seccion__intro">
@@ -449,7 +417,7 @@
     </div>
   </section>
 
-  <!-- ============ 4.9 RESULTADOS Y EXPECTATIVAS ============ -->
+  <!-- ============ RESULTADOS Y EXPECTATIVAS ============ -->
   <section class="seccion" aria-labelledby="t-resultados">
     <div class="envoltura">
       <div class="seccion__intro">
@@ -476,7 +444,7 @@
     </div>
   </section>
 
-  <!-- ============ 4.10 TESTIMONIOS ============
+  <!-- ============ TESTIMONIOS ============
        IMPORTANTE ANTES DE PUBLICAR: si al momento del lanzamiento no existen testimonios
        reales con consentimiento escrito, ELIMINA esta sección completa del HTML.
        No debe publicarse con el placeholder visible ni con testimonios ficticios.
@@ -499,8 +467,216 @@
     </div>
   </section>
 
-  <!-- ============ 4.11 FAQ ============ -->
-  <section class="seccion" aria-labelledby="t-faq">
+  <!-- ============ 4. ACOMPAÑAMIENTO ============ -->
+  <section class="seccion" id="acompanamiento" aria-labelledby="t-acompanamiento">
+    <div class="envoltura">
+      <div class="seccion__intro">
+        <span class="etiqueta-seccion">Después del quirófano</span>
+        <h2 id="t-acompanamiento">La atención no termina al salir del quirófano</h2>
+        <p>
+          Una intervención de largo plazo, acompañada por un equipo con experiencia.
+          El seguimiento no es un extra: es la parte del tratamiento que sostiene tus
+          resultados con el tiempo.
+        </p>
+      </div>
+
+      <ul class="lista-marcada lista-incluye">
+        <li>
+          <strong>Consultas médicas de control.</strong> Revisión de tu evolución y de los signos
+          de alarma que debes reconocer.
+          <span class="pendiente">[VALIDAR: número de consultas y en qué momentos]</span>
+        </li>
+        <li>
+          <strong>Seguimiento nutricional por etapas.</strong> Primero líquidos, después texturas
+          suaves y finalmente sólidos, con prioridad en proteína e hidratación.
+        </li>
+        <li>
+          <strong>Suplementación y estudios de control.</strong> Para detectar a tiempo deficiencias
+          de vitaminas o minerales.
+          <span class="pendiente">[VALIDAR: estudios de control incluidos y su frecuencia]</span>
+        </li>
+        <li>
+          <strong>Canal de contacto con el equipo.</strong> A quién escribir y en qué horario si
+          algo no va bien.
+          <span class="pendiente">[VALIDAR: canal y horario de atención]</span>
+        </li>
+        <li>
+          <strong>Duración del acompañamiento.</strong>
+          <span class="pendiente">[VALIDAR: duración total del seguimiento incluido]</span>
+        </li>
+      </ul>
+
+      <p class="destacado">La cirugía dura unas horas. El acompañamiento continúa después.</p>
+    </div>
+  </section>
+
+  <!-- ============ 5. CÓMO LOGRAMOS LA ACCESIBILIDAD ============ -->
+  <section class="seccion seccion--hueso" id="accesibilidad" aria-labelledby="t-accesible">
+    <div class="envoltura">
+      <div class="seccion__intro">
+        <span class="etiqueta-seccion">La duda más común</span>
+        <h2 id="t-accesible">Cómo logramos la accesibilidad</h2>
+        <p>
+          Es la pregunta que más nos hacen y merece una respuesta completa: qué elementos
+          del procedimiento no se modifican y en qué consiste realmente el cambio.
+        </p>
+      </div>
+
+      <div class="rejilla-2">
+        <div class="tarjeta tarjeta--no-recortamos">
+          <h3>Lo que NUNCA recortamos</h3>
+          <ul class="lista-marcada">
+            <li><strong>Insumos de calidad.</strong> Grapadoras y cargas, es decir, el instrumento que corta y sella el estómago.</li>
+            <li><strong>Estudios preoperatorios necesarios.</strong> Análisis y valoraciones antes de la cirugía.</li>
+            <li><strong>Valoración completa del paciente.</strong> Historia clínica, riesgo individual y enfermedades asociadas.</li>
+            <li><strong>Hospital con infraestructura adecuada.</strong> Quirófano equipado y capacidad de atención si algo se complica.</li>
+            <li><strong>Equipo quirúrgico completo.</strong> Cirujano, anestesiólogo y enfermería. Nadie sobra en el quirófano.</li>
+            <li><strong>Seguimiento posterior.</strong> Consultas médicas y nutricionales después de la cirugía.</li>
+          </ul>
+        </div>
+
+        <div class="tarjeta tarjeta--accesibilidad">
+          <h3>La respuesta, sin rodeos</h3>
+          <p>
+            La respuesta corta es que no bajamos el estándar: cambiamos la forma de pagarlo.
+          </p>
+          <p>
+            Durante años, el principal obstáculo para muchos pacientes no fue la decisión de
+            operarse, sino tener que cubrir el procedimiento completo en un solo pago. Por eso
+            trabajamos con <span class="pendiente">[VALIDAR: institución financiera / nombre]</span>
+            que permite distribuir el costo en mensualidades, con condiciones conocidas desde el
+            inicio: plazo, anticipo, costo total y qué incluye el procedimiento.
+          </p>
+          <p>
+            Lo que se paga sigue siendo el mismo sistema: el mismo cirujano, el mismo equipo
+            quirúrgico, el mismo hospital, los mismos insumos y el mismo protocolo de valoración
+            y seguimiento. Ninguno de esos elementos se ajustó para hacer la cirugía más accesible.
+          </p>
+          <p>
+            Y el orden no cambia: primero se determina si eres candidato; después se elige cómo
+            financiarlo.
+          </p>
+        </div>
+      </div>
+
+      <p class="destacado">Más accesible no significa menos segura.</p>
+    </div>
+  </section>
+
+  <!-- ============ 6. PLANES DE PAGO ============ -->
+  <section class="seccion" id="planes" aria-labelledby="t-planes">
+    <div class="envoltura">
+      <div class="seccion__intro">
+        <span class="etiqueta-seccion">Planes de pago</span>
+        <h2 id="t-planes">Quizá no fue falta de decisión. Tal vez el obstáculo era tener que cubrir todo en un solo pago.</h2>
+        <p>
+          Ahora puedes distribuirlo en mensualidades y conservar el mismo equipo, protocolo y
+          estándar de atención.
+        </p>
+      </div>
+
+      <div class="rejilla-3">
+        <article class="tarjeta plan">
+          <h3>Pago de contado</h3>
+          <p class="plan__ventaja">
+            Mejor costo total
+            <span class="pendiente">[VALIDAR: solo si existe un descuento real por pago de contado]</span>
+          </p>
+          <dl class="plan__datos">
+            <div><dt>Mensualidades</dt><dd>No aplica: es un solo pago</dd></div>
+            <div><dt>Anticipo</dt><dd>No aplica</dd></div>
+            <div><dt>Costo total</dt><dd><span class="pendiente">[VALIDAR: monto]</span></dd></div>
+            <div><dt>Intereses y comisiones</dt><dd>No aplica</dd></div>
+            <div><dt>Dónde aplica</dt><dd><span class="pendiente">[VALIDAR: formas de pago aceptadas: efectivo, transferencia, tarjetas o instituciones participantes]</span></dd></div>
+          </dl>
+        </article>
+
+        <article class="tarjeta plan">
+          <h3>Plazo intermedio</h3>
+          <p class="plan__ventaja">Equilibrio entre mensualidad y costo total</p>
+          <dl class="plan__datos">
+            <div><dt>Mensualidades</dt><dd><span class="pendiente">[VALIDAR: número de mensualidades]</span></dd></div>
+            <div><dt>Mensualidad</dt><dd><span class="pendiente">[VALIDAR: monto de la mensualidad]</span></dd></div>
+            <div><dt>Anticipo</dt><dd><span class="pendiente">[VALIDAR: monto del anticipo]</span></dd></div>
+            <div><dt>Costo total</dt><dd><span class="pendiente">[VALIDAR: costo total del plan]</span></dd></div>
+            <div><dt>Intereses y comisiones</dt><dd><span class="pendiente">[VALIDAR: tasa de interés, comisiones y CAT cuando aplique]</span></dd></div>
+            <div><dt>Dónde aplica</dt><dd><span class="pendiente">[VALIDAR: tarjetas o instituciones participantes]</span></dd></div>
+          </dl>
+        </article>
+
+        <article class="tarjeta plan">
+          <h3>Plazo largo</h3>
+          <p class="plan__ventaja">Mensualidad más accesible</p>
+          <dl class="plan__datos">
+            <div><dt>Mensualidades</dt><dd><span class="pendiente">[VALIDAR: número de mensualidades]</span></dd></div>
+            <div><dt>Mensualidad</dt><dd><span class="pendiente">[VALIDAR: monto de la mensualidad]</span></dd></div>
+            <div><dt>Anticipo</dt><dd><span class="pendiente">[VALIDAR: monto del anticipo]</span></dd></div>
+            <div><dt>Costo total</dt><dd><span class="pendiente">[VALIDAR: costo total del plan]</span></dd></div>
+            <div><dt>Intereses y comisiones</dt><dd><span class="pendiente">[VALIDAR: tasa de interés, comisiones y CAT cuando aplique]</span></dd></div>
+            <div><dt>Dónde aplica</dt><dd><span class="pendiente">[VALIDAR: tarjetas o instituciones participantes]</span></dd></div>
+          </dl>
+        </article>
+      </div>
+
+      <p class="aviso-legal">
+        Sujeto a valoración médica y a aprobación crediticia. Aplican plazo, anticipo, intereses, comisiones y condiciones de contratación. Consulta el costo total y qué incluye el procedimiento antes de firmar. Las condiciones las otorga
+        <span class="pendiente">[VALIDAR: institución financiera / nombre]</span> y tienen una
+        vigencia determinada: <span class="pendiente">[VALIDAR: vigencia real de las condiciones]</span>.
+        El orden no cambia: primero la valoración médica, después el plan de pago.
+      </p>
+
+      <div class="grupo-botones">
+        <a class="boton boton--primario" href="#valoracion" data-evento="click_cta_simulacion" data-ubicacion="planes">Solicita una simulación personalizada</a>
+        <a class="boton boton--secundario" href="#faq-financiamiento" data-evento="click_cta_dudas" data-ubicacion="planes">Resuelve tus dudas</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 7. QUÉ INCLUYE TU PROCEDIMIENTO ============ -->
+  <section class="seccion seccion--hueso" id="incluye" aria-labelledby="t-incluye">
+    <div class="envoltura">
+      <div class="seccion__intro">
+        <span class="etiqueta-seccion">Sin letras chiquitas</span>
+        <h2 id="t-incluye">Qué incluye tu procedimiento</h2>
+        <p>Tu procedimiento incluye:</p>
+      </div>
+
+      <ul class="lista-marcada lista-incluye">
+        <li>
+          <strong>Evaluación preoperatoria.</strong>
+          <span class="pendiente">[VALIDAR: estudios y valoraciones que incluye]</span>
+        </li>
+        <li>
+          <strong>Equipo quirúrgico.</strong> Cirujano, anestesiólogo y enfermería.
+        </li>
+        <li>
+          <strong>Protocolo de seguridad.</strong> Verificaciones antes, durante y después de la cirugía.
+        </li>
+        <li>
+          <strong>Hospitalización.</strong>
+          <span class="pendiente">[VALIDAR: días de hospitalización incluidos]</span>
+        </li>
+        <li>
+          <strong>Insumos quirúrgicos.</strong> Grapadoras y cargas, es decir, el instrumento que
+          corta y sella el estómago.
+        </li>
+        <li>
+          <strong>Seguimiento definido.</strong>
+          <span class="pendiente">[VALIDAR: duración y número de consultas]</span>
+        </li>
+      </ul>
+
+      <p class="nota">
+        Consulta qué estudios, medicamentos o atenciones adicionales se cotizan por separado.
+        <span class="pendiente">[VALIDAR: lista de exclusiones]</span>
+      </p>
+
+      <p class="aviso-legal">Sujeto a valoración médica y a aprobación crediticia. Aplican plazo, anticipo, intereses, comisiones y condiciones de contratación. Consulta el costo total y qué incluye el procedimiento antes de firmar.</p>
+    </div>
+  </section>
+
+  <!-- ============ FAQ GENERAL ============ -->
+  <section class="seccion" id="faq" aria-labelledby="t-faq">
     <div class="envoltura">
       <div class="seccion__intro">
         <span class="etiqueta-seccion">Dudas frecuentes</span>
@@ -561,24 +737,6 @@
         </details>
 
         <details class="faq__item">
-          <summary>¿Qué incluye el precio?</summary>
-          <div class="faq__respuesta">
-            <p class="pendiente">[COMPLETAR lista oficial de lo que incluye: honorarios, hospital,
-            insumos, estudios, consultas de seguimiento, etc. Solo información autorizada por el
-            Dr. Bernal.]</p>
-          </div>
-        </details>
-
-        <details class="faq__item">
-          <summary>¿Hay financiamiento?</summary>
-          <div class="faq__respuesta">
-            <p class="pendiente">[COMPLETAR solo con opciones oficiales de pago o financiamiento,
-            si existen. No se publican meses sin intereses, convenios ni coberturas de seguros sin
-            confirmación documentada.]</p>
-          </div>
-        </details>
-
-        <details class="faq__item">
           <summary>¿Cirugía o medicamentos tipo GLP-1?</summary>
           <div class="faq__respuesta">
             <p>No son rivales. Los medicamentos tipo GLP-1, que imitan hormonas del intestino que
@@ -600,47 +758,90 @@
     </div>
   </section>
 
-  <!-- ============ 4.12 INVERSIÓN ============ -->
-  <section class="seccion seccion--hueso" aria-labelledby="t-inversion">
+  <!-- ============ 8. PREGUNTAS FRECUENTES SOBRE EL FINANCIAMIENTO ============ -->
+  <section class="seccion seccion--hueso" id="faq-financiamiento" aria-labelledby="t-faq-fin">
     <div class="envoltura">
       <div class="seccion__intro">
-        <span class="etiqueta-seccion">Inversión</span>
-        <h2 id="t-inversion">Hablemos del costo, ahora que ya sabes qué incluye</h2>
+        <span class="etiqueta-seccion">Financiamiento</span>
+        <h2 id="t-faq-fin">Preguntas frecuentes sobre el financiamiento</h2>
         <p>
-          Nuestro objetivo fue hacer la cirugía más accesible sin reducir los elementos esenciales
-          para su seguridad.
+          Las condiciones se te entregan por escrito antes de firmar. Si algo no queda claro aquí,
+          pregúntalo: es tu derecho conocerlo completo.
         </p>
       </div>
 
-      <div class="inversion__tarjeta">
-        <h3>Conoce la inversión y las opciones de pago en tu valoración</h3>
-        <p>
-          Preferimos darte una cifra después de conocer tu caso, porque el costo depende de tu
-          valoración, de los estudios que necesites y de tus condiciones de salud. Así evitamos
-          darte un número que después cambie.
-        </p>
-        <p class="pendiente pendiente--bloque">
-          [COMPLETAR — solo información oficial] Si se decide publicar precio, agregar aquí:
-          monto, qué incluye exactamente y qué no incluye, y opciones de pago autorizadas.
-          Mientras no exista esa información validada, esta tarjeta se queda con el mensaje de
-          arriba y el botón de valoración.
-        </p>
-        <div class="grupo-botones">
-          <a class="boton boton--primario" href="#valoracion" data-evento="click_cta_valoracion" data-ubicacion="inversion">Agendar mi valoración</a>
-        </div>
+      <div class="faq">
+        <details class="faq__item">
+          <summary>¿Qué sucede si no soy candidato?</summary>
+          <div class="faq__respuesta">
+            <p class="pendiente">[VALIDAR: respuesta]</p>
+          </div>
+        </details>
+
+        <details class="faq__item">
+          <summary>¿El anticipo es reembolsable?</summary>
+          <div class="faq__respuesta">
+            <p class="pendiente">[VALIDAR: respuesta]</p>
+          </div>
+        </details>
+
+        <details class="faq__item">
+          <summary>¿Puedo adelantar pagos?</summary>
+          <div class="faq__respuesta">
+            <p class="pendiente">[VALIDAR: respuesta]</p>
+          </div>
+        </details>
+
+        <details class="faq__item">
+          <summary>¿Qué ocurre si se pospone la cirugía?</summary>
+          <div class="faq__respuesta">
+            <p class="pendiente">[VALIDAR: respuesta]</p>
+          </div>
+        </details>
+
+        <details class="faq__item">
+          <summary>¿Quién proporciona el financiamiento?</summary>
+          <div class="faq__respuesta">
+            <p class="pendiente">[VALIDAR: respuesta]</p>
+          </div>
+        </details>
+
+        <details class="faq__item">
+          <summary>¿La mensualidad puede cambiar?</summary>
+          <div class="faq__respuesta">
+            <p class="pendiente">[VALIDAR: respuesta]</p>
+          </div>
+        </details>
+
+        <details class="faq__item">
+          <summary>¿Hay penalización o intereses moratorios?</summary>
+          <div class="faq__respuesta">
+            <p class="pendiente">[VALIDAR: respuesta]</p>
+          </div>
+        </details>
+
+        <details class="faq__item">
+          <summary>¿Primero se decide si soy candidato o primero el financiamiento?</summary>
+          <div class="faq__respuesta">
+            <p>Primero. La valoración médica determina si la manga gástrica es la mejor opción para ti. Solo después se elige cómo financiarla.</p>
+          </div>
+        </details>
       </div>
+
+      <p class="aviso-legal">Sujeto a valoración médica y a aprobación crediticia. Aplican plazo, anticipo, intereses, comisiones y condiciones de contratación. Consulta el costo total y qué incluye el procedimiento antes de firmar.</p>
     </div>
   </section>
 
-  <!-- ============ 4.13 CTA FINAL + FORMULARIO ============ -->
+  <!-- ============ 9. CTA FINAL + FORMULARIO ============ -->
   <section class="seccion seccion--azul" id="valoracion" aria-labelledby="t-valoracion">
     <div class="envoltura">
       <div class="seccion__intro">
         <span class="etiqueta-seccion">El siguiente paso</span>
         <h2 id="t-valoracion">El siguiente paso no es operarte. Es saber si esta cirugía es la opción correcta para ti.</h2>
         <p>
-          Déjanos tus datos y te contactamos para agendar tu valoración. Si la cirugía no es lo
-          que necesitas, también te lo vamos a decir.
+          Déjanos tus datos y te contactamos para agendar tu valoración y, si eres candidato,
+          prepararte una simulación de pago con plazo, anticipo, mensualidad y costo total.
+          Si la cirugía no es lo que necesitas, también te lo vamos a decir.
         </p>
       </div>
 
@@ -692,6 +893,7 @@
             <option value="anestesia">La anestesia</option>
             <option value="dolor">El dolor</option>
             <option value="costo">El costo</option>
+            <option value="financiamiento">El financiamiento y las mensualidades</option>
             <option value="recuperar_peso">Recuperar el peso después</option>
             <option value="alimentacion">Cómo voy a comer después</option>
             <option value="cicatrices">Las cicatrices</option>
@@ -714,21 +916,26 @@
           </label>
         </div>
 
-        <button type="submit" class="boton boton--primario">Solicitar valoración</button>
+        <button type="submit" class="boton boton--primario">Solicita una simulación personalizada</button>
         <p class="formulario__pie">Sin compromiso. Te contactamos para orientarte, no para presionarte.</p>
+        <p class="aviso-legal">Sujeto a valoración médica y a aprobación crediticia. Aplican plazo, anticipo, intereses, comisiones y condiciones de contratación. Consulta el costo total y qué incluye el procedimiento antes de firmar.</p>
       </form>
 
       <div class="grupo-botones">
         <a class="boton boton--secundario"
            href="https://wa.me/[COMPLETAR]?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20una%20valoraci%C3%B3n%20para%20manga%20g%C3%A1strica."
-           data-evento="click_whatsapp" data-ubicacion="formulario" rel="noopener">¿Prefieres WhatsApp? Escríbenos</a>
+           data-evento="click_whatsapp" data-ubicacion="formulario" rel="noopener">Resuelve tus dudas por WhatsApp</a>
       </div>
+
+      <p class="formulario__pie">
+        ¿Prefieres empezar por la consulta? En esta misma solicitud agendamos tu valoración médica.
+      </p>
     </div>
   </section>
 
 </main>
 
-<!-- ============ 4.14 FOOTER ============ -->
+<!-- ============ FOOTER ============ -->
 <footer class="pie">
   <div class="envoltura">
     <div class="pie__rejilla">
@@ -853,6 +1060,14 @@
           "acceptedAnswer": {
             "@type": "Answer",
             "text": "Sí, puede ocurrir. El cuerpo tiene mecanismos que favorecen recuperar peso después de perderlo. No es falta de voluntad: es fisiología. Por eso el seguimiento médico y nutricional a largo plazo forma parte del tratamiento."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Primero se decide si soy candidato o primero el financiamiento?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Primero. La valoración médica determina si la manga gástrica es la mejor opción para ti. Solo después se elige cómo financiarla."
           }
         },
         {
