@@ -1,0 +1,4 @@
+# Documentación interna del proyecto: no se publica.
+# Contiene pendientes legales, notas de trabajo y datos de contacto internos.
+*.md
+docs/
