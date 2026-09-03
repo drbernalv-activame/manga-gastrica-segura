@@ -18,6 +18,7 @@ assets/js/analitica.js   Mejora progresiva: eventos, acordeón en escritorio, av
 assets/img/              Fotos reales (pendientes de entrega)
 docs/BRIEF.md            Brief de contenido, psicología y diseño que rige la página
 PENDIENTES-CONSOLIDADO.md Los 80 pendientes agrupados por responsable (empieza aquí)
+CONSULTA-DR-BERNAL.md    Extracto de 15 preguntas para el Dr. Bernal
 PENDIENTES.md            Registro original de los [COMPLETAR] y su contexto
 CAMBIOS.md               Ajuste de copy y estructura (financiamiento) y sus [VALIDAR]
 ```

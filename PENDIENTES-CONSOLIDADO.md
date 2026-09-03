@@ -16,8 +16,8 @@ Actualizado: 2026-09-03. Archivos relacionados: `PENDIENTES.md` (registro origin
 
 | Prioridad | Significado |
 |---|---|
-| 🔴 **Bloqueante** | Sin este dato la página no puede publicarse. |
-| 🟠 **Decisión bloqueante** | Se resuelve respondiendo **o** retirando el contenido de la página. Hay que decidir; no se puede dejar así. |
+| 🔴 **Bloqueante** | **Falta un dato.** Alguien lo tiene; hay que ir por él. Sin el dato la página no puede publicarse. |
+| 🟠 **Decisión** | **Falta una decisión**, no un dato. Se resuelve publicando el contenido **o** retirándolo de la página. No se puede dejar como está, y las dos salidas son válidas. |
 | 🟢 **Deseable** | Mejora la página. Si no llega, se retira ese contenido y se publica igual. |
 
 La columna **Una respuesta** marca los puntos donde **una sola decisión apaga varios
@@ -31,7 +31,7 @@ marcadores a la vez**. Son los de mayor rendimiento: atenderlos primero.
 |---|---|---|---|---|---|
 | Dr. Bernal (clínico) | 29 | 26 | 2 | 1 | — |
 | Financiera / administración | 34 | 34 | 0 | 0 | — |
-| Legal | 4 | 4 | 0 | 0 | 3 revisiones |
+| Legal | 4 | 4 | 0 | 0 | 3 revisiones, una de ellas compartida con el Dr. (testimonios) |
 | Marketing | 13 | 13 | 0 | 0 | 1 deseable |
 | **Total** | **80** | **77** | **2** | **1** | **4** |
 
@@ -40,6 +40,10 @@ contabilizadas en el grupo de Marketing, que es quien las carga y optimiza. Apar
 los dos grupos como referencia cruzada, no como pendientes duplicados.
 
 ### Atajo: 13 respuestas resuelven 46 de los 80 marcadores
+
+> 📨 **Para consultarlo con el Dr. Bernal, usa [`CONSULTA-DR-BERNAL.md`](CONSULTA-DR-BERNAL.md),
+> no este archivo.** Es un extracto de 15 preguntas en lenguaje directo —estas 13 más las 2
+> decisiones 🟠— que cierra 50 de los 80 marcadores en una llamada de unos 20 minutos.
 
 | # | Una sola respuesta | Lugares | Grupo |
 |---|---|---|---|
@@ -77,12 +81,14 @@ los dos grupos como referencia cruzada, no como pendientes duplicados.
 | 1.10 | **Canal y horario de atención** posquirúrgica: a quién escribe el paciente y cuándo si algo no va bien. | — | `index.html:501` |
 | 1.11 | **Duración aproximada de la cirugía.** | — | `index.html:373` |
 
-### 🟠 Decisiones bloqueantes (responder o retirar el contenido)
+### 🟠 Decisiones (publicar o retirar)
+
+Son dos, y las dos tienen una recomendación por escrito. **Ninguna es solo del Dr. Bernal.**
 
 | # | Qué hay que decidir | Ubicación |
 |---|---|---|
-| 1.12 | **Testimonios de pacientes.** Solo se publican con consentimiento escrito firmado, nombre o iniciales y fecha aproximada. Conviene que al menos uno hable del trato y del seguimiento, no solo de kilos. **Si al publicar no hay testimonios con consentimiento, se elimina la sección completa** (está marcada con un comentario en el HTML). No se usan testimonios inventados ni fotos de banco de imágenes. | `index.html:458` |
-| 1.13 | **Cifras de resultados: ¿se publican o no?** Si se publican, deben venir de literatura científica citada y aclarar si son %TWL (porcentaje del peso total perdido) o %EWL (porcentaje del exceso de peso perdido). Sin fuente verificable, la sección se queda sin números. | `index.html:438` |
+| 1.12 | **Testimonios de pacientes: ¿se publican o se retira la sección?** **Esta decisión no es solo del Dr. Bernal: tiene que pasar por legal aunque él quiera conservarlos.** La publicidad de servicios de salud en México tiene reglas propias sobre testimonios y sobre la mención de resultados, y son distintas de las que rigen a la publicidad comercial. El consentimiento escrito firmado es necesario, pero **no es suficiente por sí solo**: legal debe confirmar qué se puede publicar y en qué términos (ver 3.5). Si se publican, cada testimonio necesita consentimiento firmado, nombre o iniciales y fecha aproximada, y conviene que al menos uno hable del trato y del seguimiento, no solo de kilos. **Si al publicar no hay testimonios autorizados por legal y con consentimiento, se elimina la sección completa** (está marcada con un comentario en el HTML). No se usan testimonios inventados ni fotos de banco de imágenes. | `index.html:458` |
+| 1.13 | **Cifras de resultados: ¿se publican o se retira la sección?** Si el Dr. Bernal decide conservarlas, **tienen que ser suyas —de su propia serie de pacientes, auditables— y no de la literatura general**, y tienen que especificar si son %TWL (porcentaje del peso total perdido) o %EWL (porcentaje del exceso de peso perdido). Las dos cosas: cifra propia y unidad explícita. <br><br>**Recomendación: si no hay datos propios auditables, retirar la sección.** En una landing que lleva su nombre y su cara, una cifra tomada de la literatura general **se lee como una promesa personal**, aunque venga citada. No se pierde nada al quitarla: la sección de Experiencia (cirugías realizadas, equipo, certificaciones) ya sostiene la credibilidad, y la página ya explica con honestidad por qué nadie puede prometer una cifra de kilos. | `index.html:438` |
 | 1.14 | **Fotos reales** (foto del equipo para el hero y retrato profesional). El Dr. las entrega; marketing las publica. **Referencia cruzada:** estos dos marcadores están contabilizados en el grupo 4 (puntos 4.2 y 4.3). | `index.html:83`, `:137` |
 
 ### 🟢 Deseables
@@ -162,7 +168,7 @@ en ventanilla, no como se leen en un contrato.
 | # | Qué hay que revisar |
 |---|---|
 | 3.4 | **Avisos de financiamiento frente a la Ley Federal de Protección al Consumidor (PROFECO).** La página ya trae un aviso visible en el cuerpo —no escondido en el pie— junto a cada mención de precio o mensualidad: hero, planes de pago, qué incluye, FAQ de financiamiento y formulario final. Todos dicen: sujeto a valoración médica y aprobación crediticia, aplican plazo, anticipo, intereses, comisiones y condiciones, y hay que consultar costo total y qué incluye. **Falta que legal valide esa redacción y confirme si el CAT debe expresarse de una forma específica.** |
-| 3.5 | **Consentimientos de testimonios** (ver 1.12): formato de consentimiento escrito antes de publicar cualquier testimonio. |
+| 3.5 | **Testimonios: decisión conjunta con el Dr. Bernal (ver 1.12).** No es solo revisar un formato de consentimiento. Legal tiene que responder dos cosas antes de que se publique un solo testimonio: **(a)** qué permite y qué prohíbe la normativa mexicana de publicidad de servicios de salud en materia de testimonios y de mención de resultados, y **(b)** con qué redacción y qué avisos pueden publicarse los que sí estén permitidos. El consentimiento escrito firmado es necesario pero no suficiente. Si la respuesta es que no procede, **la sección se elimina completa** y no hay nada más que resolver. |
 | 3.6 | **Coherencia de las respuestas de la FAQ de financiamiento** (2.19, 2.22, 2.23) con lo que dice el contrato que firma el paciente. |
 
 ---
