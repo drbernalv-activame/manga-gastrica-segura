@@ -871,11 +871,23 @@
           <input type="checkbox" id="privacidad" name="acepta_privacidad" required>
           <label for="privacidad">
             Acepto que me contacten por WhatsApp o teléfono y he leído el
-            <!-- Pendiente legal: publicar el aviso de privacidad y sustituir el ancla por su
-                 URL definitiva, aquí y en el pie. Mientras tanto apunta al bloque legal del pie
-                 para no dejar un enlace roto. El consentimiento no es válido hasta que el
-                 documento exista. -->
+            <!-- Pendiente legal: publicar el aviso de privacidad y sustituir el ancla por
+                 /aviso-de-privacidad, aquí y en el pie. Mientras tanto apunta al bloque legal
+                 del pie para no dejar un enlace roto. El consentimiento no es válido hasta que
+                 el documento exista. -->
             <a href="#aviso-privacidad">aviso de privacidad</a>.
+          </label>
+        </div>
+
+        <!-- Consentimiento aparte para los datos de salud. Va separado del anterior a
+             propósito: son dos finalidades distintas y cada una necesita su propia
+             manifestación de voluntad. Ambas casillas son obligatorias, así que la
+             validación nativa del navegador bloquea el envío si falta cualquiera. -->
+        <div class="campo consentimiento">
+          <input type="checkbox" id="datos-salud" name="acepta_datos_salud" required>
+          <label for="datos-salud">
+            Acepto que los datos de salud que comparta (peso, estatura, motivo de consulta)
+            se utilicen para orientarme y valorar si soy candidato.
           </label>
         </div>
 

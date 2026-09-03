@@ -22,7 +22,7 @@ Ninguno se ve en la página: los legales son comentarios HTML y los de ruta vive
 
 | # | Pendiente | Quién lo cierra | Ubicación |
 |---|---|---|---|
-| 1 | **Aviso de privacidad**: el documento publicado y su URL. Sin él, la casilla de consentimiento del formulario no es válida. Los dos enlaces apuntan por ahora a `#aviso-privacidad`, el bloque legal del pie, para no dejar un enlace roto. | Legal | `index.html` — comentario HTML en el formulario y en el pie |
+| 1 | **Aviso de privacidad.** El borrador **no llegó** al repositorio, así que la página `aviso-de-privacidad.html` **no se creó**. Lo que sí está hecho: la segunda casilla de consentimiento para datos de salud, y la auditoría del apartado 9 (abajo), lista para pegar. Los dos enlaces siguen apuntando a `#aviso-privacidad` —el bloque legal del pie— porque cambiarlos a `/aviso-de-privacidad` antes de que la página exista dejaría dos 404. | Legal entrega el texto · yo publico la página | `index.html`: comentario en el formulario y en el pie |
 | 2 | **Publicidad sanitaria (COFEPRIS)**: revisar requisitos y, si aplica, número de registro o autorización. La línea **no se renderiza**: está comentada, lista para descomentar con el dato, o para borrarse si la revisión concluye que no aplica. | Legal | `index.html` — comentario en el pie |
 | 3 | **Disponibilidad del dominio `mangagastricasegura.com`.** Hoy la página apunta a la URL provisional de Vercel. Al cambiar: `python3 scripts/cambiar-url.py https://EL-DOMINIO` y quitar el `noindex` **de los dos sitios** (el `meta` de `index.html` y el `X-Robots-Tag` de `vercel.json` y `netlify.toml`). | Marketing | Comentario junto al `meta robots` en `index.html` |
 
@@ -94,3 +94,46 @@ privacidad y COFEPRIS) y se pase al dominio definitivo.
 - [ ] Servidor final con compresión (gzip o Brotli) y caché de assets estáticos.
 
 La bitácora completa de qué se cerró y cómo está en [`CAMBIOS.md`](CAMBIOS.md).
+
+
+---
+
+## Apartado 9 del aviso de privacidad: auditoría de rastreo
+
+Hecha el 3 de septiembre de 2026 sobre la página real, cargándola en Chromium y registrando
+todas las peticiones mientras se recorría de arriba abajo.
+
+**Resultado: la landing no carga ninguna herramienta de analítica ni de rastreo de terceros.**
+
+| Qué se buscó | Resultado |
+|---|---|
+| Peticiones a dominios de terceros | **Ninguna.** Las 6 peticiones van al propio origen |
+| Cookies | Ninguna |
+| `localStorage` / `sessionStorage` | Vacíos |
+| Google Analytics (`gtag`), Meta Pixel (`fbq`), `dataLayer` | No existen en tiempo de ejecución |
+| Fuentes externas (Google Fonts) | Ninguna: tipografía del sistema |
+| Favicon | `data:` URI, no es una petición |
+| `@import` o `url(http…)` en el CSS | Ninguno |
+
+Por tanto, para el apartado 9 **aplica la redacción alternativa del borrador**, la de "no se
+utilizan herramientas de terceros".
+
+### Cuatro matices que legal debería considerar antes de firmarlo
+
+Que no haya analítica no significa que ningún tercero trate datos. Estos cuatro sí lo hacen, y
+un aviso que dijera "ningún tercero" sin más sería inexacto:
+
+1. **El formulario entrega por WhatsApp.** Al enviarlo se abre WhatsApp con el mensaje ya
+   redactado: nombre, teléfono, ciudad y motivo de consulta. Eso significa que **Meta trata esos
+   datos**, incluidos los de salud. Es el punto más relevante de todos y conviene que el aviso
+   lo diga con claridad.
+2. **El sitio lo sirve Vercel.** Sus registros de acceso guardan direcciones IP y datos de
+   navegación, aunque el sitio no ponga ni una cookie. Vercel es, por tanto, un encargado del
+   tratamiento.
+3. **Enlaces salientes a WhatsApp y a Google.** El botón de reseñas lleva a Google Maps y los
+   botones de contacto a WhatsApp. Son navegaciones que inicia el visitante, no rastreo, pero
+   al pulsarlos sale del sitio y entra en las políticas de esas empresas.
+4. **GA4 y Meta Pixel están previstos pero no instalados.** El `<head>` tiene un comentario
+   reservando su lugar y `analitica.js` ya emite eventos que no van a ninguna parte. **El día
+   que se instalen, el apartado 9 deja de ser cierto** y hay que reescribirlo antes de
+   publicarlos.
