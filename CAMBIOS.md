@@ -565,3 +565,51 @@ Lo que este esquema **no** resuelve: no queda registro de la solicitud fuera del
 Georgina, y no se puede medir cuántas personas llenan el formulario y no llegan a mandar el
 mensaje. Si se quiere trazabilidad, hay que conectar un CRM o webhook; el comentario en el HTML
 señala dónde.
+
+
+---
+
+# Fotos reales conectadas — 3 de septiembre de 2026
+
+## 22. Las dos imágenes
+
+`scripts/aplicar-fotos.py` conectó los cuatro archivos que el equipo subió a `assets/img/`:
+
+| Foto | Dimensiones | JPG | WebP | Dónde |
+|---|---|---|---|---|
+| `foto-equipo` | 1800×1200 | 166 KB | 81 KB | Hero y `og:image` |
+| `foto-dr-bernal` | 1000×1250 | 122 KB | 64 KB | Sección Experiencia y `image` del schema |
+
+Las dos van en un `<picture>` con el WebP como fuente principal y el JPG de respaldo. El hero
+lleva `loading="eager"` y `fetchpriority="high"` (está sobre el pliegue); el retrato,
+`loading="lazy"`. Ambas con `width` y `height` explícitos para que no haya salto de maquetación.
+Se restauró `og:image` con sus dimensiones y `alt`, y `twitter:card` volvió a
+`summary_large_image`.
+
+## 23. Encuadre verificado con las fotos reales
+
+Medido en navegador, con las imágenes cargadas:
+
+| Figura | Fuente | Contenedor | Recorte | Resultado |
+|---|---|---|---|---|
+| Retrato | 1000×1250 (4:5) | `aspect-ratio: 4/5` | Ninguno | Coincidencia exacta |
+| Hero | 1800×1200 (3:2) | `aspect-ratio: 4/3` | 11 % del ancho, 5.5 % por lado | La cara queda holgada |
+
+**No hizo falta tocar `object-position`**, ni a 380 px ni a 1280 px: la cara del Dr. está hacia
+el 62 % horizontal y la ventana visible va del 5.5 % al 94.5 %. Se revisó el recorte real de
+cada figura en los dos anchos.
+
+Chromium sirve el WebP en las dos, no hay respuestas 4xx y no hay errores de JavaScript. El
+fallback `media--pendiente` ya no se activa en ninguna figura; la lógica sigue en
+`analitica.js` por si vuelve a hacer falta.
+
+## 24. Cero marcadores
+
+`index.html` ya no tiene ningún `[COMPLETAR]`, `[VALIDAR]`, `[PENDIENTE]` ni `[RUTA PENDIENTE]`.
+Los tres pendientes que quedan —aviso de privacidad, COFEPRIS y dominio— viven como comentarios
+HTML invisibles.
+
+`scripts/verificar-despliegue.sh` sale en verde en las cuatro comprobaciones de marcadores. Se
+corrigió su nota final, que seguía hablando de "las dos figuras sin foto", y se añadió el aviso
+de que contra un servidor local fallan a propósito las comprobaciones que aporta la plataforma
+(los `.md`, el `X-Robots-Tag` y el canonical).

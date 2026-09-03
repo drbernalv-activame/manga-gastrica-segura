@@ -71,5 +71,9 @@ if [ "$fallos" -eq 0 ]; then echo "Todo correcto."; else echo "$fallos comprobac
 echo
 echo "Falta comprobar a mano en el navegador:"
 echo "  1. Llenar el formulario y enviarlo: debe abrir WhatsApp con el mensaje ya armado."
-echo "  2. Las dos figuras sin foto deben verse como un bloque neutro, sin ícono de imagen rota."
+echo "  2. Las dos fotos cargan y el encuadre no corta la cara del Dr."
+echo
+echo "Nota: contra un servidor local (python3 -m http.server) fallan a propósito las"
+echo "comprobaciones de los .md, la del X-Robots-Tag y la del canonical: esas las aporta"
+echo "la plataforma, no el HTML. Este script es para el sitio desplegado."
 exit "$fallos"

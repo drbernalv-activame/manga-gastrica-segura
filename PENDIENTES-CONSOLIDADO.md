@@ -22,25 +22,15 @@ Ninguno se ve en la página: los legales son comentarios HTML y los de ruta vive
 
 | # | Pendiente | Quién lo cierra | Ubicación |
 |---|---|---|---|
-| 1 | **Foto del Dr. Bernal con su equipo quirúrgico**, 1800×1200 px, en `.jpg` y `.webp`. | Dr. Bernal entrega · Marketing sube | `assets/img/foto-equipo.jpg` y `.webp` |
-| 2 | **Retrato profesional del Dr. Bernal**, 1000×1250 px, en `.jpg` y `.webp`. | Dr. Bernal entrega · Marketing sube | `assets/img/foto-dr-bernal.jpg` y `.webp` |
+| 1 | **Aviso de privacidad**: el documento publicado y su URL. Sin él, la casilla de consentimiento del formulario no es válida. Los dos enlaces apuntan por ahora a `#aviso-privacidad`, el bloque legal del pie, para no dejar un enlace roto. | Legal | `index.html` — comentario HTML en el formulario y en el pie |
+| 2 | **Publicidad sanitaria (COFEPRIS)**: revisar requisitos y, si aplica, número de registro o autorización. La línea **no se renderiza**: está comentada, lista para descomentar con el dato, o para borrarse si la revisión concluye que no aplica. | Legal | `index.html` — comentario en el pie |
+| 3 | **Disponibilidad del dominio `mangagastricasegura.com`.** Hoy la página apunta a la URL provisional de Vercel. Al cambiar: `python3 scripts/cambiar-url.py https://EL-DOMINIO` y quitar el `noindex` **de los dos sitios** (el `meta` de `index.html` y el `X-Robots-Tag` de `vercel.json` y `netlify.toml`). | Marketing | Comentario junto al `meta robots` en `index.html` |
 
-> **Los cuatro archivos ya existen** —el equipo los tiene— pero no llegaron al repositorio.
-> En cuanto estén en `assets/img/`, una sola orden conecta todo (markup `<picture>`, `og:image`
-> y el `image` del schema):
->
-> ```bash
-> python3 scripts/aplicar-fotos.py
-> ```
->
-> Si falta alguno de los cuatro, el script no toca nada: es preferible el bloque neutro actual
-> a publicar imágenes rotas y un `og:image` que devuelva 404.
-| 3 | **Aviso de privacidad**: el documento publicado y su URL. Sin él, la casilla de consentimiento del formulario no es válida. Los dos enlaces apuntan por ahora a `#aviso-privacidad`, el bloque legal del pie, para no dejar un enlace roto. | Legal | `index.html:823` (formulario) y `:879` (pie), con comentario HTML en cada uno |
-| 4 | **Publicidad sanitaria (COFEPRIS)**: revisar requisitos y, si aplica, número de registro o autorización. La línea **no se renderiza**: está comentada, lista para descomentar con el dato, o para borrarse si la revisión concluye que no aplica. | Legal | `index.html:893` |
-| 5 | **Disponibilidad del dominio `mangagastricasegura.com`.** Ya está puesto en `canonical`, `og:url` y los tres `@id` del schema; falta confirmar que es el dominio real. | Marketing | Comentario `VERIFICAR` en `index.html:7` |
+### Cerrado el 3 de septiembre de 2026
 
-Mientras 1 y 2 no lleguen, `analitica.js` retira la imagen y deja el contenedor como un bloque
-neutro: no se ve el ícono de imagen rota ni queda hueco en la maquetación.
+- ✅ **Las dos fotos reales** están en `assets/img/`, servidas con `<picture>` (WebP con JPG de
+  respaldo) y conectadas al `og:image` y al `image` del schema. Encuadre verificado en navegador
+  a 380 px y a 1280 px.
 
 ---
 

@@ -246,6 +246,7 @@ h3 { font-size: clamp(1.15rem, 3.6vw, 1.35rem); }
   max-width: 46ch;
 }
 .hero__media { margin-top: 2.25rem; }
+.hero__media picture { display: block; }
 .hero__media img {
   display: block;
   width: 100%;
@@ -460,6 +461,7 @@ h3 { font-size: clamp(1.15rem, 3.6vw, 1.35rem); }
 
 /* ---------- 13. Perfil del médico ---------- */
 .perfil figure { margin: 0; }
+.perfil figure picture { display: block; }
 .perfil figure img {
   display: block;
   width: 100%;
