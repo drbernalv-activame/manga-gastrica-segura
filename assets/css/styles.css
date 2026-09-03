@@ -172,16 +172,6 @@ h3 { font-size: clamp(1.15rem, 3.6vw, 1.35rem); }
   font-weight: 500;
   margin-bottom: 1rem;
 }
-.pendiente--media {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  min-height: 15rem;
-  padding: 1.5rem;
-  font-weight: 600;
-  border-radius: var(--radio);
-}
 
 /* ---------- 6. Botones ---------- */
 .boton {
@@ -275,10 +265,14 @@ h3 { font-size: clamp(1.15rem, 3.6vw, 1.35rem); }
   max-width: 46ch;
 }
 .hero__media { margin-top: 2.25rem; }
-.hero__media .pendiente--media {
+.hero__media img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: var(--radio);
   background: rgba(255,255,255,.08);
-  border-color: #f0c86a;
-  color: #ffeeb8;
 }
 .hero h1 { max-width: 24ch; }
 .hero__marca {
@@ -471,6 +465,17 @@ h3 { font-size: clamp(1.15rem, 3.6vw, 1.35rem); }
 }
 
 /* ---------- 13. Perfil del médico ---------- */
+.perfil figure { margin: 0; }
+.perfil figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  border-radius: var(--radio);
+  background: var(--azul-050);
+}
+
 @media (min-width: 56rem) {
   .perfil {
     display: grid;
@@ -603,56 +608,9 @@ h3 { font-size: clamp(1.15rem, 3.6vw, 1.35rem); }
 .faq__respuesta p:last-child { margin-bottom: 0; }
 
 /* ---------- 18. Planes de pago ---------- */
-.rejilla-3 {
-  display: grid;
-  gap: 1.25rem;
+.plan-unico {
   margin-top: 2rem;
-}
-@media (min-width: 52rem) {
-  .rejilla-3 { grid-template-columns: repeat(2, 1fr); }
-}
-@media (min-width: 68rem) {
-  .rejilla-3 { grid-template-columns: repeat(3, 1fr); }
-}
-
-.plan { border-top: 5px solid var(--azul-600); }
-.plan__ventaja {
-  margin: .4rem 0 0;
-  color: var(--tinta-suave);
-  font-weight: 600;
-}
-.plan__datos {
-  margin: 1.25rem 0 0;
-  display: grid;
-  gap: .65rem;
-}
-.plan__datos > div {
-  display: grid;
-  gap: .1rem;
-  padding-bottom: .65rem;
-  border-bottom: 1px solid var(--linea);
-}
-.plan__datos > div:last-child { border-bottom: 0; padding-bottom: 0; }
-.plan__datos dt {
-  font-size: .78rem;
-  font-weight: 700;
-  letter-spacing: .08em;
-  text-transform: uppercase;
-  color: var(--tinta-suave);
-}
-.plan__datos dd {
-  margin: 0;
-  font-weight: 600;
-  color: var(--azul-800);
-}
-
-/* Texto legal obligatorio junto a cada mención de precio o mensualidad */
-.aviso-legal {
-  margin-top: 1.75rem;
   max-width: 46rem;
-  font-size: .88rem;
-  line-height: 1.6;
-  color: var(--tinta-suave);
 }
 
 /* Lista de "qué incluye" y de acompañamiento */

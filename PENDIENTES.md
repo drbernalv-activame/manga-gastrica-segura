@@ -1,5 +1,10 @@
 # PENDIENTES — Manga Gástrica Segura
 
+> ⚠️ **Documento histórico.** El cierre del 3 de septiembre de 2026 resolvió 72 de los 80
+> marcadores; muchos de los puntos de abajo ya no aplican. El estado real está en
+> [`PENDIENTES-CONSOLIDADO.md`](PENDIENTES-CONSOLIDADO.md) y la bitácora en
+> [`CAMBIOS.md`](CAMBIOS.md).
+
 > 📌 **Para trabajar día a día usa [`PENDIENTES-CONSOLIDADO.md`](PENDIENTES-CONSOLIDADO.md).**
 > Ahí están los 80 marcadores de la página (`[COMPLETAR]` y `[VALIDAR]`) agrupados por quién
 > debe responder —Dr. Bernal, financiera/administración, legal y marketing—, ordenados de

@@ -316,3 +316,100 @@ que eliminar:
 5. `grep -rn "COMPLETAR\|VALIDAR" index.html` debe salir vacío.
 
 **No se publicó ni se desplegó nada.**
+
+---
+
+# Cierre de marcadores — 3 de septiembre de 2026
+
+Segundo pase sobre la página, con las respuestas del Dr. Bernal y de administración.
+**72 de los 80 marcadores quedaron cerrados.** Los 8 abiertos y su motivo están en
+[`PENDIENTES-CONSOLIDADO.md`](PENDIENTES-CONSOLIDADO.md).
+
+## 7. Decisión de fondo: la página ya no muestra cifras
+
+**No se publica ningún precio, mensualidad, anticipo, tasa ni CAT.** Toda la información
+financiera se le explica al paciente por teléfono o en persona, y la simulación personalizada es
+la puerta de entrada. Esto reemplaza la arquitectura de tres tarjetas comparables del pase
+anterior: no se llenaron sus cifras, se retiraron.
+
+Consecuencias en la página:
+
+- **Hero**: fuera la línea "desde $X al mes" y su asterisco. Entra "Planes de pago de 6 a 36
+  meses a través de Mend" y, en texto pequeño, "Sujeto a valoración médica y aprobación de
+  financiamiento". El CTA pasa a "Solicita tu simulación personalizada" y apunta al formulario.
+- **Planes de pago**: las tres tarjetas con mensualidades, anticipos, costo total, intereses y
+  CAT se sustituyen por una sola tarjeta, "Tu plan se diseña contigo", que explica por qué no
+  hay cifras publicadas. Se conserva el encabezado "Quizá no fue falta de decisión…".
+- **Disclaimers de precio**: eliminados de planes, de qué incluye y de la FAQ de financiamiento,
+  porque ya no hay cifra que matizar. Queda uno solo, en el pie: *"Sujeto a valoración médica y
+  aprobación de financiamiento por Mend. Los resultados de la cirugía varían según cada
+  paciente."*
+- Verificado: `grep -n '\$' index.html` no devuelve nada.
+
+## 8. Datos que se cerraron
+
+| Dato | Valor publicado | Dónde |
+|---|---|---|
+| Años de experiencia | **20 años** (se resolvió la discrepancia 18 / más de 20) | `meta description`, `og:description`, hero, barra de confianza, sección Experiencia, pie y `description` del `Physician` en el schema |
+| Hospitales | **Hospital Star Médica Chihuahua** y **Enalta Medical Center**, Chihuahua | `<title>`, perfil, FAQ "¿Dónde se realiza la cirugía?", "Qué incluye", pie y schema |
+| Seguimiento | **1 año con equipo multidisciplinario** | Barra de confianza, Acompañamiento, "Qué incluye" |
+| Contacto | **Georgina, coordinadora de pacientes — 614 407 83 43** (`wa.me/526144078343`) | Los 7 lugares: hero (enlace y texto), formulario, pie (enlace y texto), botón flotante y `telephone` del schema |
+| Financiamiento | **Mend**, institución financiera mexicana enfocada exclusivamente en salud. Plazos de **6 a 36 meses** | Hero, "Cómo logramos la accesibilidad", "Planes de pago", FAQ de financiamiento, pie y schema |
+| Dominio | `https://mangagastricasegura.com` | `canonical`, `og:url` y los tres `@id` del schema, con un comentario `VERIFICAR` |
+
+## 9. Marcadores cerrados reescribiendo el texto, no rellenándolo
+
+Estos no tenían dato y **no se inventó ninguno**: se reescribió la frase para que no lo necesite.
+
+| Antes | Ahora |
+|---|---|
+| "Duración aproximada: `[COMPLETAR duración]`" | "La duración depende de tu caso y se te indica en tu valoración." |
+| "Permaneces bajo vigilancia médica `[COMPLETAR días de hospitalización]`" | "Permaneces bajo vigilancia médica el tiempo que tu caso requiera" |
+| `[COMPLETAR nombres y roles del equipo si se desea publicarlos]` | Se decidió no publicarlos; queda la descripción por disciplinas. |
+| `[VALIDAR: estudios de control incluidos y su frecuencia]` | Se retiró la promesa de detalle; queda la descripción del propósito. |
+| `[VALIDAR: canal y horario de atención]` | "Georgina, coordinadora de pacientes, por WhatsApp al 614 407 83 43." |
+| `[VALIDAR: lista de exclusiones]` | "En tu valoración te explicamos con detalle qué cubre el paquete y qué se cotiza por separado." |
+| Comentario de analítica con `[COMPLETAR G-XXXXXXXXXX]` e `[COMPLETAR ID de Meta Pixel]` | Comentario sin marcador: se pegan los scripts cuando existan los identificadores. |
+| `streetAddress` y `postalCode` del schema | Se omitieron los campos. Un `PostalAddress` con localidad, estado y país es válido; dejar un campo vacío o inventado no lo es. |
+
+## 10. Secciones eliminadas o reestructuradas
+
+- **Resultados y expectativas: eliminada por completo.** Sin datos propios auditables, una cifra
+  de la literatura general en una landing con el nombre del Dr. Bernal se lee como promesa
+  personal. Se retiró el HTML; no había CSS ni ancla propios que limpiar.
+- **Testimonios: se conserva la sección** con el comentario `PENDIENTE LEGAL` al inicio y las
+  instrucciones de consentimiento en un comentario interno. **Hoy renderiza vacía** —solo el
+  título—, porque no se entregó ningún testimonio. Antes de publicar hay que llenarla o
+  eliminarla.
+- **Fotos**: los recuadros de borrador se sustituyeron por `<img>` reales con su texto
+  alternativo y rutas `[RUTA PENDIENTE: …]`.
+- **Schema**: `MedicalBusiness` con una sola dirección pasa a `MedicalOrganization` con dos
+  `location` de tipo `Hospital`, y el `Physician` gana `hospitalAffiliation` con los dos
+  hospitales y una `description` con los 20 años. Se añadió la pregunta "¿Quién proporciona el
+  financiamiento?" al `FAQPage`.
+- **Alternancia de fondos**: al eliminar la sección de resultados se reordenaron los fondos
+  hueso/blanco desde Testimonios hasta la FAQ de financiamiento, para que no queden dos
+  secciones seguidas del mismo color.
+
+## 11. CSS limpiado
+
+Se eliminaron las reglas que quedaron huérfanas: `.rejilla-3`, `.plan`, `.plan__ventaja`,
+`.plan__datos`, `.aviso-legal`, `.pendiente--media` y `.hero__media .pendiente--media`.
+Se agregaron `.plan-unico` y los estilos de las dos imágenes (`.hero__media img` y
+`.perfil figure img`), con `aspect-ratio` para que no haya salto de maquetación al cargar.
+
+## 12. Verificación ejecutada
+
+| # | Comprobación | Resultado |
+|---|---|---|
+| 1 | `grep -rn "COMPLETAR\|VALIDAR" index.html` | ❌ **8 líneas**, no vacío. Son los 5 datos que no se entregaron: cédula, certificaciones, destino del formulario, aviso de privacidad y COFEPRIS. No se inventaron. |
+| 2 | `grep -n '\$' index.html` | ✅ Sin resultados: no queda ningún precio ni mensualidad. |
+| 3 | "20 años" consistente, sin "18" ni "más de 20" | ✅ En los 6 lugares de la página y en el schema. |
+| 4 | Teléfono y enlace de WhatsApp idénticos en los 7 lugares | ✅ `614 407 83 43` y `wa.me/526144078343`. |
+| 5 | Sección de resultados eliminada, sin HTML residual, CSS huérfano ni ancla | ✅ |
+| 6 | Sección de testimonios con el comentario `PENDIENTE LEGAL` | ✅ (pero renderiza vacía, ver punto 10) |
+| 7 | Enlaces internos apuntan a secciones existentes | ✅ `#contenido`, `#inicio`, `#planes`, `#faq`, `#faq-financiamiento`, `#valoracion`. |
+| — | Estructura HTML balanceada y JSON-LD válido | ✅ |
+| — | Render revisado en escritorio (1280 px) | ✅ Hero, experiencia, acompañamiento, accesibilidad, planes, qué incluye y FAQ. |
+
+**No se publicó ni se desplegó nada.**

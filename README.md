@@ -18,7 +18,7 @@ assets/js/analitica.js   Mejora progresiva: eventos, acordeón en escritorio, av
 assets/img/              Fotos reales (pendientes de entrega)
 docs/BRIEF.md            Brief de contenido, psicología y diseño que rige la página
 PENDIENTES-CONSOLIDADO.md Los 80 pendientes agrupados por responsable (empieza aquí)
-CONSULTA-DR-BERNAL.md    Extracto de 15 preguntas para el Dr. Bernal
+CONSULTA-DR-BERNAL.md    Extracto de 15 preguntas para el Dr. Bernal (ya respondido)
 PENDIENTES.md            Registro original de los [COMPLETAR] y su contexto
 CAMBIOS.md               Ajuste de copy y estructura (financiamiento) y sus [VALIDAR]
 ```
@@ -35,10 +35,15 @@ No hay build, dependencias ni gestor de paquetes: es HTML y CSS estáticos.
 ## Estado actual
 
 La página está completa en estructura, copy y diseño, y **no contiene ningún dato inventado**.
-Todo lo que falta aparece como marcador visible `[COMPLETAR]` o `[VALIDAR]`. Los 80 marcadores
-están consolidados en [`PENDIENTES-CONSOLIDADO.md`](PENDIENTES-CONSOLIDADO.md), agrupados por
-quién debe responder y ordenados de bloqueante a deseable. `PENDIENTES.md` conserva el registro
-original de los `[COMPLETAR]` y `CAMBIOS.md` la bitácora del ajuste de financiamiento.
+De los 80 marcadores originales quedan **8 abiertos**, listados en
+[`PENDIENTES-CONSOLIDADO.md`](PENDIENTES-CONSOLIDADO.md): cédula y certificaciones del Dr.
+Bernal, destino del formulario, aviso de privacidad y COFEPRIS. Ninguno se inventó. Faltan
+además tres rutas de imagen y la verificación del dominio. `CAMBIOS.md` es la bitácora completa
+y `PENDIENTES.md` el registro original.
+
+**La página no muestra precios, mensualidades, anticipos, tasas ni CAT.** Toda la información
+financiera se explica al paciente por teléfono o en persona; el financiamiento es de Mend, con
+plazos de 6 a 36 meses.
 
 Auditoría Lighthouse en móvil (Chromium headless, servida en local):
 
