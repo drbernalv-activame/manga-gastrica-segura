@@ -22,7 +22,7 @@ Ninguno se ve en la página: los legales son comentarios HTML y los de ruta vive
 
 | # | Pendiente | Quién lo cierra | Ubicación |
 |---|---|---|---|
-| 1 | **Aviso de privacidad.** El borrador **no llegó** al repositorio, así que la página `aviso-de-privacidad.html` **no se creó**. Lo que sí está hecho: la segunda casilla de consentimiento para datos de salud, y la auditoría del apartado 9 (abajo), lista para pegar. Los dos enlaces siguen apuntando a `#aviso-privacidad` —el bloque legal del pie— porque cambiarlos a `/aviso-de-privacidad` antes de que la página exista dejaría dos 404. | Legal entrega el texto · yo publico la página | `index.html`: comentario en el formulario y en el pie |
+| 1 | **Aviso de privacidad: publicado, pendiente de visto bueno de legal.** La página está en `/aviso-de-privacidad`, enlazada desde el formulario y desde el pie. Falta que legal lo revise y confirme dos puntos marcados con comentarios HTML en la propia página: el nombre vigente de la autoridad (apartado 11) y el alcance del apartado 9. | Legal revisa | `aviso-de-privacidad.html` |
 | 2 | **Publicidad sanitaria (COFEPRIS)**: revisar requisitos y, si aplica, número de registro o autorización. La línea **no se renderiza**: está comentada, lista para descomentar con el dato, o para borrarse si la revisión concluye que no aplica. | Legal | `index.html` — comentario en el pie |
 | 3 | **Disponibilidad del dominio `mangagastricasegura.com`.** Hoy la página apunta a la URL provisional de Vercel. Al cambiar: `python3 scripts/cambiar-url.py https://EL-DOMINIO` y quitar el `noindex` **de los dos sitios** (el `meta` de `index.html` y el `X-Robots-Tag` de `vercel.json` y `netlify.toml`). | Marketing | Comentario junto al `meta robots` en `index.html` |
 
@@ -104,6 +104,8 @@ Hecha el 3 de septiembre de 2026 sobre la página real, cargándola en Chromium 
 todas las peticiones mientras se recorría de arriba abajo.
 
 **Resultado: la landing no carga ninguna herramienta de analítica ni de rastreo de terceros.**
+Por eso el apartado 9 quedó con la redacción alternativa del borrador: *"El sitio no utiliza
+cookies de rastreo ni herramientas de analítica de terceros."*
 
 | Qué se buscó | Resultado |
 |---|---|

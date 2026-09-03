@@ -22,9 +22,12 @@ codigo() { curl -s -o /dev/null -w '%{http_code}' --max-time 20 "$1"; }
 echo "Verificando $URL"
 echo
 echo "Carga y assets"
-comprueba "página principal" 200 "$(codigo "$URL/")"
-comprueba "hoja de estilos"  200 "$(codigo "$URL/assets/css/styles.css")"
-comprueba "javascript"       200 "$(codigo "$URL/assets/js/analitica.js")"
+comprueba "página principal"    200 "$(codigo "$URL/")"
+comprueba "aviso de privacidad" 200 "$(codigo "$URL/aviso-de-privacidad")"
+comprueba "hoja de estilos"     200 "$(codigo "$URL/assets/css/styles.css")"
+comprueba "javascript"          200 "$(codigo "$URL/assets/js/analitica.js")"
+comprueba "javascript (interacción)" 200 "$(codigo "$URL/assets/js/interaccion.js")"
+comprueba "foto del equipo"     200 "$(codigo "$URL/assets/img/foto-equipo.webp")"
 
 echo
 echo "Documentación interna NO accesible"
@@ -52,10 +55,11 @@ for patron in "canonical\" href=\"$URL/\"" "wa.me/526144078343" "4134597" "56793
 done
 
 echo
-echo "Marcadores pendientes en el HTML servido"
+echo "Marcadores pendientes en el HTML servido (portada y aviso de privacidad)"
+aviso="$(curl -s --max-time 20 "$URL/aviso-de-privacidad")"
 sin_marcadores=1
-for marca in '[COMPLETAR' '[VALIDAR' '[PENDIENTE' '[RUTA PENDIENTE'; do
-  n="$(printf '%s' "$html" | grep -oF "$marca" | wc -l | tr -d ' ')"
+for marca in '[COMPLETAR' '[VALIDAR' '[PENDIENTE' '[RUTA PENDIENTE' '[FECHA'; do
+  n="$(printf '%s%s' "$html" "$aviso" | grep -oF "$marca" | wc -l | tr -d ' ')"
   if [ "$n" = "0" ]; then printf '  ✅ %-20s no aparece\n' "$marca"
   else printf '  ❌ %-20s %s aparición(es)\n' "$marca" "$n"; sin_marcadores=0; fallos=$((fallos+1)); fi
 done

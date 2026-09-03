@@ -904,3 +904,44 @@ h3 { font-size: clamp(1.15rem, 3.6vw, 1.35rem); }
 @media (prefers-reduced-motion: no-preference) {
   .faq__item > summary::after { transition: transform 320ms var(--curva); }
 }
+
+/* ---------- 23. Documento de texto largo (aviso de privacidad) ---------- */
+.documento { max-width: 46rem; }
+.documento h1 {
+  font-size: clamp(1.8rem, 6vw, 2.5rem);
+  margin-bottom: .75rem;
+}
+.documento h2 {
+  font-size: clamp(1.15rem, 3.6vw, 1.4rem);
+  color: var(--azul-800);
+  margin-top: 2.5rem;
+  margin-bottom: .6rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--linea);
+}
+.documento h3 {
+  font-size: 1.02rem;
+  color: var(--azul-700);
+  margin-top: 1.5rem;
+  margin-bottom: .4rem;
+}
+.documento p { margin-bottom: 1rem; }
+.documento ul {
+  margin: 0 0 1.25rem;
+  padding-left: 1.25rem;
+}
+.documento li { margin-bottom: .65rem; }
+.documento__entrada {
+  color: var(--tinta-suave);
+  border-left: 4px solid var(--terra-600);
+  padding-left: 1rem;
+  margin-bottom: 2rem;
+}
+.documento__cierre {
+  margin-top: 2.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--linea);
+  font-size: .95rem;
+  color: var(--tinta-suave);
+}
+.documento__volver { margin-top: 2rem; font-weight: 600; }

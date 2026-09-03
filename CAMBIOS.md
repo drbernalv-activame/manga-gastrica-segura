@@ -679,3 +679,58 @@ real —las siete tarjetas— es accesible por teclado como siempre.
 Se comprobó además que el conteo pasa por valores intermedios reales (3 → 8 → 15 → 19 → 20) y
 que el `+` sólo aparece en la muestra final. El contador de "1 año" no se anima: contar de 0 a 1
 no aporta nada y pasaba por "0 año", mal escrito.
+
+
+---
+
+# Aviso de privacidad publicado — 3 de septiembre de 2026
+
+## 29. La página
+
+`aviso-de-privacidad.html` en la raíz, servida en `/aviso-de-privacidad` gracias a `cleanUrls`.
+Mismo encabezado, tipografía y pie que la portada, **sin el CTA del encabezado y sin el botón
+flotante de WhatsApp**: es una página que se lee, no que convierte. Los once apartados del
+borrador en HTML semántico, con un `h1`, once `h2` y `h3` para las finalidades primarias y
+secundarias. Estilos nuevos bajo `.documento`, con los tokens que ya existían.
+
+Hereda el `noindex` por partida doble, igual que la portada: su propio `<meta name="robots">` y
+el `X-Robots-Tag` que `vercel.json` y `netlify.toml` aplican a todas las rutas. Ni
+`.vercelignore` ni las reglas de Netlify la excluyen: sólo filtran `*.md` y `docs/`.
+
+## 30. Las tres marcas del borrador
+
+| Apartado | Cómo se resolvió |
+|---|---|
+| **9. Cookies y rastreo** | Auditoría hecha sobre la página real: cero peticiones a terceros, cero cookies, almacenamiento vacío, sin Google Analytics ni Meta Pixel, tipografía del sistema, favicon en `data:` URI. Se usó **la redacción alternativa del borrador**. Un comentario HTML deja anotados para legal los dos matices: Vercel guarda IPs en sus registros de acceso, y el día que se instale analítica el apartado deja de ser cierto. |
+| **11. Autoridad** | Queda en «la autoridad competente en materia de protección de datos personales en México», sin nombrar dependencia. Comentario HTML sin corchetes pidiendo a legal que confirme la denominación vigente. |
+| **6. Consentimiento** | Reescrito para describir **las dos casillas**, que ya existen en el formulario y son ambas obligatorias. Desaparece la marca de validación: la pregunta que hacía —si conviene una casilla separada para datos sensibles— quedó contestada implementándola. |
+
+## 31. URL y fecha
+
+La URL del apartado 1 se escribe completa, en el `href` y en el texto visible, para que
+`scripts/cambiar-url.py` la cambie sola. **El script se extendió a las dos páginas**: antes sólo
+tocaba `index.html`, y el aviso se habría quedado con la URL vieja al pasar al dominio
+definitivo. Ahora recorre ambas, y sigue leyendo la URL vigente del `canonical` de la portada.
+Probado con una ida y vuelta completa: 9 apariciones en la portada y 3 en el aviso, y los dos
+archivos idénticos al revertir.
+
+«Última actualización»: 3 de septiembre de 2026.
+
+## 32. Enlaces y verificación
+
+Los dos enlaces —la casilla del formulario y el pie— apuntan a `/aviso-de-privacidad`. El del
+formulario abre en pestaña nueva con `rel="noopener"`, para que nadie pierda lo que ya escribió.
+Se retiró el `id="aviso-privacidad"` provisional del pie.
+
+`verificar-despliegue.sh` añade `/aviso-de-privacidad` a las rutas que deben responder 200,
+junto con `interaccion.js` y la foto del equipo, que tampoco se comprobaban. La búsqueda de
+marcadores ahora recorre **las dos páginas** y añade `[FECHA` a la lista.
+
+| Comprobación | Resultado |
+|---|---|
+| La página carga con estilos | ✅ Encabezado, tipografía y pie idénticos a la portada |
+| Los once apartados | ✅ 11 `h2`, sin marcadores de ningún tipo |
+| Los dos enlaces llegan a ella | ✅ Ambos responden 200; el del formulario con `target="_blank"` y `rel="noopener"` |
+| El formulario no envía sin las dos casillas | ✅ Las cuatro combinaciones probadas: sólo envía con ambas |
+| Errores de consola | ✅ Ninguno, en la portada y en el aviso |
+| Sin botón flotante ni CTA en el encabezado | ✅ |
