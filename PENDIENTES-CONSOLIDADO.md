@@ -42,8 +42,10 @@ los dos grupos como referencia cruzada, no como pendientes duplicados.
 ### Atajo: 13 respuestas resuelven 46 de los 80 marcadores
 
 > 📨 **Para consultarlo con el Dr. Bernal, usa [`CONSULTA-DR-BERNAL.md`](CONSULTA-DR-BERNAL.md),
-> no este archivo.** Es un extracto de 15 preguntas en lenguaje directo —estas 13 más las 2
-> decisiones 🟠— que cierra 50 de los 80 marcadores en una llamada de unos 20 minutos.
+> no este archivo.** Es un extracto de 15 preguntas en lenguaje directo —estas 13, más las
+> exclusiones (1.8) y las 2 decisiones 🟠— ordenado para una llamada de 20 minutos. Cierra
+> **51 de los 80 marcadores**. Enviar por WhatsApp con el archivo adjunto; fecha límite:
+> viernes 11 de septiembre de 2026.
 
 | # | Una sola respuesta | Lugares | Grupo |
 |---|---|---|---|
