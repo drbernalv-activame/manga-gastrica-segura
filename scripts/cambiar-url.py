@@ -8,7 +8,7 @@ url, la ruta de la foto del médico, y en el aviso de privacidad su propio
 canonical y el enlace del apartado 1. Cambiarlas a mano es donde se cuela el
 error.
 
-    python3 scripts/cambiar-url.py https://mangagastricasegura.vercel.app
+    python3 scripts/cambiar-url.py https://manga.activame.mx
 
 Sin argumentos, muestra la URL actual y dónde aparece.
 """
