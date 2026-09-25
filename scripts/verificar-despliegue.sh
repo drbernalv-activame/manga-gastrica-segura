@@ -1,14 +1,14 @@
 #!/usr/bin/env bash
 # Verifica un despliegue de la landing contra el sitio real.
 #
-#   ./scripts/verificar-despliegue.sh https://manga-gastrica-segura.vercel.app
+#   ./scripts/verificar-despliegue.sh https://manga.activame.mx
 #
 # Comprueba lo que solo se puede comprobar contra el host: que la página carga,
 # que los assets se sirven, que la documentación interna NO es accesible y que
 # el despliegue provisional lleva noindex. El formulario y el fallback de las
 # imágenes se prueban en el navegador (ver el final).
 set -u
-URL="${1:-https://manga-gastrica-segura.vercel.app}"
+URL="${1:-https://manga.activame.mx}"
 URL="${URL%/}"
 fallos=0
 

@@ -26,6 +26,17 @@
   ],
   "redirects": [
     {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "manga-gastrica-segura.vercel.app"
+        }
+      ],
+      "destination": "https://manga.activame.mx/:path*",
+      "statusCode": 301
+    },
+    {
       "source": "/privacidad",
       "destination": "/aviso-de-privacidad",
       "statusCode": 301

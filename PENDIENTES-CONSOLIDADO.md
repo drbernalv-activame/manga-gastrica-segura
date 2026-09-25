@@ -13,7 +13,7 @@ Ninguno se ve en la página: los legales son comentarios HTML y los de ruta vive
 `src` de dos imágenes que el JavaScript retira. Para comprobarlo contra el sitio desplegado:
 
 ```bash
-./scripts/verificar-despliegue.sh https://manga-gastrica-segura.vercel.app
+./scripts/verificar-despliegue.sh https://manga.activame.mx
 ```
 
 ---
